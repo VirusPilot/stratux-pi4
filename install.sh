@@ -50,7 +50,7 @@ rm *.tgz
 
 cp -f /root/stratux-pi4/stratux.conf /etc/
 
-cp -f /root/stratux-pi4/stratux.conf.template /etc/stratux-ogn.conf.template
+cp -f /root/stratux-pi4/stratux-ogn.conf.template /etc/stratux-ogn.conf.template
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 
 cp -f /root/stratux-pi4/stratux.service /lib/systemd/system/stratux.service
