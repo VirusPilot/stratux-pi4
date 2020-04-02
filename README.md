@@ -22,9 +22,10 @@ Steps required:
 - sudo reboot
 - ...
 
-Limitations
+Limitations/Modofications
 - fancontrol service disabled
 - https://github.com/steve-m/kalibrate-rtl not installed
+- Stratux settings for direct use with NMEA FLARM in SkyDemon
 
 not implemented yet:
 - WiFi AP
