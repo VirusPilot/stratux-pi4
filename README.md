@@ -24,7 +24,9 @@ Steps required:
 
 Limitations/Modofications
 - fancontrol service disabled
+- selfupdate won't work
 - https://github.com/steve-m/kalibrate-rtl not installed
+- commandline aliases not available
 - Stratux settings for direct use with NMEA FLARM in SkyDemon
 
 not implemented yet:
