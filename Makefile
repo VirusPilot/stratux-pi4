@@ -32,7 +32,6 @@ install:
 
 	cp -f image/10-stratux.rules /etc/udev/rules.d/10-stratux.rules
 	cp -f image/99-uavionix.rules /etc/udev/rules.d/99-uavionix.rules
-	cp -f image/stxAliases.txt /root/.stxAliases
 	cp -f image/rtl-sdr-blacklist.conf /etc/modprobe.d/
 	cp -f image/rc.local /etc/rc.local
 	cp -f image/logrotate.conf /etc/logrotate.conf
