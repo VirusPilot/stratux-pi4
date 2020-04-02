@@ -48,6 +48,8 @@ wget http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz
 tar xvzf *.tgz
 rm *.tgz
 
+cp -f /root/stratux-pi4/stratux.conf /etc/
+
 cp -f /root/stratux-pi4/stratux.conf.template /etc/stratux-ogn.conf.template
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 
