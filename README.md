@@ -21,3 +21,10 @@ Steps required:
 - run ./install.sh
 - sudo reboot
 - ...
+
+Limitations
+- fancontrol service disabled
+- https://github.com/steve-m/kalibrate-rtl not installed
+
+not implemented yet:
+- WiFi AP
