@@ -47,6 +47,9 @@ install:
 	cp -f ogn/rtlsdr-ogn/ogn-decode /usr/bin/
 	cp -f ogn/ddb.json /etc/
 
+	touch /etc/stratux.conf
+	chmod a+rw /etc/stratux.conf
+
 clean:
 	rm -f gen_gdl90 libdump978.so fancontrol ahrs_approx
 	cd dump1090 && make clean

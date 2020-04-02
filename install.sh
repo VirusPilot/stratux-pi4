@@ -48,17 +48,17 @@ wget http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz
 tar xvzf *.tgz
 rm *.tgz
 
-cp -f /root/stratux-fa/stratux.conf.template /etc/stratux-ogn.conf.template
-cp -f /root/stratux-fa/Makefile /root/stratux/Makefile
+cp -f /root/stratux-pi4/stratux.conf.template /etc/stratux-ogn.conf.template
+cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 
-cp -f /root/stratux-fa/stratux.service /lib/systemd/system/stratux.service
+cp -f /root/stratux-pi4/stratux.service /lib/systemd/system/stratux.service
 chmod 644 /lib/systemd/system/stratux.service
 ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
 
-cp -f /root/stratux-fa/stratux-pre-start.sh /root/stratux-pre-start.sh
+cp -f /root/stratux-pi4/stratux-pre-start.sh /root/stratux-pre-start.sh
 chmod 744 /root/stratux-pre-start.sh
 
-cp -f /root/stratux-fa/dump1090 /usr/bin/
+cp -f /root/stratux-pi4/dump1090 /usr/bin/
 chmod 755 /usr/bin/dump1090
 
 cd /root/stratux
