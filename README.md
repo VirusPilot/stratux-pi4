@@ -1,15 +1,15 @@
 # stratux-pi4
-Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Buster image
+Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Buster Lite Image
 
 This started as a script just for myself to build a Stratux Europe, based on:
 - https://github.com/b3nn0/stratux
 - https://project-downloads.drogon.net/wiringpi-latest.deb
 - http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz
 - Raspbian Buster Lite
-- Raspberry Pi 4 B (also tested on Pi 3 B)
+- Raspberry Pi4B (also tested on Pi3B)
 
 Steps required:
-- fresh Raspbian Buster Lite Image running with ssh
+- fresh Raspbian Buster Lite Image with ssh enabled
 - login as `pi` user
 - sudo su
 - cd ~/
@@ -25,9 +25,9 @@ Steps required:
 Limitations/Modofications
 - fancontrol service disabled
 - selfupdate won't work
-- https://github.com/steve-m/kalibrate-rtl not installed
-- commandline aliases not available
-- Stratux settings for direct use with NMEA FLARM in SkyDemon
+- commandline aliases not available (yet)
+- Stratux Europe default settings modified for direct use with NMEA FLARM and SkyDemon
 
 not implemented yet:
 - WiFi AP
+- https://github.com/steve-m/kalibrate-rtl
