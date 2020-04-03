@@ -5,6 +5,7 @@ This started as a script just for myself to build a Stratux Europe, based on:
 - https://github.com/b3nn0/stratux
 - https://project-downloads.drogon.net/wiringpi-latest.deb
 - http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz
+- https://osmocom.org/projects/rtl-sdr/
 - Raspbian Buster Lite
 - Raspberry Pi4B (also tested on Pi3B)
 
