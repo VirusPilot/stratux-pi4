@@ -3,9 +3,10 @@ Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Buster L
 
 This started as a script just for myself to build a Stratux Europe, based on:
 - https://github.com/b3nn0/stratux
-- https://project-downloads.drogon.net/wiringpi-latest.deb
-- http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz
-- https://osmocom.org/projects/rtl-sdr/
+- https://project-downloads.drogon.net/wiringpi-latest.deb (only v2.52 works with Pi4B)
+- http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz (only ARM version works with Pi4B)
+- https://github.com/Determinant/dump1090-fa-stratux (based on dump1090-fa)
+- https://osmocom.org/projects/rtl-sdr/ (apt version required for dump1090-fa)
 - Raspbian Buster Lite
 - Raspberry Pi4B (also tested on Pi3B)
 
