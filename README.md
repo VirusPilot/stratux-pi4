@@ -32,3 +32,4 @@ Limitations/Modofications
 not implemented yet:
 - WiFi AP
 - https://github.com/steve-m/kalibrate-rtl
+- flexible pathnames (currently hardcoded)
