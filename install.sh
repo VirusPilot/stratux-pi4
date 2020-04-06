@@ -66,6 +66,9 @@ chmod 744 /root/stratux-pre-start.sh
 cp -f /root/stratux-pi4/dump1090 /usr/bin/
 chmod 755 /usr/bin/dump1090
 
+cp -f /root/stratux-pi4/config.txt /boot/config.txt
+cp -f /root/stratux-pi4/modules /etc/modules
+
 cd /root/stratux
 export PATH=/usr/lib/go/bin:${PATH}
 export GOROOT=/usr/lib/go
