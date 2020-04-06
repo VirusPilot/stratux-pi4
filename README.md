@@ -25,13 +25,11 @@ Steps required:
 - ...
 
 Limitations/Modofications
+- WiFi configuration not available (only via ssh commandline)
 - fancontrol service disabled
 - selfupdate won't work
 - commandline aliases not available (yet)
-- Stratux Europe default settings modified for direct use with NMEA FLARM and SkyDemon
 
 not implemented yet:
-- WiFi AP
 - https://github.com/steve-m/kalibrate-rtl
 - flexible pathnames (currently hardcoded)
-- i2c enabled withouth raspi-config
