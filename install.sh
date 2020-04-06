@@ -1,6 +1,9 @@
 #!/bin/bash
 #set -x
 
+rfkill unblock 0
+ifconfig wlan0 up
+
 echo
 read -t 1 -n 10000 discard
 read -p "apt packages already installed? [y/n]" -n 1 -r
@@ -13,6 +16,7 @@ if [[ $REPLY =~ ^[Nn]$ ]]; then
   apt install libjpeg8-dev -y
   apt install libconfig9 -y
   apt install hostapd -y
+  apt install dnsmasq -y
   apt install tcpdump -y
   apt install git -y
   apt install cmake -y
@@ -48,7 +52,7 @@ wget http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz
 tar xvzf *.tgz
 rm *.tgz
 
-cp -f /root/stratux-pi4/stratux.conf /etc/stratux.conf
+#cp -f /root/stratux-pi4/stratux.conf /etc/stratux.conf
 cp -f /root/stratux-pi4/stratux-ogn.conf.template /etc/stratux-ogn.conf.template
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 
@@ -71,6 +75,27 @@ echo export GOROOT=/usr/lib/go >> ~/.bashrc
 echo export GOPATH=/usr/lib/go_path >> ~/.bashrc
 ldconfig
 make && make install
+
+cd /root/stratux-pi4
+cp -f hostapd.conf /etc/hostapd/hostapd.conf
+cp -f dnsmasq.conf /etc/dnsmasq.conf
+
+echo
+read -t 1 -n 10000 discard
+read -p "enable Statux AP? [y/n]" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  systemctl disable dhcpcd
+  systemctl unmask hostapd
+  systemctl enable hostapd
+  systemctl enable dnsmasq
+  cp -f wlan0 /etc/network/interfaces.d/
+else
+  systemctl disable hostapd
+  systemctl disable dnsmasq
+  systemctl enable dhcpcd
+  rm -f /etc/network/interfaces.d/wlan0
+fi
 
 echo
 read -t 1 -n 10000 discard
