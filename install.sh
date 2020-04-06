@@ -52,7 +52,6 @@ wget http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz
 tar xvzf *.tgz
 rm *.tgz
 
-#cp -f /root/stratux-pi4/stratux.conf /etc/stratux.conf
 cp -f /root/stratux-pi4/stratux-ogn.conf.template /etc/stratux-ogn.conf.template
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 
@@ -66,6 +65,7 @@ chmod 744 /root/stratux-pre-start.sh
 cp -f /root/stratux-pi4/dump1090 /usr/bin/
 chmod 755 /usr/bin/dump1090
 
+# enable i2c
 cp -f /root/stratux-pi4/config.txt /boot/config.txt
 cp -f /root/stratux-pi4/modules /etc/modules
 
@@ -90,8 +90,8 @@ systemctl enable dnsmasq
 
 echo
 read -t 1 -n 10000 discard
-read -p "i2c already enabled? [y/n]" -n 1 -r
+read -p "reboot? [y/n]" -n 1 -r
 echo
-if [[ $REPLY =~ ^[Nn]$ ]]; then
-  raspi-config
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  reboot
 fi

@@ -34,16 +34,20 @@ install:
 	cp -f image/99-uavionix.rules /etc/udev/rules.d/99-uavionix.rules
 
 	cp -f image/motd /etc/motd
-	cp -f image/hostapd_manager.sh /usr/sbin/hostapd_manager.sh
-	chmod 755 /usr/sbin/hostapd_manager.sh
-	rm -f mnt/etc/rc*.d/hostapd mnt/etc/network/if-pre-up.d/hostapd mnt/etc/network/if-post-down.d/hostapd mnt/etc/init.d/hostapd mnt/etc/default/hostapd
-	cp -f image/stratux-wifi.sh /usr/sbin/stratux-wifi.sh
-	chmod 755 /usr/sbin/stratux-wifi.sh
-	cp -f image/sdr-tool.sh /usr/sbin/sdr-tool.sh
-	chmod 755 /usr/sbin/sdr-tool.sh
-	cp -f image/stxAliases.txt /root/.stxAliases
+	#cp -f image/hostapd_manager.sh /usr/sbin/hostapd_manager.sh
+	#chmod 755 /usr/sbin/hostapd_manager.sh
+	rm -f mnt/etc/rc*.d/hostapd
+	rm -f mnt/etc/network/if-pre-up.d/hostapd
+	rm -f mnt/etc/network/if-post-down.d/hostapd
+	rm -f mnt/etc/init.d/hostapd
+	rm -f mnt/etc/default/hostapd
+	#cp -f image/stratux-wifi.sh /usr/sbin/stratux-wifi.sh
+	#chmod 755 /usr/sbin/stratux-wifi.sh
+	#cp -f image/sdr-tool.sh /usr/sbin/sdr-tool.sh
+	#chmod 755 /usr/sbin/sdr-tool.sh
+	#cp -f image/stxAliases.txt /root/.stxAliases
 	cp -f image/logrotate_d_stratux /etc/logrotate.d/stratux
-	cp -f image/stxAliases.txt /home/pi/.stxAliases
+	#cp -f image/stxAliases.txt /home/pi/.stxAliases
 	cp -f image/rtl-sdr-blacklist.conf /etc/modprobe.d
 	cp -f image/rc.local /etc/rc.local
 	rm -f /etc/network/if-up.d/wpasupplicant

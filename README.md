@@ -24,12 +24,12 @@ Steps required:
 - sudo reboot
 - ...
 
-Limitations/Modofications
-- WiFi configuration not available (only via ssh commandline)
+Limitations/Modifications
+- WiFi configuration not available (only via ssh)
 - fancontrol service disabled
 - selfupdate won't work
 - commandline aliases not available (yet)
 
-not implemented yet:
+not implemented/added yet:
 - https://github.com/steve-m/kalibrate-rtl
 - flexible pathnames (currently hardcoded)
