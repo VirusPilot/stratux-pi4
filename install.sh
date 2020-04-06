@@ -78,23 +78,12 @@ make && make install
 
 cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
 cp -f /root/stratux-pi4/dnsmasq.conf /etc/dnsmasq.conf
+cp -f /root/stratux-pi4/wlan0 /etc/network/interfaces.d/
 
-echo
-read -t 1 -n 10000 discard
-read -p "enable Statux AP? [y/n]" -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  systemctl disable dhcpcd
-  systemctl unmask hostapd
-  systemctl enable hostapd
-  systemctl enable dnsmasq
-  cp -f wlan0 /etc/network/interfaces.d/
-else
-  systemctl disable hostapd
-  systemctl disable dnsmasq
-  systemctl enable dhcpcd
-  rm -f /etc/network/interfaces.d/wlan0
-fi
+systemctl enable dhcpcd
+systemctl unmask hostapd
+systemctl enable hostapd
+systemctl enable dnsmasq
 
 echo
 read -t 1 -n 10000 discard
