@@ -43,8 +43,8 @@
 #arm_freq=800
 
 # Uncomment some or all of these to enable the optional hardware interfaces
-#dtparam=i2c_arm=on
-#dtparam=i2s=on
+dtparam=i2c_arm=on
+dtparam=i2s=on
 #dtparam=spi=on
 
 # Uncomment this to enable infrared communication.
@@ -55,8 +55,6 @@
 
 # Enable audio (loads snd_bcm2835)
 dtparam=audio=on
-dtparam=i2c_arm=on
-dtparam=i2c1=on
 
 [pi4]
 # Enable DRM VC4 V3D driver on top of the dispmanx display stack
