@@ -76,9 +76,8 @@ echo export GOPATH=/usr/lib/go_path >> ~/.bashrc
 ldconfig
 make && make install
 
-cd /root/stratux-pi4
-cp -f hostapd.conf /etc/hostapd/hostapd.conf
-cp -f dnsmasq.conf /etc/dnsmasq.conf
+cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
+cp -f /root/stratux-pi4/dnsmasq.conf /etc/dnsmasq.conf
 
 echo
 read -t 1 -n 10000 discard
