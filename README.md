@@ -14,13 +14,17 @@ Steps required:
 - Pi4B connected to LAN
 - boot from a fresh Raspbian Buster Lite Image with ssh enabled
 - login as `pi` user
-- sudo su
-- cd ~/
-- apt update
-- apt install git -y
-- git clone https://github.com/VirusPilot/stratux-pi4.git
-- cd stratux-pi4
-- ./install.sh (press y a couple of times)
+```
+sudo su
+cd ~/
+apt update
+apt full-upgrade
+apt install git -y
+git clone https://github.com/VirusPilot/stratux-pi4.git
+cd stratux-pi4
+./install.sh (press y a couple of times)
+```
+
 - after reboot please reconnect LAN and/or WiFi and Stratux should work right away
 
 Limitations/Modifications
