@@ -6,9 +6,9 @@ ifconfig wlan0 up
 
 echo
 read -t 1 -n 10000 discard
-read -p "apt packages already installed? [y/n]" -n 1 -r
+read -p "install required apt packages? [y/n]" -n 1 -r
 echo
-if [[ $REPLY =~ ^[Nn]$ ]]; then
+if [[ $REPLY =~ ^[Yy]$ ]]; then
   apt update
   apt full-upgrade -y
   apt install libncurses-dev -y
