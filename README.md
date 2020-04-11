@@ -6,11 +6,11 @@ This started as a script just for myself to build a Stratux Europe for a passive
 - https://project-downloads.drogon.net/wiringpi-latest.deb (only v2.52 works with Pi4B)
 - http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz (only ARM version works with Pi4B)
 - https://github.com/Determinant/dump1090-fa-stratux (based on dump1090-fa)
-- https://osmocom.org/projects/rtl-sdr/ (apt version required for dump1090-fa)
+- https://osmocom.org/projects/rtl-sdr/ (apt version used for dump1090-fa)
 - Raspbian Buster Lite
 - Raspberry Pi4B (also tested on Pi3B)
 
-Steps required:
+## Steps required:
 - Pi4B connected to LAN
 - boot from a fresh Raspbian Buster Lite Image with ssh enabled
 - login as `pi` user
@@ -27,7 +27,7 @@ cd stratux-pi4
 
 - after reboot please reconnect LAN and/or WiFi and Stratux should work right away
 
-Limitations/Modifications
+## Limitations/Modifications
 - Network configuration: dnsmasq instead of isc-dhcp-server
 - Settings Page: WiFi configuration is not working !! (contributions to change that are welcome)
 - WiFi IP: 192.168.1.1 (required for FLARM NMEA and SkyDemon)
@@ -39,6 +39,6 @@ Limitations/Modifications
 - BladeRF 2.0 Micro support disabled
 - https://github.com/steve-m/kalibrate-rtl not installed
 
-not yet implemented/added:
+## not yet implemented/added:
 - flexible pathnames (currently hardcoded)
 - as soon as https://github.com/flightaware/dump1090/pull/61 is accepted, switch to https://github.com/flightaware/dump1090
