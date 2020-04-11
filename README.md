@@ -36,8 +36,9 @@ Limitations/Modifications
 - fancontrol service disabled
 - selfupdate won't work
 - commandline aliases not available
+- BladeRF 2.0 Micro support disabled
+- https://github.com/steve-m/kalibrate-rtl not installed
 
-not implemented/added (yet):
-- https://github.com/steve-m/kalibrate-rtl
+not yet implemented/added:
 - flexible pathnames (currently hardcoded)
 - as soon as https://github.com/flightaware/dump1090/pull/61 is accepted, switch to https://github.com/flightaware/dump1090
