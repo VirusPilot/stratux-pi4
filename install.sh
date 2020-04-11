@@ -10,8 +10,8 @@ read -p "apt packages already installed? [y/n]" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Nn]$ ]]; then
   apt update
-  apt full-upgrade
-  apt install libncurses5-dev -y
+  apt full-upgrade -y
+  apt install libncurses-dev -y
   apt install pkg-config -y
   apt install libjpeg8-dev -y
   apt install libconfig9 -y
@@ -25,6 +25,7 @@ if [[ $REPLY =~ ^[Nn]$ ]]; then
   apt install i2c-tools -y
   apt install librtlsdr0 -y
   apt install librtlsdr-dev -y
+  apt install rtl-sdr -y
   apt install golang -y
   wget https://project-downloads.drogon.net/wiringpi-latest.deb
   wget http://ftp.debian.org/debian/pool/main/f/fftw3/libfftw3-bin_3.3.5-3_armhf.deb
