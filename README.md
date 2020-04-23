@@ -19,15 +19,17 @@ sudo su
 cd ~/
 apt update
 apt full-upgrade
- -> if you haven't yet programed your SDRs, please follow the instructions
- -> under the remarks below or otherwise just continue
+```
+if you haven't yet programed your SDRs, please follow the instructions
+under the remarks below or otherwise just continue
+```
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
 cd stratux-pi4
 ./install.sh (press y a couple of times)
 ```
 
-- after reboot please reconnect LAN and/or WiFi and Stratux should work right away
+after reboot please reconnect LAN and/or WiFi and Stratux should work right away
 
 ## Limitations/Modifications
 - Network configuration: dnsmasq instead of isc-dhcp-server
@@ -47,10 +49,12 @@ cd stratux-pi4
 
 ## Remarks - inital SDR programming
 During boot, Stratux tries to identify which SDR to use for which traffic type (ADS-B, FLARM) - this is done by reading the "Serial number" entry in each SDRs. You can check or modify these entries as described below, it is recommended for programming to only plug in one SDR at a time, connect the appropriate antenna and lable this combination accordingly, e.g. FLARM.
-
-execute "apt install rtl-sdr -y"
-execute "rtl_eeprom", this will report something like the following:
-
+```
+apt install rtl-sdr -y
+rtl_eeprom
+```
+will report something like the following:
+```
 Current configuration:
 __________________________________________
 Vendor ID:              0x0bda
@@ -59,18 +63,26 @@ Manufacturer:           Realtek
 Product:                RTL2838UHIDIR
 Serial number:          stx:868:0
 Serial number enabled:  yes
-IR endpoint enabled:	yes
+IR endpoint enabled:    yes
 Remote wakeup enabled:  no
 __________________________________________
-
+```
 This SDR is obviosly programmed for Stratux (stx), FLARM (868MHz), and a ppm correction of "0", the ppm can be modified later. If your SDR comes pre-programed (it would be labled with e.g. with "1090") there is no need to program it.
 
-You can change the "Serial number" entry with the following command: "rtl_eeprom -s stx:1090:0" to prepare it e.g. for ADS-B use.
+You can change the "Serial number" entry with the following command:
+```
+rtl_eeprom -s stx:1090:0
+```
+to prepare it e.g. for ADS-B use.
 
-At this point you can already test your SDR and receive ADS-B traffic with the following command: "rtl_adsb -V".
-
-Or listen to you favorite FM radio station (my station below is at 106.9MHz) by pluging in a headset and run the following command: "rtl_fm -M fm -f 106.9M -s 32000 -g 60 -l 10 - | aplay -t raw -r 32000 -c 1 -f S16_LE".
-
+At this point you can already test your SDR and receive ADS-B traffic with the following command:
+```
+rtl_adsb -V"
+```
+Or listen to you favorite FM radio station (my station below is at 106.9MHz) by pluging in a headset and run the following command:
+```
+rtl_fm -M fm -f 106.9M -s 32000 -g 60 -l 10 - | aplay -t raw -r 32000 -c 1 -f S16_LE".
+```
 ## Remarks - ppm programming
 tbd.
 
