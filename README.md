@@ -21,7 +21,7 @@ apt update
 apt full-upgrade
 ```
 if you haven't yet programed your SDRs, please follow the instructions
-under the remarks below or otherwise just continue
+under "Remarks" below or otherwise just continue here:
 ```
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
