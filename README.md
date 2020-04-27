@@ -48,7 +48,7 @@ after reboot please reconnect LAN and/or WiFi and Stratux should work right away
 - as soon as https://github.com/flightaware/dump1090/pull/61 is accepted, switch to https://github.com/flightaware/dump1090
 
 ## Remarks - inital SDR programming
-During boot, Stratux tries to identify which SDR to use for which traffic type (ADS-B, FLARM) - this is done by reading the "Serial number" entry in each SDRs. You can check or modify these entries as described below, it is recommended for programming to only plug in one SDR at a time, connect the appropriate antenna and lable this combination accordingly, e.g. FLARM.
+During boot, Stratux tries to identify which SDR to use for which traffic type (ADS-B, FLARM) - this is done by reading the "Serial number" entry in each SDRs. You can check or modify these entries as described below, it is recommended for programming to only plug in one SDR at a time, connect the appropriate antenna and label this combination accordingly, e.g. "868".
 ```
 apt install rtl-sdr -y
 rtl_eeprom
@@ -86,5 +86,5 @@ rtl_fm -M fm -f 106.9M -s 32000 -g 60 -l 10 - | aplay -t raw -r 32000 -c 1 -f S1
 ## Remarks - ppm programming
 tbd.
 
-## Remarks - modify OGN ITU frequency region entry for using FLARM outside of Europe/Africa
-tbd.
+## Remarks - OGN/FLARM frequency usage outside of Europe
+- ogn-rf seems to set the OGN/FLARM frequency according to the device's GPS position with the exception of China (470 MHz) and India (866 MHz) which still needs to be implemented
