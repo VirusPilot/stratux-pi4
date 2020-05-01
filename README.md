@@ -39,6 +39,7 @@ after reboot please reconnect LAN and/or WiFi and Stratux should work right away
 - WiFi Password: stratux-pi4
 - fancontrol service disabled
 - selfupdate won't work
+- green LED behavior set to Pi defaults (blinking in case of SD card activity)
 - commandline aliases not available
 - BladeRF 2.0 Micro support disabled
 - https://github.com/steve-m/kalibrate-rtl not installed
