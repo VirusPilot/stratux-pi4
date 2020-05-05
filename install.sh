@@ -77,6 +77,12 @@ export GOPATH=/usr/lib/go_path
 echo export PATH=/usr/lib/go/bin:${PATH} >> ~/.bashrc
 echo export GOROOT=/usr/lib/go >> ~/.bashrc
 echo export GOPATH=/usr/lib/go_path >> ~/.bashrc
+
+go get github.com/prometheus/procfs
+cd $GOPATH/src/github.com/prometheus/procfs/
+git checkout tags/v0.0.11
+cd /root/stratux
+
 ldconfig
 make && make install
 
