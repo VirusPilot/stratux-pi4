@@ -44,21 +44,24 @@ systemctl disable dhcpcd
 systemctl disable hciuart
 systemctl disable hostapd
 
-cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
-cp -f /root/stratux-pi4/config.txt /boot/config.txt
-cp -f /root/stratux-pi4/dump1090 /usr/bin/
-chmod 755 /usr/bin/dump1090
-
 rm -r /root/stratux
-git clone https://github.com/b3nn0/stratux.git
+git clone https://github.com/b3nn0/stratux.git /root/stratux
 
 cd /root/stratux
 git clone --branch stratux https://github.com/Determinant/dump1090-fa-stratux.git dump1090
 git submodule update --init --recursive goflying
 
+cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
+cp -f /root/stratux-pi4/config.txt /boot/config.txt
+cp -f /root/stratux-pi4/dump1090 /usr/bin/
+chmod 755 /usr/bin/dump1090
+
 export PATH=/usr/lib/go/bin:${PATH}
 export GOROOT=/usr/lib/go
 export GOPATH=/usr/lib/go_path
+echo export PATH=/usr/lib/go/bin:${PATH} >> ~/.bashrc
+echo export GOROOT=/usr/lib/go >> ~/.bashrc
+echo export GOPATH=/usr/lib/go_path >> ~/.bashrc
 
 cd /root/stratux
 go get github.com/prometheus/procfs
@@ -77,8 +80,8 @@ mv -f stratux.conf.template rtlsdr-ogn/stratux.conf.template
 mv -f rtlsdr-ogn.conf rtlsdr-ogn/rtlsdr-ogn.conf
 
 cd /root/stratux/image
-cp -f bashrc.txt /root/.bashrc
-source /root/.bashrc
+#cp -f bashrc.txt /root/.bashrc
+#source /root/.bashrc
 cp -f motd /etc/motd
 cp -f dhcpd.conf /etc/dhcp/dhcpd.conf
 cp -f dhcpd.conf.template /etc/dhcp/dhcpd.conf.template

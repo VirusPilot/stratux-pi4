@@ -1,7 +1,7 @@
 # RPi /boot/config.txt
 
 dtparam=audio=on
-max_usb_current=1
+#max_usb_current=1
 dtparam=i2c_arm=on
 dtparam=i2c1=on
 dtparam=i2c1_baudrate=400000
