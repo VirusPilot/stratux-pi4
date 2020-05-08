@@ -18,28 +18,19 @@ This started as a script just for myself to build a Stratux Europe for a passive
 sudo su
 cd ~/
 apt update
-apt full-upgrade
 ```
 If you haven't yet programed your SDRs, please first follow the instructions under "Remarks - SDR programming" below for each SDR individually or otherwise just continue here:
 ```
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
 cd stratux-pi4
-./install.sh (press y a couple of times)
+./install.sh
 ```
 
 After reboot please reconnect LAN and/or WiFi and Stratux should work right away.
 
 ## Limitations/Modifications
-- Network configuration: dnsmasq instead of isc-dhcp-server
-- Settings Page: WiFi configuration is not working !! (contributions to change that are welcome)
-- WiFi IP: 192.168.1.1 (required for FLARM NMEA and SkyDemon)
-- WiFi SSID: stratux-pi4
-- WiFi Password: stratux-pi4
-- fancontrol service disabled
-- selfupdate won't work
-- green LED behavior set to Pi defaults (blinking in case of SD card activity)
-- commandline aliases not available
+- WiFi IP: 192.168.1.1 is required for SkyDemon !!
 - BladeRF 2.0 Micro support disabled
 - https://github.com/steve-m/kalibrate-rtl not installed
 
