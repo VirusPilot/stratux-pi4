@@ -1,9 +1,6 @@
 #!/bin/bash
 #set -x
 
-rfkill unblock 0
-ifconfig wlan0 up
-
 echo
 read -t 1 -n 10000 discard
 read -p "install required apt packages? [y/n]" -n 1 -r
@@ -16,7 +13,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   apt install libjpeg8-dev -y
   apt install libconfig9 -y
   apt install hostapd -y
-  apt install dnsmasq -y
+  apt install isc-dhcp-server -y
   apt install tcpdump -y
   apt install git -y
   apt install cmake -y
@@ -40,60 +37,79 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   apt-mark hold libfftw3-single3
 fi
 
-cd /root
+systemctl enable isc-dhcp-server
+systemctl enable ssh
+systemctl disable ntp
+systemctl disable dhcpcd
+systemctl disable hciuart
+systemctl disable hostapd
+
+cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
+cp -f /root/stratux-pi4/config.txt /boot/config.txt
+cp -f /root/stratux-pi4/dump1090 /usr/bin/
+chmod 755 /usr/bin/dump1090
+
 rm -r /root/stratux
 git clone https://github.com/b3nn0/stratux.git
+
 cd /root/stratux
 git clone --branch stratux https://github.com/Determinant/dump1090-fa-stratux.git dump1090
 git submodule update --init --recursive goflying
 
-cd /root/stratux/ogn
-rm -r rtlsdr*
-wget http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz
-tar xvzf *.tgz
-rm *.tgz
-
-cp -f /root/stratux-pi4/stratux-ogn.conf.template /etc/stratux-ogn.conf.template
-cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
-
-cp -f /root/stratux-pi4/stratux.service /lib/systemd/system/stratux.service
-chmod 644 /lib/systemd/system/stratux.service
-ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
-
-cp -f /root/stratux-pi4/stratux-pre-start.sh /root/stratux-pre-start.sh
-chmod 744 /root/stratux-pre-start.sh
-
-cp -f /root/stratux-pi4/dump1090 /usr/bin/
-chmod 755 /usr/bin/dump1090
-
-# enable i2c
-cp -f /root/stratux-pi4/config.txt /boot/config.txt
-cp -f /root/stratux-pi4/modules /etc/modules
-
-cd /root/stratux
 export PATH=/usr/lib/go/bin:${PATH}
 export GOROOT=/usr/lib/go
 export GOPATH=/usr/lib/go_path
-echo export PATH=/usr/lib/go/bin:${PATH} >> ~/.bashrc
-echo export GOROOT=/usr/lib/go >> ~/.bashrc
-echo export GOPATH=/usr/lib/go_path >> ~/.bashrc
 
+cd /root/stratux
 go get github.com/prometheus/procfs
 cd $GOPATH/src/github.com/prometheus/procfs/
 git checkout tags/v0.0.11
-cd /root/stratux
+
+cd /root/stratux/ogn
+mv -f rtlsdr-ogn/stratux.conf.template .
+mv -f rtlsdr-ogn/rtlsdr-ogn.conf .
+rm -r rtlsdr-ogn
+rm -r rtlsdr-ogn-*
+wget http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz
+tar xvzf *.tgz
+rm *.tgz
+mv -f stratux.conf.template rtlsdr-ogn/stratux.conf.template
+mv -f rtlsdr-ogn.conf rtlsdr-ogn/rtlsdr-ogn.conf
+
+cd /root/stratux/image
+cp -f bashrc.txt /root/.bashrc
+source /root/.bashrc
+cp -f motd /etc/motd
+cp -f dhcpd.conf /etc/dhcp/dhcpd.conf
+cp -f dhcpd.conf.template /etc/dhcp/dhcpd.conf.template
+cp -f hostapd.conf /etc/hostapd/hostapd.conf
+cp -f hostapd.conf.template /etc/hostapd/hostapd.conf.template
+cp -f wpa_supplicant.conf.template /etc/wpa_supplicant/wpa_supplicant.conf.template
+cp -f hostapd_manager.sh /usr/sbin/hostapd_manager.sh
+chmod 755 /usr/sbin/hostapd_manager.sh
+rm -f /etc/rc*.d/*hostapd /etc/network/if-pre-up.d/hostapd /etc/network/if-post-down.d/hostapd /etc/init.d/hostapd /etc/default/hostapd
+cp -f interfaces /etc/network/interfaces
+cp -f interfaces.template /etc/network/interfaces.template
+cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
+chmod 755 /usr/sbin/stratux-wifi.sh
+cp -f sdr-tool.sh /usr/sbin/sdr-tool.sh
+chmod 755 /usr/sbin/sdr-tool.sh
+cp -f 99-uavionix.rules /etc/udev/rules.d
+cp -f logrotate.conf /etc/logrotate.conf
+cp -f isc-dhcp-server /etc/default/isc-dhcp-server
+cp -f sshd_config /etc/ssh/sshd_config
+cp -f 10-stratux.rules /etc/udev/rules.d
+cp -f stxAliases.txt /root/.stxAliases
+cp -f rtl-sdr-blacklist.conf /etc/modprobe.d/
+cp -f modules.txt /etc/modules
+cp -f ../__lib__systemd__system__stratux.service /lib/systemd/system/stratux.service
+cp -f ../__root__stratux-pre-start.sh /root/stratux-pre-start.sh
+cp -f rc.local /etc/rc.local
 
 ldconfig
+
+cd /root/stratux
 make && make install
-
-cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
-cp -f /root/stratux-pi4/dnsmasq.conf /etc/dnsmasq.conf
-cp -f /root/stratux-pi4/wlan0 /etc/network/interfaces.d/
-
-systemctl enable dhcpcd
-systemctl unmask hostapd
-systemctl enable hostapd
-systemctl enable dnsmasq
 
 echo
 read -t 1 -n 10000 discard
