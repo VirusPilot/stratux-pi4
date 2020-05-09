@@ -29,9 +29,15 @@ cd stratux-pi4
 
 After reboot please reconnect LAN and/or WiFi and Stratux should work right away.
 
-## Limitations/Modifications
-- WiFi IP: 192.168.1.1 is required for SkyDemon !!
-- BladeRF 2.0 Micro support disabled
+## SkyDemon related Remarks
+- WiFi Settings/Stratux IP Address 192.168.10.1 (default): only GDL90 can be selected and used in SkyDemon
+- WiFi Settings/Stratux IP Address 192.168.1.1: both GDL90 and FLARM-NMEA can be selected and used in SkyDemon
+- GDL90 is labeled as "GDL90 Compatible Device" under Third-Party Devices
+- FLARM-NMEA is labeled as "FLARM with Air Connect" under Third-Party Devices, the "Air Connect Key" can be ignored for Stratux Europe
+
+## Limitations
+- BladeRF 2.0 Micro SDR support disabled
+- Update function is not supported
 - https://github.com/steve-m/kalibrate-rtl not installed
 
 ## not yet implemented/added:
