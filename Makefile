@@ -27,6 +27,7 @@ fancontrol:
 
 xdump1090:
 #	git submodule update --init
+#	cd dump1090 && make
 	cd dump1090 && make BLADERF=no
 
 xdump978:
