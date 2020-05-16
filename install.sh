@@ -51,6 +51,7 @@ cd /root/stratux
 git clone --branch stratux https://github.com/Determinant/dump1090-fa-stratux.git dump1090
 git submodule update --init --recursive goflying
 
+cp -f /root/stratux-pi4/gps.go /root/stratux/main/gps.go
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 cp -f /root/stratux-pi4/config.txt /boot/config.txt
 cp -f /root/stratux-pi4/bashrc.txt /root/.bashrc
@@ -106,13 +107,20 @@ cp -f rc.local /etc/rc.local
 
 ldconfig
 
-cd /root/stratux
-make && make install
+echo
+read -t 1 -n 10000 discard
+read -p "build new target and reboot? [y/n]" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  cd /root/stratux
+  make && make install && reboot
+fi
 
 echo
 read -t 1 -n 10000 discard
-read -p "reboot? [y/n]" -n 1 -r
+read -p "build modified target and restart stratux? [y/n]" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-  reboot
+  cd /root/stratux
+  make && make install && systemctl daemon-reload && service stratux start
 fi
