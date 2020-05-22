@@ -1,2 +1,0 @@
-#!/bin/bash
-/root/stratux/dump1090/dump1090 "$@" --net-stratux-port 30006
