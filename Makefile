@@ -45,9 +45,8 @@ install:
 	rm -f /etc/network/if-pre-up.d/wpasupplicant
 	rm -f /etc/network/if-down.d/wpasupplicant
 	rm -f /etc/network/if-post-down.d/wpasupplicant
-
-	#rm -f /var/run/ogn-rf.fifo
-	#mkfifo /var/run/ogn-rf.fifo
+	touch /var/lib/dhcp/dhcpd.leases
+	touch /etc/hostapd/hostapd.user
 
 clean:
 	rm -f gen_gdl90 libdump978.so fancontrol ahrs_approx

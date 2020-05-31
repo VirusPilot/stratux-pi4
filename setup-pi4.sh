@@ -22,23 +22,11 @@ apt install libfftw3-dev -y
 wget https://project-downloads.drogon.net/wiringpi-latest.deb
 dpkg -i *.deb
 rm *.deb
-ldconfig
-
-# prepare network
-cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
-cp -f /root/stratux-pi4/dnsmasq.conf /etc/dnsmasq.conf
-cp -f /root/stratux-pi4/wlan0 /etc/network/interfaces.d/
-systemctl enable dhcpcd
-systemctl unmask hostapd
-systemctl enable hostapd
-systemctl enable dnsmasq
-touch /var/lib/dhcp/dhcpd.leases
-touch /etc/hostapd/hostapd.user
 
 # clone stratux
 cd /root
 rm -r /root/stratux
-git clone https://github.com/b3nn0/stratux.git /home/stratux
+git clone https://github.com/b3nn0/stratux.git /root/stratux
 cd /root/stratux
 # replace dump1090 with dump1090-fa
 rm -r /root/stratux/dump1090
@@ -64,3 +52,14 @@ cp -f 10-stratux.rules /etc/udev/rules.d
 cp -f logrotate.conf /etc/logrotate.conf
 cp -f rtl-sdr-blacklist.conf /etc/modprobe.d/
 cp -f rc.local /etc/rc.local
+
+ldconfig
+make && make install
+
+cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
+cp -f /root/stratux-pi4/dnsmasq.conf /etc/dnsmasq.conf
+cp -f /root/stratux-pi4/wlan0 /etc/network/interfaces.d/
+systemctl enable dhcpcd
+systemctl unmask hostapd
+systemctl enable hostapd
+systemctl enable dnsmasq
