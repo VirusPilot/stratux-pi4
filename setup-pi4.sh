@@ -43,9 +43,6 @@ function prepare_network {
 }
 
 function prepare_stratux {
-    export PATH=/usr/lib/go/bin:${PATH}
-    export GOROOT=/usr/lib/go
-    export GOPATH=/usr/lib/go_path
     # clone stratux
     rm -r /root/stratux
     git clone -b ogn-rx-eu https://github.com/b3nn0/stratux.git
