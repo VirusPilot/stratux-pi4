@@ -28,25 +28,18 @@ install:
 	cp -f libdump978.so /usr/lib/libdump978.so
 	cp -f gen_gdl90 /usr/bin/gen_gdl90
 	chmod 755 /usr/bin/gen_gdl90
-
-	mkdir -p  /var/lib/stratux/
 	cp -f ogn/ogn-rx-eu_arm /usr/bin/ogn-rx-eu
 	cp -f ogn/ddb.json /etc/
 
-	touch /etc/stratux.conf
-	chmod a+rw /etc/stratux.conf
-
-	rm -f mnt/etc/rc*.d/hostapd
-	rm -f mnt/etc/network/if-pre-up.d/hostapd
-	rm -f mnt/etc/network/if-post-down.d/hostapd
-	rm -f mnt/etc/init.d/hostapd
-	rm -f mnt/etc/default/hostapd
-	rm -f /etc/network/if-up.d/wpasupplicant
-	rm -f /etc/network/if-pre-up.d/wpasupplicant
-	rm -f /etc/network/if-down.d/wpasupplicant
-	rm -f /etc/network/if-post-down.d/wpasupplicant
-	touch /var/lib/dhcp/dhcpd.leases
-	touch /etc/hostapd/hostapd.user
+	#rm -f mnt/etc/rc*.d/hostapd
+	#rm -f mnt/etc/network/if-pre-up.d/hostapd
+	#rm -f mnt/etc/network/if-post-down.d/hostapd
+	#rm -f mnt/etc/init.d/hostapd
+	#rm -f mnt/etc/default/hostapd
+	#rm -f /etc/network/if-up.d/wpasupplicant
+	#rm -f /etc/network/if-pre-up.d/wpasupplicant
+	#rm -f /etc/network/if-down.d/wpasupplicant
+	#rm -f /etc/network/if-post-down.d/wpasupplicant
 
 clean:
 	rm -f gen_gdl90 libdump978.so fancontrol ahrs_approx

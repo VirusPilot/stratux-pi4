@@ -1,6 +1,9 @@
 #!/bin/bash
 #set -x
 
+rfkill unblock 0
+ifconfig wlan0 up
+
 # prepare libs
 apt install libncurses-dev -y
 apt install pkg-config -y
@@ -22,6 +25,18 @@ apt install libfftw3-dev -y
 wget https://project-downloads.drogon.net/wiringpi-latest.deb
 dpkg -i *.deb
 rm *.deb
+ldconfig
+
+# prepare network
+cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
+cp -f /root/stratux-pi4/dnsmasq.conf /etc/dnsmasq.conf
+cp -f /root/stratux-pi4/wlan0 /etc/network/interfaces.d/
+systemctl enable dhcpcd
+systemctl unmask hostapd
+systemctl enable hostapd
+systemctl enable dnsmasq
+touch /var/lib/dhcp/dhcpd.leases
+touch /etc/hostapd/hostapd.user
 
 # clone stratux
 cd /root
@@ -52,15 +67,6 @@ cp -f 10-stratux.rules /etc/udev/rules.d
 cp -f logrotate.conf /etc/logrotate.conf
 cp -f rtl-sdr-blacklist.conf /etc/modprobe.d/
 cp -f rc.local /etc/rc.local
-
-ldconfig
-cd /root/stratux
-make && make install
-
-cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
-cp -f /root/stratux-pi4/dnsmasq.conf /etc/dnsmasq.conf
-cp -f /root/stratux-pi4/wlan0 /etc/network/interfaces.d/
-systemctl enable dhcpcd
-systemctl unmask hostapd
-systemctl enable hostapd
-systemctl enable dnsmasq
+# copy stratux.conf
+cp -f /root/stratux-pi4/stratux.conf /etc/stratux.conf
+chmod a+rw /etc/stratux.conf
