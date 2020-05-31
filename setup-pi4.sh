@@ -38,7 +38,7 @@ touch /etc/hostapd/hostapd.user
 # clone stratux
 cd /root
 rm -r /root/stratux
-git clone -b ogn-rx-eu https://github.com/b3nn0/stratux.git
+git clone https://github.com/b3nn0/stratux.git /home/stratux
 cd /root/stratux
 # replace dump1090 with dump1090-fa
 rm -r /root/stratux/dump1090
