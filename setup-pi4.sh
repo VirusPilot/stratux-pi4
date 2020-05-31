@@ -54,6 +54,7 @@ cp -f rtl-sdr-blacklist.conf /etc/modprobe.d/
 cp -f rc.local /etc/rc.local
 
 ldconfig
+cd /root/stratux
 make && make install
 
 cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
