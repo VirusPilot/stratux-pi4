@@ -3,8 +3,6 @@ Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Raspbian
 
 This started as a script just for myself to build a Stratux Europe for a passive cooled Pi4B, based on:
 - https://github.com/b3nn0/stratux
-- https://project-downloads.drogon.net/wiringpi-latest.deb (only v2.52 works with Pi4B)
-- http://download.glidernet.org/arm/rtlsdr-ogn-bin-ARM-latest.tgz (only ARM version works with Pi4B)
 - https://github.com/Determinant/dump1090-fa-stratux (based on dump1090-fa)
 - https://osmocom.org/projects/rtl-sdr/ (apt version used for dump1090-fa)
 - Raspbian Buster Lite
@@ -22,10 +20,8 @@ apt update
 If you haven't yet programed your SDRs, please first follow the instructions under "Remarks - SDR programming" below for each SDR individually or otherwise just continue here:
 ```
 apt install git -y
-git clone https://github.com/VirusPilot/stratux.git
-cd stratux
-./setup.sh
-source /root/.bashrc
+git clone https://github.com/VirusPilot/stratux-pi4.git
+./stratux-pi4/setup-pi4.sh
 make && make install
 reboot
 ```
@@ -40,7 +36,7 @@ After reboot please reconnect LAN and/or WiFi and Stratux should work right away
 
 ## Limitations
 - BladeRF 2.0 Micro SDR support disabled
-- Update function is not supported
+- fancontrol disabled
 - https://github.com/steve-m/kalibrate-rtl not installed
 
 ## not yet implemented/added:
@@ -48,7 +44,7 @@ After reboot please reconnect LAN and/or WiFi and Stratux should work right away
 - as soon as https://github.com/flightaware/dump1090/pull/61 is accepted, switch to https://github.com/flightaware/dump1090
 
 ## Remarks - SDR programming (1)
-During boot, Stratux tries to identify which SDR to use for which traffic type (ADS-B, FLARM/OGN) - this is done by reading the "Serial number" entry in each SDRs. You can check or modify these entries as described below, it is recommended for programming to only plug in one SDR at a time, connect the appropriate antenna and label this combination accordingly, e.g. "868" for FLARM/OGN.
+During boot, Stratux tries to identify which SDR to use for which traffic type (ADS-B, OGN) - this is done by reading the "Serial number" entry in each SDRs. You can check or modify these entries as described below, it is recommended for programming to only plug in one SDR at a time, connect the appropriate antenna and label this combination accordingly, e.g. "868" for OGN.
 ```
 apt install rtl-sdr -y
 rtl_eeprom
@@ -67,7 +63,7 @@ IR endpoint enabled:    yes
 Remote wakeup enabled:  no
 __________________________________________
 ```
-This SDR is obviosly programmed for Stratux (stx), FLARM/OGN (868MHz), and a ppm correction of "0", the ppm can be modified later, see below. If your SDR comes pre-programed (it would be labled with e.g. with "1090") there is no need to program it.
+This SDR is obviosly programmed for Stratux (stx), OGN (868MHz), and a ppm correction of "0", the ppm can be modified later, see below. If your SDR comes pre-programed (it would be labled with e.g. with "1090") there is no need to program it.
 
 You can program the `Serial number` entry with the following command:
 ```
@@ -91,9 +87,7 @@ cd /root/stratux/ogn/rtlsdr-ogn
 ```
 For the ppm measurement using `gsm_scan`, please follow https://github.com/glidernet/ogn-rf/blob/6d6cd8a15a5fbff122542401180ea7e58af9ed92/INSTALL#L42
 
-Once you have found the appropriate ppm (e.g. +16 for the FLARM/OGN SDR), the SDR `Serial number` needs to be programmed once again:
+Once you have found the appropriate ppm (e.g. +16 for the OGN SDR), the SDR `Serial number` needs to be programmed once again:
 ```
 rtl_eeprom -s stx:868:16
 ```
-## Remarks - FLARM/OGN frequency usage outside of Europe
-- ogn-rf seems to set the FLARM/OGN frequency according to the device's GPS position with the exception of China (470 MHz) and India (866 MHz) which still needs to be implemented
