@@ -10,7 +10,8 @@ apt install pkg-config -y
 apt install libjpeg8 -y
 apt install libconfig9 -y
 apt install hostapd -y
-apt install dnsmasq -y
+#apt install dnsmasq -y
+apt install isc-dhcp-server -y
 apt install tcpdump -y
 apt install git -y
 apt install cmake -y
@@ -26,17 +27,6 @@ wget https://project-downloads.drogon.net/wiringpi-latest.deb
 dpkg -i *.deb
 rm *.deb
 ldconfig
-
-# prepare network
-cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
-cp -f /root/stratux-pi4/dnsmasq.conf /etc/dnsmasq.conf
-cp -f /root/stratux-pi4/wlan0 /etc/network/interfaces.d/
-systemctl enable dhcpcd
-systemctl unmask hostapd
-systemctl enable hostapd
-systemctl enable dnsmasq
-touch /var/lib/dhcp/dhcpd.leases
-touch /etc/hostapd/hostapd.user
 
 # clone stratux
 cd /root
@@ -59,14 +49,49 @@ cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 cp -f /root/stratux-pi4/stratux.service /lib/systemd/system/stratux.service
 chmod 644 /lib/systemd/system/stratux.service
 ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
-# copy various files from ./stratux/image
+# copy various files from /root/stratux/image
 cd /root/stratux/image
 cp -f motd /etc/motd
-cp -f 99-uavionix.rules /etc/udev/rules.d
 cp -f 10-stratux.rules /etc/udev/rules.d
+cp -f 99-uavionix.rules /etc/udev/rules.d
 cp -f logrotate.conf /etc/logrotate.conf
 cp -f rtl-sdr-blacklist.conf /etc/modprobe.d/
 cp -f rc.local /etc/rc.local
+cp -f stxAliases.txt /root/.stxAliases
+cp -f bashrc.txt /root/.bashrc
 # copy stratux.conf
-cp -f /root/stratux-pi4/stratux.conf /etc/stratux.conf
-chmod a+rw /etc/stratux.conf
+#cp -f /root/stratux-pi4/stratux.conf /etc/stratux.conf
+#chmod a+rw /etc/stratux.conf
+
+# prepare dnsmasq network
+#cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
+#cp -f /root/stratux-pi4/dnsmasq.conf /etc/dnsmasq.conf
+#cp -f /root/stratux-pi4/wlan0 /etc/network/interfaces.d/
+#systemctl enable dhcpcd
+#systemctl unmask hostapd
+#systemctl enable hostapd
+#systemctl enable dnsmasq
+#touch /var/lib/dhcp/dhcpd.leases
+#touch /etc/hostapd/hostapd.user
+
+# prepare isc-dhcp-server network
+systemctl enable isc-dhcp-server
+systemctl enable ssh
+systemctl disable ntp
+systemctl disable dhcpcd
+systemctl disable hciuart
+systemctl disable hostapd
+cp -f dhcpd.conf /etc/dhcp/dhcpd.conf
+cp -f dhcpd.conf.template /etc/dhcp/dhcpd.conf.template
+cp -f hostapd.conf /etc/hostapd/hostapd.conf
+cp -f hostapd.conf.template /etc/hostapd/hostapd.conf.template
+cp -f wpa_supplicant.conf.template /etc/wpa_supplicant/wpa_supplicant.conf.template
+cp -f hostapd_manager.sh /usr/sbin/hostapd_manager.sh
+chmod 755 /usr/sbin/hostapd_manager.sh
+rm -f /etc/rc*.d/*hostapd /etc/network/if-pre-up.d/hostapd /etc/network/if-post-down.d/hostapd /etc/init.d/hostapd /etc/default/hostapd
+cp -f interfaces /etc/network/interfaces
+cp -f interfaces.template /etc/network/interfaces.template
+cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
+chmod 755 /usr/sbin/stratux-wifi.sh
+cp -f isc-dhcp-server /etc/default/isc-dhcp-server
+cp -f sshd_config /etc/ssh/sshd_config

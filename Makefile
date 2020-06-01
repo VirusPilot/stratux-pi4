@@ -30,11 +30,7 @@ install:
 	chmod 755 /usr/bin/gen_gdl90
 	cp -f ogn/ogn-rx-eu_arm /usr/bin/ogn-rx-eu
 	cp -f ogn/ddb.json /etc/
-
-	#rm -f /etc/network/if-up.d/wpasupplicant
-	#rm -f /etc/network/if-pre-up.d/wpasupplicant
-	#rm -f /etc/network/if-down.d/wpasupplicant
-	#rm -f /etc/network/if-post-down.d/wpasupplicant
+	#rm -f /etc/init.d/stratux
 
 clean:
 	rm -f gen_gdl90 libdump978.so fancontrol ahrs_approx
