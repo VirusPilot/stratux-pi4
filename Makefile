@@ -31,11 +31,6 @@ install:
 	cp -f ogn/ogn-rx-eu_arm /usr/bin/ogn-rx-eu
 	cp -f ogn/ddb.json /etc/
 
-	#rm -f mnt/etc/rc*.d/hostapd
-	#rm -f mnt/etc/network/if-pre-up.d/hostapd
-	#rm -f mnt/etc/network/if-post-down.d/hostapd
-	#rm -f mnt/etc/init.d/hostapd
-	#rm -f mnt/etc/default/hostapd
 	#rm -f /etc/network/if-up.d/wpasupplicant
 	#rm -f /etc/network/if-pre-up.d/wpasupplicant
 	#rm -f /etc/network/if-down.d/wpasupplicant

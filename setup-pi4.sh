@@ -7,7 +7,7 @@ ifconfig wlan0 up
 # prepare libs
 apt install libncurses-dev -y
 apt install pkg-config -y
-apt install libjpeg8-dev -y
+apt install libjpeg8 -y
 apt install libconfig9 -y
 apt install hostapd -y
 apt install dnsmasq -y
