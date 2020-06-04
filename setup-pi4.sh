@@ -52,13 +52,13 @@ cp -f /root/stratux-pi4/config.txt /boot/config.txt
 cp -f /root/stratux-pi4/modules /etc/modules
 # replace Makefile
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
-# copy stratux service file
+# copy stratux service file with stratux-pre-start removed
 cp -f /root/stratux-pi4/stratux.service /lib/systemd/system/stratux.service
 chmod 644 /lib/systemd/system/stratux.service
 ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
 # copy rc.local with screen.py deactivated
 cp -f /root/stratux-pi4/rc.local /etc/rc.local
-# copy .bashrc
+# copy .bashrc with modified GO env
 cp -f /root/stratux-pi4/bashrc.txt /root/.bashrc
 # copy various files from /root/stratux/image
 cd /root/stratux/image
