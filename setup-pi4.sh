@@ -23,6 +23,13 @@ apt install librtlsdr-dev -y
 apt install rtl-sdr -y
 apt install golang -y
 apt install libfftw3-dev -y
+apt install python-smbus -y
+apt install python-pip -y
+apt install python-dev -y
+apt install python-pil -y
+apt install python-daemon -y
+apt install screen -y
+
 wget https://project-downloads.drogon.net/wiringpi-latest.deb
 dpkg -i *.deb
 rm *.deb
@@ -51,6 +58,8 @@ chmod 644 /lib/systemd/system/stratux.service
 ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
 # copy rc.local with screen.py deactivated
 cp -f /root/stratux-pi4/rc.local /etc/rc.local
+# copy .bashrc
+cp -f /root/stratux-pi4/bashrc.txt /root/.bashrc
 # copy various files from /root/stratux/image
 cd /root/stratux/image
 cp -f motd /etc/motd
@@ -59,7 +68,6 @@ cp -f 99-uavionix.rules /etc/udev/rules.d
 cp -f logrotate.conf /etc/logrotate.conf
 cp -f rtl-sdr-blacklist.conf /etc/modprobe.d/
 cp -f stxAliases.txt /root/.stxAliases
-cp -f bashrc.txt /root/.bashrc
 
 # prepare dnsmasq network
 #cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
