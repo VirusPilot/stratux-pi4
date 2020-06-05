@@ -10,7 +10,6 @@ apt install pkg-config -y
 apt install libjpeg8 -y
 apt install libconfig9 -y
 apt install hostapd -y
-#apt install dnsmasq -y
 apt install isc-dhcp-server -y
 apt install tcpdump -y
 apt install git -y
@@ -60,9 +59,6 @@ ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target
 cp -f /root/stratux-pi4/rc.local /etc/rc.local
 # copy .bashrc with modified GO env
 cp -f /root/stratux-pi4/bashrc.txt /root/.bashrc
-# copy interfaces files with mofified eth0
-#cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
-#cp -f /root/stratux-pi4/interfaces.template /etc/network/interfaces.template
 # copy various files from /root/stratux/image
 cd /root/stratux/image
 cp -f motd /etc/motd
@@ -72,24 +68,13 @@ cp -f logrotate.conf /etc/logrotate.conf
 cp -f rtl-sdr-blacklist.conf /etc/modprobe.d/
 cp -f stxAliases.txt /root/.stxAliases
 
-# prepare dnsmasq network
-#cp -f /root/stratux-pi4/hostapd.conf /etc/hostapd/hostapd.conf
-cp -f /root/stratux-pi4/dnsmasq.conf /etc/dnsmasq.conf
-#cp -f /root/stratux-pi4/wlan0 /etc/network/interfaces.d/
-systemctl enable dhcpcd
-systemctl unmask hostapd
-systemctl enable hostapd
-systemctl enable dnsmasq
-touch /var/lib/dhcp/dhcpd.leases
-touch /etc/hostapd/hostapd.user
-
 # prepare isc-dhcp-server network
-#systemctl enable isc-dhcp-server
-#systemctl enable ssh
+systemctl enable isc-dhcp-server
+systemctl enable ssh
 #systemctl disable ntp
-#systemctl disable dhcpcd
-#systemctl disable hciuart
-#systemctl disable hostapd
+systemctl disable dhcpcd
+systemctl disable hciuart
+systemctl disable hostapd
 cp -f dhcpd.conf /etc/dhcp/dhcpd.conf
 cp -f dhcpd.conf.template /etc/dhcp/dhcpd.conf.template
 cp -f hostapd.conf /etc/hostapd/hostapd.conf
@@ -102,5 +87,5 @@ cp -f interfaces /etc/network/interfaces
 cp -f interfaces.template /etc/network/interfaces.template
 cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
 chmod 755 /usr/sbin/stratux-wifi.sh
-#cp -f isc-dhcp-server /etc/default/isc-dhcp-server
-#cp -f sshd_config /etc/ssh/sshd_config
+cp -f isc-dhcp-server /etc/default/isc-dhcp-server
+cp -f sshd_config /etc/ssh/sshd_config
