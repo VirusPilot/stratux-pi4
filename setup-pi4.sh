@@ -60,6 +60,9 @@ ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target
 cp -f /root/stratux-pi4/rc.local /etc/rc.local
 # copy .bashrc with modified GO env
 cp -f /root/stratux-pi4/bashrc.txt /root/.bashrc
+# copy interfaces files with mofified eth0
+cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
+cp -f /root/stratux-pi4/interfaces.template /etc/network/interfaces.template
 # copy various files from /root/stratux/image
 cd /root/stratux/image
 cp -f motd /etc/motd
@@ -74,8 +77,8 @@ cp -f stxAliases.txt /root/.stxAliases
 #cp -f /root/stratux-pi4/dnsmasq.conf /etc/dnsmasq.conf
 #cp -f /root/stratux-pi4/wlan0 /etc/network/interfaces.d/
 #systemctl enable dhcpcd
-systemctl unmask hostapd
-systemctl enable hostapd
+#systemctl unmask hostapd
+#systemctl enable hostapd
 #systemctl enable dnsmasq
 #touch /var/lib/dhcp/dhcpd.leases
 #touch /etc/hostapd/hostapd.user
@@ -86,7 +89,7 @@ systemctl enable ssh
 #systemctl disable ntp
 systemctl disable dhcpcd
 systemctl disable hciuart
-#systemctl disable hostapd
+systemctl disable hostapd
 cp -f dhcpd.conf /etc/dhcp/dhcpd.conf
 cp -f dhcpd.conf.template /etc/dhcp/dhcpd.conf.template
 cp -f hostapd.conf /etc/hostapd/hostapd.conf
@@ -95,8 +98,8 @@ cp -f wpa_supplicant.conf.template /etc/wpa_supplicant/wpa_supplicant.conf.templ
 cp -f hostapd_manager.sh /usr/sbin/hostapd_manager.sh
 chmod 755 /usr/sbin/hostapd_manager.sh
 rm -f /etc/rc*.d/*hostapd /etc/network/if-pre-up.d/hostapd /etc/network/if-post-down.d/hostapd /etc/init.d/hostapd /etc/default/hostapd
-cp -f interfaces /etc/network/interfaces
-cp -f interfaces.template /etc/network/interfaces.template
+#cp -f interfaces /etc/network/interfaces
+#cp -f interfaces.template /etc/network/interfaces.template
 cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
 chmod 755 /usr/sbin/stratux-wifi.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
