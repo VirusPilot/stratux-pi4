@@ -24,7 +24,10 @@ xdump978:
 www:
 	cd web && make
 
-install:
+ogn/ddb.json:
+	cd ogn && ./fetch_ddb.sh
+
+install: ogn/ddb.json
 	cp -f libdump978.so /usr/lib/libdump978.so
 	cp -f gen_gdl90 /usr/bin/gen_gdl90
 	chmod 755 /usr/bin/gen_gdl90
