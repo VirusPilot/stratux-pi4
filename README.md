@@ -22,6 +22,7 @@ If you haven't yet programed your SDRs, please first follow the instructions und
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
 ./stratux-pi4/setup-pi4.sh
+source /root/.bashrc
 cd stratux
 make && make install
 reboot
