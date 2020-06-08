@@ -20,7 +20,7 @@ apt install i2c-tools -y
 apt install librtlsdr0 -y
 apt install librtlsdr-dev -y
 apt install rtl-sdr -y
-apt install golang -y
+#apt install golang -y
 apt install libfftw3-dev -y
 apt install python-smbus -y
 apt install python-pip -y
@@ -33,6 +33,22 @@ wget https://project-downloads.drogon.net/wiringpi-latest.deb
 dpkg -i *.deb
 rm *.deb
 ldconfig
+
+# install golang
+cd /root
+wget https://dl.google.com/go/go1.14.4.linux-armv6l.tar.gz
+tar xzf *.gz
+rm *.gz
+
+# intall kalibrate-rtl
+cd /root
+rm -rf kalibrate-rtl
+git clone https://github.com/steve-m/kalibrate-rtl
+cd kalibrate-rtl
+./bootstrap
+./configure
+make -j8
+make install
 
 # clone stratux
 cd /root
@@ -58,26 +74,19 @@ ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target
 # copy rc.local with screen.py deactivated
 cp -f /root/stratux-pi4/rc.local /etc/rc.local
 # copy .bashrc with modified GO env
-cp -f /root/stratux-pi4/bashrc.txt /root/.bashrc
+#cp -f /root/stratux-pi4/bashrc.txt /root/.bashrc
 # copy interface file with static eth0 IP
-cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
-cp -f /root/stratux-pi4/interfaces.template /etc/network/interfaces.template
+#cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
+#cp -f /root/stratux-pi4/interfaces.template /etc/network/interfaces.template
 # copy various files from /root/stratux/image
 cd /root/stratux/image
+cp -f bashrc.txt /root/.bashrc
 cp -f motd /etc/motd
 cp -f 10-stratux.rules /etc/udev/rules.d
 cp -f 99-uavionix.rules /etc/udev/rules.d
 cp -f logrotate.conf /etc/logrotate.conf
 cp -f rtl-sdr-blacklist.conf /etc/modprobe.d/
 cp -f stxAliases.txt /root/.stxAliases
-
-# prepare isc-dhcp-server network
-systemctl enable isc-dhcp-server
-systemctl enable ssh
-#systemctl disable ntp
-systemctl disable dhcpcd
-systemctl disable hciuart
-systemctl disable hostapd
 cp -f dhcpd.conf /etc/dhcp/dhcpd.conf
 cp -f dhcpd.conf.template /etc/dhcp/dhcpd.conf.template
 cp -f hostapd.conf /etc/hostapd/hostapd.conf
@@ -86,9 +95,16 @@ cp -f wpa_supplicant.conf.template /etc/wpa_supplicant/wpa_supplicant.conf.templ
 cp -f hostapd_manager.sh /usr/sbin/hostapd_manager.sh
 chmod 755 /usr/sbin/hostapd_manager.sh
 rm -f /etc/rc*.d/*hostapd /etc/network/if-pre-up.d/hostapd /etc/network/if-post-down.d/hostapd /etc/init.d/hostapd /etc/default/hostapd0
-#cp -f interfaces /etc/network/interfaces
-#cp -f interfaces.template /etc/network/interfaces.template
+cp -f interfaces /etc/network/interfaces
+cp -f interfaces.template /etc/network/interfaces.template
 cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
 chmod 755 /usr/sbin/stratux-wifi.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
+# prepare isc-dhcp-server network
+systemctl enable isc-dhcp-server
+systemctl enable ssh
+#systemctl disable ntp
+systemctl disable dhcpcd
+systemctl disable hciuart
+systemctl disable hostapd
