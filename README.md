@@ -34,6 +34,7 @@ After reboot please reconnect LAN and/or WiFi and Stratux should work right away
 - WiFi Settings/Stratux IP Address 192.168.1.1: both GDL90 and FLARM-NMEA can be selected and used in SkyDemon
 - GDL90 is labeled as "GDL90 Compatible Device" under Third-Party Devices
 - FLARM-NMEA is labeled as "FLARM with Air Connect" under Third-Party Devices, the "Air Connect Key" can be ignored for Stratux Europe
+- info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
 
 ## Limitations
 - BladeRF 2.0 Micro SDR support disabled
