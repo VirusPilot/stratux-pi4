@@ -41,14 +41,14 @@ tar xzf *.gz
 rm *.gz
 
 # intall kalibrate-rtl
-cd /root
-rm -rf kalibrate-rtl
-git clone https://github.com/steve-m/kalibrate-rtl
-cd kalibrate-rtl
-./bootstrap
-./configure
-make -j8
-make install
+#cd /root
+#rm -rf kalibrate-rtl
+#git clone https://github.com/steve-m/kalibrate-rtl
+#cd kalibrate-rtl
+#./bootstrap
+#./configure
+#make -j8
+#make install
 
 # clone stratux
 cd /root
