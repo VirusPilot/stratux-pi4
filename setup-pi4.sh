@@ -30,19 +30,22 @@ apt install python-pil -y
 apt install python-daemon -y
 apt install screen -y
 
+# install wiringPi 2.52 (required for Pi4B)
 wget https://project-downloads.drogon.net/wiringpi-latest.deb
 dpkg -i *.deb
 rm *.deb
 ldconfig
 
-# install golang
+# install latest golang
 cd /root
 wget https://dl.google.com/go/go1.14.4.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
 
-# install kalibrate-rtl
+# replace librtlsdr.pc
 cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/librtlsdr.pc
+
+# install kalibrate-rtl
 cd /root
 rm -rf kalibrate-rtl
 git clone https://github.com/steve-m/kalibrate-rtl
@@ -57,24 +60,31 @@ cd /root
 rm -r /root/stratux
 git clone https://github.com/b3nn0/stratux.git /root/stratux
 cd /root/stratux
+
 # replace dump1090 with dump1090-fa
 rm -r /root/stratux/dump1090
 git clone --branch stratux https://github.com/Determinant/dump1090-fa-stratux.git dump1090
 git submodule update --init --recursive goflying
+
 # copy dump1090 link file
 cp -f /root/stratux-pi4/dump1090 /usr/bin/
 chmod 755 /usr/bin/dump1090
+
 # enable i2c
 cp -f /root/stratux-pi4/config.txt /boot/config.txt
 cp -f /root/stratux-pi4/modules /etc/modules
+
 # replace Makefile
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
+
 # copy stratux service file with stratux-pre-start removed
 cp -f /root/stratux-pi4/stratux.service /lib/systemd/system/stratux.service
 chmod 644 /lib/systemd/system/stratux.service
 ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
+
 # copy rc.local with screen.py deactivated
 cp -f /root/stratux-pi4/rc.local /etc/rc.local
+
 # copy various files from /root/stratux/image
 cd /root/stratux/image
 cp -f bashrc.txt /root/.bashrc
@@ -98,6 +108,7 @@ cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
 chmod 755 /usr/sbin/stratux-wifi.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
+
 # prepare network
 systemctl enable isc-dhcp-server
 systemctl enable ssh
