@@ -9,7 +9,7 @@ This started as a script just for myself to build a Stratux Europe for a passive
 - Raspberry Pi4B (also tested on Pi3B)
 
 ## Steps required:
-- Pi4B connected to LAN
+- Pi4B connected to LAN via Ethernet cable
 - boot from a fresh Raspbian Buster Lite Image with ssh enabled
 - login as `pi` user
 ```
@@ -39,8 +39,7 @@ After reboot please reconnect LAN and/or WiFi and Stratux should work right away
 
 ## Limitations
 - BladeRF 2.0 Micro SDR support disabled
-- fancontrol disabled
-- https://github.com/steve-m/kalibrate-rtl not installed
+- fancontrol and external screen support disabled
 
 ## not yet implemented/added:
 - flexible pathnames (currently hardcoded)
@@ -93,4 +92,4 @@ Once you have found the appropriate ppm (e.g. +16 as in the example above), the 
 ```
 rtl_eeprom -s stx:868:16
 ```
-For more information on how to use `kal`please visit https://github.com/steve-m/kalibrate-rtl/blob/master/README.md
+For more information on how to use `kal` please visit https://github.com/steve-m/kalibrate-rtl/blob/master/README.md
