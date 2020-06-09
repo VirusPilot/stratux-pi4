@@ -5,6 +5,9 @@ rfkill unblock 0
 ifconfig wlan0 up
 
 # prepare libs
+apt install build-essential -y
+apt install automake -y
+apt install autoconf -y
 apt install libncurses-dev -y
 apt install pkg-config -y
 apt install libjpeg8 -y
@@ -14,13 +17,11 @@ apt install isc-dhcp-server -y
 apt install tcpdump -y
 apt install git -y
 apt install cmake -y
-apt install autoconf -y
 apt install libtool -y
 apt install i2c-tools -y
 apt install librtlsdr0 -y
 apt install librtlsdr-dev -y
 apt install rtl-sdr -y
-#apt install golang -y
 apt install libfftw3-dev -y
 apt install python-smbus -y
 apt install python-pip -y
@@ -40,15 +41,16 @@ wget https://dl.google.com/go/go1.14.4.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
 
-# intall kalibrate-rtl
-#cd /root
-#rm -rf kalibrate-rtl
-#git clone https://github.com/steve-m/kalibrate-rtl
-#cd kalibrate-rtl
-#./bootstrap
-#./configure
-#make -j8
-#make install
+# install kalibrate-rtl
+cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/librtlsdr.pc
+cd /root
+rm -rf kalibrate-rtl
+git clone https://github.com/steve-m/kalibrate-rtl
+cd kalibrate-rtl
+./bootstrap && CXXFLAGS='-W -Wall -O3'
+./configure
+make
+make install
 
 # clone stratux
 cd /root
@@ -73,11 +75,6 @@ chmod 644 /lib/systemd/system/stratux.service
 ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
 # copy rc.local with screen.py deactivated
 cp -f /root/stratux-pi4/rc.local /etc/rc.local
-# copy .bashrc with modified GO env
-#cp -f /root/stratux-pi4/bashrc.txt /root/.bashrc
-# copy interface file with static eth0 IP
-#cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
-#cp -f /root/stratux-pi4/interfaces.template /etc/network/interfaces.template
 # copy various files from /root/stratux/image
 cd /root/stratux/image
 cp -f bashrc.txt /root/.bashrc
@@ -101,7 +98,7 @@ cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
 chmod 755 /usr/sbin/stratux-wifi.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
-# prepare isc-dhcp-server network
+# prepare network
 systemctl enable isc-dhcp-server
 systemctl enable ssh
 #systemctl disable ntp
