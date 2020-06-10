@@ -84,12 +84,15 @@ rtl_fm -M fm -f 106.9M -s 32000 -g 60 -l 10 - | aplay -t raw -r 32000 -c 1 -f S1
 ## Remarks - SDR programming (2)
 During boot, Stratux furthermore reads the ppm correction from the SDR `Serial number`, e.g. if the `Serial number` is `stx:1090:28` then the ppm used by Stratux is +28. If the appropriate ppm for the SDR is unknown, here are the steps to find out (again it is useful to have only one SDR plugged in to avoid confusion):
 
-run `kal -s GSM900` and note donw the channel number with the highest power (e.g. 4)
+`stxstop` (in case Stratux is already running)
 
-run `kal -b GSM900 -c 4` and note down the average absolute error (e.g. 16.325 ppm)
+`kal -s GSM900` and note donw the channel number with the highest power (e.g. 4)
+
+`kal -b GSM900 -c 4` and note down the average absolute error (e.g. 16.325 ppm)
 
 Once you have found the appropriate ppm (e.g. +16 as in the example above), the SDR `Serial number` needs to be programmed once again:
 ```
 rtl_eeprom -s stx:868:16
+reboot
 ```
 For more information on how to use `kal` please visit https://github.com/steve-m/kalibrate-rtl/blob/master/README.md
