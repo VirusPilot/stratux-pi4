@@ -2,11 +2,9 @@ auto lo
 
 iface lo inet loopback
 
+auto eth0
 allow-hotplug eth0
 iface eth0 inet dhcp
-#iface eth0 inet static
-#  address 192.168.178.101
-#  gateway 192.168.178.1
 
 allow-hotplug wlan0
 

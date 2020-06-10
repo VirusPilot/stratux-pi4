@@ -102,14 +102,16 @@ cp -f wpa_supplicant.conf.template /etc/wpa_supplicant/wpa_supplicant.conf.templ
 cp -f hostapd_manager.sh /usr/sbin/hostapd_manager.sh
 chmod 755 /usr/sbin/hostapd_manager.sh
 rm -f /etc/rc*.d/*hostapd /etc/network/if-pre-up.d/hostapd /etc/network/if-post-down.d/hostapd /etc/init.d/hostapd /etc/default/hostapd0
-cp -f interfaces /etc/network/interfaces
-cp -f interfaces.template /etc/network/interfaces.template
+#cp -f interfaces /etc/network/interfaces
+#cp -f interfaces.template /etc/network/interfaces.template
 cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
 chmod 755 /usr/sbin/stratux-wifi.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
 
 # prepare network
+cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
+cp -f /root/stratux-pi4/interfaces.template /etc/network/interfaces.template
 systemctl enable isc-dhcp-server
 systemctl enable ssh
 #systemctl disable ntp
