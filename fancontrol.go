@@ -115,11 +115,11 @@ func fanControl() {
 	time.Sleep(5 * time.Second)
 	C.digitalWrite(cPin, C.LOW)
 
-	C.pwmSetMode(C.PWM_MODE_MS)
-	C.pinMode(cPin, C.PWM_OUTPUT)
-	C.pwmSetRange(C.uint(myFanControl.PWMDutyMax))
-	C.pwmSetClock(pwmClockDivisor)
-	C.pwmWrite(cPin, C.int(myFanControl.PWMDutyMin))
+//	C.pwmSetMode(C.PWM_MODE_MS)
+//	C.pinMode(cPin, C.PWM_OUTPUT)
+//	C.pwmSetRange(C.uint(myFanControl.PWMDutyMax))
+//	C.pwmSetClock(pwmClockDivisor)
+//	C.pwmWrite(cPin, C.int(myFanControl.PWMDutyMin))
 	myFanControl.TempCurrent = 0
 	go cpuTempMonitor(func(cpuTemp float32) {
 		if isCPUTempValid(cpuTemp) {
@@ -130,8 +130,8 @@ func fanControl() {
 	myFanControl.PWMDutyCurrent = 0
 
 	delay := time.NewTicker(delaySeconds * time.Second)
-
-/*	for {
+/*	
+	for {
 		if myFanControl.TempCurrent > (myFanControl.TempTarget + hysteresis) {
 			myFanControl.PWMDutyCurrent = iMax(iMin(myFanControl.PWMDutyMax, myFanControl.PWMDutyCurrent+1), myFanControl.PWMDutyMin)
 		} else if myFanControl.TempCurrent < (myFanControl.TempTarget - hysteresis) {

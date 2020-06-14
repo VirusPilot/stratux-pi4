@@ -1,10 +1,24 @@
 
-LFLAGS=-X main.stratuxVersion=`git describe --tags --abbrev=0` -X main.stratuxBuild=`git log -n 1 --pretty=%H`
-BUILDINFO+=-ldflags "$(LFLAGS)"
-BUILDINFO_STATIC=-ldflags "-extldflags -static $(LFLAGS)"
+ifeq "$(CIRCLECI)" "true"
+	BUILDINFO=
+	PLATFORMDEPENDENT=
+else
+	LFLAGS=-X main.stratuxVersion=`git describe --tags --abbrev=0` -X main.stratuxBuild=`git log -n 1 --pretty=%H`
+	BUILDINFO=
+
+ifeq "$(debug)" "true"
+	LFLAGS+=-compressdwarf=false
+	BUILDINFO+=-gcflags '-N -l'
+endif
+
+	BUILDINFO+=-ldflags "$(LFLAGS)"
+	BUILDINFO_STATIC=-ldflags "-extldflags -static $(LFLAGS)"
+$(if $(GOROOT),,$(error GOROOT is not set!))
+	PLATFORMDEPENDENT=fancontrol
+endif
 
 all:
-	make xdump978 xdump1090 xgen_gdl90 fancontrol www
+	make xdump978 xdump1090 xgen_gdl90 $(PLATFORMDEPENDENT)
 
 xgen_gdl90:
 	go get -t -d -v ./main ./godump978 ./uatparse ./sensors
@@ -31,6 +45,11 @@ install: ogn/ddb.json
 	cp -f libdump978.so /usr/lib/libdump978.so
 	cp -f gen_gdl90 /usr/bin/gen_gdl90
 	chmod 755 /usr/bin/gen_gdl90
+	cp -f fancontrol /usr/bin/fancontrol
+	chmod 755 /usr/bin/fancontrol
+	-/usr/bin/fancontrol remove
+	/usr/bin/fancontrol install
+	make www
 	cp -f ogn/ogn-rx-eu_arm /usr/bin/ogn-rx-eu
 	cp -f ogn/ddb.json /etc/
 
