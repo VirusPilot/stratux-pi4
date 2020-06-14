@@ -85,6 +85,9 @@ ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target
 # copy rc.local with screen.py deactivated
 cp -f /root/stratux-pi4/rc.local /etc/rc.local
 
+# copy fancontrol with PWM disabled
+cp -f /root/stratux-pi4/fancontrol.go /root/stratux/main/fancontrol.go
+
 # copy various files from /root/stratux/image
 cd /root/stratux/image
 cp -f bashrc.txt /root/.bashrc
