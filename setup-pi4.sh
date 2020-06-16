@@ -38,8 +38,9 @@ ldconfig
 
 # install latest golang
 cd /root
-wget https://dl.google.com/go/go1.12.4.linux-armv6l.tar.gz
+#wget https://dl.google.com/go/go1.12.4.linux-armv6l.tar.gz
 #wget https://dl.google.com/go/go1.12.17.linux-armv6l.tar.gz
+wget https://dl.google.com/go/go1.13.12.linux-armv6l.tar.gz
 #wget https://dl.google.com/go/go1.14.4.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
@@ -114,7 +115,7 @@ chmod 755 /usr/sbin/stratux-wifi.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
 
-# copy various test/screen files, just in case required later
+# copy various /root/stratux/test/screen files, just in case required later
 cd /root/stratux/test/screen
 cp -f screen.py /usr/bin/stratux-screen.py
 mkdir -p /etc/stratux-screen/
