@@ -39,7 +39,8 @@ After reboot please reconnect LAN and/or WiFi and Stratux should work right away
 
 ## Limitations
 - BladeRF 2.0 Micro SDR support disabled
-- fancontrol and external screen support disabled
+- fancontrol modified (no PWM, on @ 60ºC, off @ 55ºC)
+- external screen support disabled
 
 ## not yet implemented/added:
 - flexible pathnames (currently hardcoded)
