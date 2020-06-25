@@ -40,8 +40,8 @@ ldconfig
 cd /root
 #wget https://dl.google.com/go/go1.12.4.linux-armv6l.tar.gz
 #wget https://dl.google.com/go/go1.12.17.linux-armv6l.tar.gz
-wget https://dl.google.com/go/go1.13.12.linux-armv6l.tar.gz
-#wget https://dl.google.com/go/go1.14.4.linux-armv6l.tar.gz
+#wget https://dl.google.com/go/go1.13.12.linux-armv6l.tar.gz
+wget https://dl.google.com/go/go1.14.4.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
 
@@ -61,7 +61,7 @@ make install
 # clone stratux
 cd /root
 rm -r /root/stratux
-git clone https://github.com/b3nn0/stratux.git /root/stratux
+git clone --recursive https://github.com/b3nn0/stratux.git /root/stratux
 cd /root/stratux
 
 # replace dump1090 with dump1090-fa
