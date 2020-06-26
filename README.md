@@ -1,7 +1,7 @@
 # stratux-pi4
 Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Raspbian Buster Lite image.
 
-This started as a script just for myself to build a Stratux Europe for a passive cooled Pi4B, based on:
+This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - https://github.com/b3nn0/stratux
 - https://github.com/Determinant/dump1090-fa-stratux (based on dump1090-fa)
 - https://osmocom.org/projects/rtl-sdr/ (apt version used for dump1090-fa)
