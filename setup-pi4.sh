@@ -38,6 +38,8 @@ ldconfig
 
 # install latest golang
 cd /root
+rm -rf /root/stratux/go
+rm -rf /root/stratux/go_path
 #wget https://dl.google.com/go/go1.12.4.linux-armv6l.tar.gz
 #wget https://dl.google.com/go/go1.12.17.linux-armv6l.tar.gz
 #wget https://dl.google.com/go/go1.13.12.linux-armv6l.tar.gz
@@ -50,7 +52,7 @@ cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/libr
 
 # install kalibrate-rtl
 cd /root
-rm -rf kalibrate-rtl
+rm -rf /root/stratux/kalibrate-rtl
 git clone https://github.com/steve-m/kalibrate-rtl
 cd kalibrate-rtl
 ./bootstrap && CXXFLAGS='-W -Wall -O3'
