@@ -52,7 +52,7 @@ cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/libr
 
 # install kalibrate-rtl
 cd /root
-rm -rf /root/stratux/kalibrate-rtl
+rm -rf /root/kalibrate-rtl
 git clone https://github.com/steve-m/kalibrate-rtl
 cd kalibrate-rtl
 ./bootstrap && CXXFLAGS='-W -Wall -O3'
