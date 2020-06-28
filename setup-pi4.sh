@@ -122,7 +122,7 @@ cd /root/stratux/test/screen
 cp -f screen.py /usr/bin/stratux-screen.py
 mkdir -p /etc/stratux-screen/
 cp -f stratux-logo-64x64.bmp /etc/stratux-screen/stratux-logo-64x64.bmp
-cp -f screen/CnC_Red_Alert.ttf /etc/stratux-screen/CnC_Red_Alert.ttf
+cp -f CnC_Red_Alert.ttf /etc/stratux-screen/CnC_Red_Alert.ttf
 
 # prepare network
 cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
