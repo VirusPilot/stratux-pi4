@@ -110,8 +110,10 @@ cp -f wpa_supplicant.conf.template /etc/wpa_supplicant/wpa_supplicant.conf.templ
 cp -f hostapd_manager.sh /usr/sbin/hostapd_manager.sh
 chmod 755 /usr/sbin/hostapd_manager.sh
 rm -f /etc/rc*.d/*hostapd /etc/network/if-pre-up.d/hostapd /etc/network/if-post-down.d/hostapd /etc/init.d/hostapd /etc/default/hostapd0
-cp -f interfaces /etc/network/interfaces
-cp -f interfaces.template /etc/network/interfaces.template
+#cp -f interfaces /etc/network/interfaces
+#cp -f interfaces.template /etc/network/interfaces.template
+cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
+cp -f /root/stratux-pi4/interfaces.template /etc/network/interfaces.template
 cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
 chmod 755 /usr/sbin/stratux-wifi.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
@@ -125,8 +127,6 @@ cp -f stratux-logo-64x64.bmp /etc/stratux-screen/stratux-logo-64x64.bmp
 cp -f CnC_Red_Alert.ttf /etc/stratux-screen/CnC_Red_Alert.ttf
 
 # prepare services
-#cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
-#cp -f /root/stratux-pi4/interfaces.template /etc/network/interfaces.template
 systemctl enable isc-dhcp-server
 systemctl enable ssh
 #systemctl disable ntp
