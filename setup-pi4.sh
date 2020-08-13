@@ -46,6 +46,7 @@ rm -rf /root/stratux/go_path
 wget https://dl.google.com/go/go1.14.4.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
+set GO111MODULE=on
 
 # replace librtlsdr.pc (https://github.com/antirez/dump1090/issues/142#issuecomment-517997954)
 cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/librtlsdr.pc
@@ -67,13 +68,13 @@ git clone --recursive https://github.com/b3nn0/stratux.git /root/stratux
 cd /root/stratux
 
 # replace dump1090 with dump1090-fa
-rm -r /root/stratux/dump1090
-git clone --branch stratux https://github.com/Determinant/dump1090-fa-stratux.git dump1090
-git submodule update --init --recursive goflying
+#rm -r /root/stratux/dump1090
+#git clone --branch stratux https://github.com/Determinant/dump1090-fa-stratux.git dump1090
+#git submodule update --init --recursive goflying
 
 # copy dump1090 link file
-cp -f /root/stratux-pi4/dump1090 /usr/bin/
-chmod 755 /usr/bin/dump1090
+#cp -f /root/stratux-pi4/dump1090 /usr/bin/
+#chmod 755 /usr/bin/dump1090
 
 # enable i2c
 cp -f /root/stratux-pi4/config.txt /boot/config.txt
@@ -88,13 +89,14 @@ chmod 644 /lib/systemd/system/stratux.service
 ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
 
 # copy rc.local with screen.py deactivated
-cp -f /root/stratux-pi4/rc.local /etc/rc.local
+#cp -f /root/stratux-pi4/rc.local /etc/rc.local
 
 # copy fancontrol with PWM disabled
 cp -f /root/stratux-pi4/fancontrol.go /root/stratux/main/fancontrol.go
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image
+cp -f rc.local /etc/rc.local
 cp -f bashrc.txt /root/.bashrc
 cp -f motd /etc/motd
 cp -f 10-stratux.rules /etc/udev/rules.d
@@ -110,10 +112,10 @@ cp -f wpa_supplicant.conf.template /etc/wpa_supplicant/wpa_supplicant.conf.templ
 cp -f hostapd_manager.sh /usr/sbin/hostapd_manager.sh
 chmod 755 /usr/sbin/hostapd_manager.sh
 rm -f /etc/rc*.d/*hostapd /etc/network/if-pre-up.d/hostapd /etc/network/if-post-down.d/hostapd /etc/init.d/hostapd /etc/default/hostapd0
-#cp -f interfaces /etc/network/interfaces
-#cp -f interfaces.template /etc/network/interfaces.template
-cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
-cp -f /root/stratux-pi4/interfaces.template /etc/network/interfaces.template
+cp -f interfaces /etc/network/interfaces
+cp -f interfaces.template /etc/network/interfaces.template
+#cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
+#cp -f /root/stratux-pi4/interfaces.template /etc/network/interfaces.template
 cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
 chmod 755 /usr/sbin/stratux-wifi.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
@@ -133,3 +135,4 @@ systemctl enable ssh
 systemctl disable dhcpcd
 systemctl disable hciuart
 systemctl disable hostapd
+

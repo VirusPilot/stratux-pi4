@@ -30,8 +30,8 @@ fancontrol:
 	go build $(BUILDINFO) -p 4 -o fancontrol main/fancontrol.go main/equations.go main/cputemp.go
 
 xdump1090:
-#	git submodule update --init
-	cd dump1090 && make BLADERF=no
+	git submodule update --init
+	cd dump1090 && make
 
 xdump978:
 	cd dump978 && make lib
@@ -64,7 +64,7 @@ install: ogn/ddb.json
 #	ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
 	make www
 	cp -f libdump978.so /usr/lib/libdump978.so
-#	cp -f dump1090/dump1090 /usr/bin/
+	cp -f dump1090/dump1090 /usr/bin/
 #	cp -f image/hostapd_manager.sh /usr/sbin/
 #	cp -f image/stratux-wifi.sh /usr/sbin/
 #	cp -f image/hostapd.conf.template /etc/hostapd/
