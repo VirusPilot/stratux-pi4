@@ -3,8 +3,7 @@ Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Raspbian
 
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - https://github.com/b3nn0/stratux
-- https://github.com/Determinant/dump1090-fa-stratux (based on dump1090-fa)
-- https://osmocom.org/projects/rtl-sdr/ (apt version used for dump1090-fa)
+- https://osmocom.org/projects/rtl-sdr/ (apt version used for dump1090)
 - Raspbian Buster Lite
 - Raspberry Pi4B (also tested on Pi3B)
 
@@ -38,7 +37,6 @@ After reboot please reconnect LAN and/or WiFi and Stratux should work right away
 - info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
 
 ## Limitations
-- BladeRF 2.0 Micro SDR support disabled
 - fancontrol modified (no PWM, on @ 60ºC, off @ 55ºC)
 - external screen support disabled
 
