@@ -46,7 +46,7 @@ rm -rf /root/stratux/go_path
 wget https://dl.google.com/go/go1.14.4.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
-set GO111MODULE=on
+#set GO111MODULE=on
 
 # replace librtlsdr.pc (https://github.com/antirez/dump1090/issues/142#issuecomment-517997954)
 cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/librtlsdr.pc
