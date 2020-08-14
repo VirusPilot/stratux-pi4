@@ -3,7 +3,6 @@ Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Raspbian
 
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - https://github.com/b3nn0/stratux
-- https://osmocom.org/projects/rtl-sdr/ (apt version used for dump1090)
 - Raspbian Buster Lite
 - Raspberry Pi4B (also tested on Pi3B)
 
@@ -36,12 +35,10 @@ After reboot please reconnect LAN and/or WiFi and Stratux should work right away
 - FLARM-NMEA is labeled as "FLARM with Air Connect" under Third-Party Devices, the "Air Connect Key" can be ignored for Stratux Europe
 - info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
 
-## Limitations
+## Limitations/Modifications
 - fancontrol modified (no PWM, on @ 60ºC, off @ 55ºC)
-- external screen support disabled
 
-## not yet implemented/added:
-- flexible pathnames (currently hardcoded)
+## todo:
 - as soon as https://github.com/flightaware/dump1090/pull/61 is accepted, switch to https://github.com/flightaware/dump1090
 
 ## Remarks - SDR programming (1)
