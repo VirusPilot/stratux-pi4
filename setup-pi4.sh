@@ -94,7 +94,7 @@ cp -f /root/stratux-pi4/fancontrol.go /root/stratux/main/fancontrol.go
 cd /root/stratux/image
 cp -f bashrc.txt /root/.bashrc
 cp -f rc.local /etc/rc.local
-cp -f modules /etc/modules
+cp -f modules.txt /etc/modules
 cp -f motd /etc/motd
 cp -f 10-stratux.rules /etc/udev/rules.d
 cp -f 99-uavionix.rules /etc/udev/rules.d
