@@ -76,9 +76,8 @@ cd /root/stratux
 #cp -f /root/stratux-pi4/dump1090 /usr/bin/
 #chmod 755 /usr/bin/dump1090
 
-# enable i2c
+# use latest config.txt for pi4 compatibility
 cp -f /root/stratux-pi4/config.txt /boot/config.txt
-cp -f /root/stratux-pi4/modules /etc/modules
 
 # replace Makefile
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
@@ -93,8 +92,9 @@ cp -f /root/stratux-pi4/fancontrol.go /root/stratux/main/fancontrol.go
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image
-cp -f rc.local /etc/rc.local
 cp -f bashrc.txt /root/.bashrc
+cp -f rc.local /etc/rc.local
+cp -f modules /etc/modules
 cp -f motd /etc/motd
 cp -f 10-stratux.rules /etc/udev/rules.d
 cp -f 99-uavionix.rules /etc/udev/rules.d
@@ -129,4 +129,3 @@ systemctl enable ssh
 systemctl disable dhcpcd
 systemctl disable hciuart
 systemctl disable hostapd
-
