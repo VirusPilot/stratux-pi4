@@ -88,9 +88,6 @@ cp -f /root/stratux-pi4/stratux.service /lib/systemd/system/stratux.service
 chmod 644 /lib/systemd/system/stratux.service
 ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
 
-# copy rc.local with screen.py deactivated
-#cp -f /root/stratux-pi4/rc.local /etc/rc.local
-
 # copy fancontrol with PWM disabled
 cp -f /root/stratux-pi4/fancontrol.go /root/stratux/main/fancontrol.go
 
@@ -114,8 +111,6 @@ chmod 755 /usr/sbin/hostapd_manager.sh
 rm -f /etc/rc*.d/*hostapd /etc/network/if-pre-up.d/hostapd /etc/network/if-post-down.d/hostapd /etc/init.d/hostapd /etc/default/hostapd0
 cp -f interfaces /etc/network/interfaces
 cp -f interfaces.template /etc/network/interfaces.template
-#cp -f /root/stratux-pi4/interfaces /etc/network/interfaces
-#cp -f /root/stratux-pi4/interfaces.template /etc/network/interfaces.template
 cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
 chmod 755 /usr/sbin/stratux-wifi.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
@@ -131,7 +126,6 @@ cp -f CnC_Red_Alert.ttf /etc/stratux-screen/CnC_Red_Alert.ttf
 # prepare services
 systemctl enable isc-dhcp-server
 systemctl enable ssh
-#systemctl disable ntp
 systemctl disable dhcpcd
 systemctl disable hciuart
 systemctl disable hostapd
