@@ -37,10 +37,7 @@ After reboot please reconnect LAN and/or WiFi and Stratux should work right away
 
 ## Limitations/Modifications
 - fancontrol modified (no PWM, on @ 60ºC, off @ 55ºC)
-
-## todo:
-- as soon as https://github.com/flightaware/dump1090/pull/61 is accepted, switch to https://github.com/flightaware/dump1090
-
+  
 ## Remarks - SDR programming (1)
 During boot, Stratux tries to identify which SDR to use for which traffic type (ADS-B, OGN) - this is done by reading the "Serial number" entry in each SDRs. You can check or modify these entries as described below, it is recommended for programming to only plug in one SDR at a time, connect the appropriate antenna and label this combination accordingly, e.g. "868" for OGN.
 ```
