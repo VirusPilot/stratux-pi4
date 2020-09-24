@@ -40,14 +40,12 @@ ldconfig
 cd /root
 rm -rf /root/go
 rm -rf /root/go_path
-wget https://dl.google.com/go/go1.15.linux-armv6l.tar.gz
+wget https://dl.google.com/go/go1.15.2.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
 #potentially add to .bashrc.txt: export GO111MODULE=on
 
-# replace librtlsdr.pc (https://github.com/antirez/dump1090/issues/142#issuecomment-517997954)
-# cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/librtlsdr.pc
-
+# Replace librtlsdr on Raspbian (see https://github.com/wiedehopf/adsb-wiki/wiki/Replace-librtlsdr-on-Raspbian)
 wget -O /tmp/librtlsdr.so.0.6git https://github.com/wiedehopf/adsb-scripts/raw/master/librtlsdr.so.0.6git
 sudo mv /tmp/librtlsdr.so.0.6git /usr/lib/arm-linux-gnueabihf
 sudo chmod a+x /usr/lib/arm-linux-gnueabihf/librtlsdr.so.0.6git
