@@ -46,7 +46,12 @@ rm *.gz
 #potentially add to .bashrc.txt: export GO111MODULE=on
 
 # replace librtlsdr.pc (https://github.com/antirez/dump1090/issues/142#issuecomment-517997954)
-cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/librtlsdr.pc
+# cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/librtlsdr.pc
+
+wget -O /tmp/librtlsdr.so.0.6git https://github.com/wiedehopf/adsb-scripts/raw/master/librtlsdr.so.0.6git
+sudo mv /tmp/librtlsdr.so.0.6git /usr/lib/arm-linux-gnueabihf
+sudo chmod a+x /usr/lib/arm-linux-gnueabihf/librtlsdr.so.0.6git
+sudo ln -nsf /usr/lib/arm-linux-gnueabihf/librtlsdr.so.0.6git /usr/lib/arm-linux-gnueabihf/librtlsdr.so.0
 
 # install kalibrate-rtl
 cd /root
@@ -64,25 +69,20 @@ rm -r /root/stratux
 git clone --recursive https://github.com/b3nn0/stratux.git /root/stratux
 cd /root/stratux
 
-# replace dump1090 with dump1090-fa
-#rm -r /root/stratux/dump1090
-#git clone --branch stratux https://github.com/Determinant/dump1090-fa-stratux.git dump1090
-#git submodule update --init --recursive goflying
-
-# copy dump1090 link file
-#cp -f /root/stratux-pi4/dump1090 /usr/bin/
-#chmod 755 /usr/bin/dump1090
-
 # use latest config.txt for pi4 compatibility
 cp -f /root/stratux-pi4/config.txt /boot/config.txt
 
 # replace Makefile
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 
-# copy stratux service file with stratux-pre-start removed
-cp -f /root/stratux-pi4/stratux.service /lib/systemd/system/stratux.service
+# copy stratux service file
+cp __lib__systemd__system__stratux.service /lib/systemd/system/stratux.service
 chmod 644 /lib/systemd/system/stratux.service
 ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
+
+# copy stratux pre-start file
+cp __root__stratux-pre-start.sh /root/stratux-pre-start.sh
+chmod 744 /root/stratux-pre-start.sh
 
 # copy fancontrol with PWM disabled
 cp -f /root/stratux-pi4/fancontrol.go /root/stratux/main/fancontrol.go

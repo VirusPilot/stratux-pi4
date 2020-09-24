@@ -31,7 +31,7 @@ fancontrol:
 
 xdump1090:
 	git submodule update --init
-	cd dump1090 && make
+	cd dump1090 && make BLADERF=no
 
 xdump978:
 	cd dump978 && make lib
@@ -54,22 +54,22 @@ install: ogn/ddb.json
 	chmod 755 /usr/bin/fancontrol
 	-/usr/bin/fancontrol remove
 	/usr/bin/fancontrol install
-#	cp image/10-stratux.rules /etc/udev/rules.d/10-stratux.rules
-#	cp image/99-uavionix.rules /etc/udev/rules.d/99-uavionix.rules
+	cp image/10-stratux.rules /etc/udev/rules.d/10-stratux.rules
+	cp image/99-uavionix.rules /etc/udev/rules.d/99-uavionix.rules
 	rm -f /etc/init.d/stratux
-#	cp __lib__systemd__system__stratux.service /lib/systemd/system/stratux.service
-#	cp __root__stratux-pre-start.sh /root/stratux-pre-start.sh
-#	chmod 644 /lib/systemd/system/stratux.service
-#	chmod 744 /root/stratux-pre-start.sh
-#	ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
+	cp __lib__systemd__system__stratux.service /lib/systemd/system/stratux.service
+	cp __root__stratux-pre-start.sh /root/stratux-pre-start.sh
+	chmod 644 /lib/systemd/system/stratux.service
+	chmod 744 /root/stratux-pre-start.sh
+	ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
 	make www
 	cp -f libdump978.so /usr/lib/libdump978.so
 	cp -f dump1090/dump1090 /usr/bin/
-#	cp -f image/hostapd_manager.sh /usr/sbin/
-#	cp -f image/stratux-wifi.sh /usr/sbin/
-#	cp -f image/hostapd.conf.template /etc/hostapd/
-#	cp -f image/interfaces.template /etc/network/
-#	cp -f image/wpa_supplicant.conf.template /etc/wpa_supplicant/
+	cp -f image/hostapd_manager.sh /usr/sbin/
+	cp -f image/stratux-wifi.sh /usr/sbin/
+	cp -f image/hostapd.conf.template /etc/hostapd/
+	cp -f image/interfaces.template /etc/network/
+	cp -f image/wpa_supplicant.conf.template /etc/wpa_supplicant/
 	cp -f ogn/ogn-rx-eu_arm /usr/bin/ogn-rx-eu
 	cp -f ogn/ddb.json /etc/
 
