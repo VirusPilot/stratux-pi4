@@ -45,10 +45,19 @@ tar xzf *.gz
 rm *.gz
 #potentially add to .bashrc.txt: export GO111MODULE=on
 
+# replace librtlsdr.pc (https://github.com/antirez/dump1090/issues/142#issuecomment-517997954)
+cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/librtlsdr.pc
+
 # Replace librtlsdr on Raspbian (see https://github.com/wiedehopf/adsb-wiki/wiki/Replace-librtlsdr-on-Raspbian)
-wget -O /tmp/librtlsdr.so.0.6git https://github.com/wiedehopf/adsb-scripts/raw/master/librtlsdr.so.0.6git
-sudo mv /tmp/librtlsdr.so.0.6git /usr/lib/arm-linux-gnueabihf
-sudo chmod a+x /usr/lib/arm-linux-gnueabihf/librtlsdr.so.0.6git
+cd /root
+rm -rf /root/rtl-sdr
+git clone --depth=1 https://github.com/osmocom/rtl-sdr.git
+cd rtl-sdr
+mkdir build
+cd build
+CFLAGS="-march=native" cmake .. -DDETACH_KERNEL_DRIVER=ON
+make -j2
+sudo cp src/librtlsdr.so.0.6git /usr/lib/arm-linux-gnueabihf
 sudo ln -nsf /usr/lib/arm-linux-gnueabihf/librtlsdr.so.0.6git /usr/lib/arm-linux-gnueabihf/librtlsdr.so.0
 
 # install kalibrate-rtl
