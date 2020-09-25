@@ -22,9 +22,6 @@ apt install cmake -y
 apt install libtool -y
 apt install i2c-tools -y
 apt install libusb-1.0-0-dev -y
-#apt install librtlsdr0 -y
-#apt install librtlsdr-dev -y
-#apt install rtl-sdr -y
 apt install libfftw3-dev -y
 apt install python-smbus -y
 apt install python-pip -y
@@ -48,10 +45,7 @@ tar xzf *.gz
 rm *.gz
 #potentially add to .bashrc.txt: export GO111MODULE=on
 
-# replace librtlsdr.pc on Raspbian (https://github.com/antirez/dump1090/issues/142#issuecomment-517997954)
-# cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/librtlsdr.pc
-
-# replace librtlsdr on Raspbian (see https://github.com/wiedehopf/adsb-wiki/wiki/Replace-librtlsdr-on-Raspbian)
+# install librtlsdr
 cd /root
 rm -rf /root/rtl-sdr
 git clone https://github.com/osmocom/rtl-sdr.git
@@ -62,8 +56,6 @@ cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
 make
 sudo make install
 sudo ldconfig
-#sudo cp src/librtlsdr.so.0.6git /usr/lib/arm-linux-gnueabihf
-#sudo ln -nsf /usr/lib/arm-linux-gnueabihf/librtlsdr.so.0.6git /usr/lib/arm-linux-gnueabihf/librtlsdr.so.0
 
 # install kalibrate-rtl
 cd /root
@@ -84,19 +76,19 @@ cd /root/stratux
 # use latest config.txt for pi4 compatibility
 cp -f /root/stratux-pi4/config.txt /boot/config.txt
 
-# replace Makefile
+# replace Makefile (add "-o fancontrol" for go 1.15 compatibility)
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 
-# copy stratux service file
+# replace stratux.service file (disable "LimitCORE")
 cp /root/stratux-pi4/__lib__systemd__system__stratux.service /lib/systemd/system/stratux.service
 chmod 644 /lib/systemd/system/stratux.service
 ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
 
-# copy stratux pre-start file
+# replace stratux-pre-start file (add "timeout 10 /sbin/dhclient eth0")
 cp /root/stratux-pi4/__root__stratux-pre-start.sh /root/stratux-pre-start.sh
 chmod 744 /root/stratux-pre-start.sh
 
-# copy fancontrol with PWM disabled
+# replace fancontrol.go with PWM disabled
 cp -f /root/stratux-pi4/fancontrol.go /root/stratux/main/fancontrol.go
 
 # copy various files from /root/stratux/image
