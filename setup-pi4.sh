@@ -4,6 +4,8 @@
 rfkill unblock 0
 ifconfig wlan0 up
 
+timedatectl set-timezone Europe/Berlin
+
 # prepare libs
 apt install build-essential -y
 apt install automake -y
@@ -45,10 +47,10 @@ tar xzf *.gz
 rm *.gz
 #potentially add to .bashrc.txt: export GO111MODULE=on
 
-# replace librtlsdr.pc (https://github.com/antirez/dump1090/issues/142#issuecomment-517997954)
+# replace librtlsdr.pc on Raspbian (https://github.com/antirez/dump1090/issues/142#issuecomment-517997954)
 cp -f /root/stratux-pi4/librtlsdr.pc /usr/lib/arm-linux-gnueabihf/pkgconfig/librtlsdr.pc
 
-# Replace librtlsdr on Raspbian (see https://github.com/wiedehopf/adsb-wiki/wiki/Replace-librtlsdr-on-Raspbian)
+# replace librtlsdr on Raspbian (see https://github.com/wiedehopf/adsb-wiki/wiki/Replace-librtlsdr-on-Raspbian)
 cd /root
 rm -rf /root/rtl-sdr
 git clone --depth=1 https://github.com/osmocom/rtl-sdr.git
@@ -83,12 +85,12 @@ cp -f /root/stratux-pi4/config.txt /boot/config.txt
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 
 # copy stratux service file
-cp __lib__systemd__system__stratux.service /lib/systemd/system/stratux.service
+cp /root/stratux-pi4/__lib__systemd__system__stratux.service /lib/systemd/system/stratux.service
 chmod 644 /lib/systemd/system/stratux.service
 ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
 
 # copy stratux pre-start file
-cp __root__stratux-pre-start.sh /root/stratux-pre-start.sh
+cp /root/stratux-pi4/__root__stratux-pre-start.sh /root/stratux-pre-start.sh
 chmod 744 /root/stratux-pre-start.sh
 
 # copy fancontrol with PWM disabled
