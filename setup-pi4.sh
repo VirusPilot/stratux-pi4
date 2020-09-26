@@ -80,13 +80,10 @@ cp -f /root/stratux-pi4/config.txt /boot/config.txt
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 
 # replace stratux.service file (disable "LimitCORE")
-cp /root/stratux-pi4/__lib__systemd__system__stratux.service /lib/systemd/system/stratux.service
-chmod 644 /lib/systemd/system/stratux.service
-ln -fs /lib/systemd/system/stratux.service /etc/systemd/system/multi-user.target.wants/stratux.service
+cp /root/stratux-pi4/__lib__systemd__system__stratux.service /root/stratux/__lib__systemd__system__stratux.service 
 
 # replace stratux-pre-start file (add "timeout 10 /sbin/dhclient eth0")
-cp /root/stratux-pi4/__root__stratux-pre-start.sh /root/stratux-pre-start.sh
-chmod 744 /root/stratux-pre-start.sh
+cp /root/stratux-pi4/__root__stratux-pre-start.sh /root/stratux/__root__stratux-pre-start.sh
 
 # replace fancontrol.go with PWM disabled
 cp -f /root/stratux-pi4/fancontrol.go /root/stratux/main/fancontrol.go
