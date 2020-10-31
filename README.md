@@ -3,7 +3,9 @@ Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Raspbian
 
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - https://github.com/b3nn0/stratux
-- Raspbian Buster Lite (http://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2020-05-28/ without performing `apt upgrade`, see Issues below)
+- Raspbian Buster Lite:
+  http://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2020-05-28/2020-05-27-raspios-buster-lite-armhf.zip
+- please note that if you `apt upgrade`, AHRS and Baro won't work any more, see Issues below
 - Raspberry Pi4B (also tested on Pi3B)
 
 ## Steps required:
@@ -36,7 +38,7 @@ After reboot please reconnect LAN and/or WiFi and Stratux should work right away
 - info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
 
 ## Limitations/Modifications/Issues
-- fancontrol modified (no PWM, on @ 60ºC, off @ 55ºC)
+- fancontrol modified in branch no_pwm_fancontrol (no PWM, on @ 60ºC, off @ 55ºC)
 - AHRS and BARO won't work with the latest Buster IMG from 2020-08-20
 
 ## Remarks - SDR programming (1)
