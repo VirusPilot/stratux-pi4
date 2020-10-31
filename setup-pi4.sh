@@ -77,8 +77,8 @@ cd /root/stratux
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 
 # copy various files from /root/stratux
-cp -f __lib__systemd__system__stratux.service /root/stratux/__lib__systemd__system__stratux.service
-cp -f __root__stratux-pre-start.sh /root/stratux/__root__stratux-pre-start.sh
+cp __lib__systemd__system__stratux.service /lib/systemd/system/stratux.service
+cp __root__stratux-pre-start.sh /root/stratux-pre-start.sh
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image
