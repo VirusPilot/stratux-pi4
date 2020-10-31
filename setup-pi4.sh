@@ -73,23 +73,16 @@ rm -r /root/stratux
 git clone --recursive https://github.com/b3nn0/stratux.git /root/stratux
 cd /root/stratux
 
-# use latest config.txt for pi4 compatibility
-cp -f /root/stratux-pi4/config.txt /boot/config.txt
-
 # replace Makefile (add "-o fancontrol" for go 1.15 compatibility)
 cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
 
-# replace stratux.service file (disable "LimitCORE")
-cp /root/stratux-pi4/__lib__systemd__system__stratux.service /root/stratux/__lib__systemd__system__stratux.service 
-
-# replace stratux-pre-start file (add "timeout 10 /sbin/dhclient eth0")
-cp /root/stratux-pi4/__root__stratux-pre-start.sh /root/stratux/__root__stratux-pre-start.sh
-
-# replace fancontrol.go with PWM disabled
-cp -f /root/stratux-pi4/fancontrol.go /root/stratux/main/fancontrol.go
+# copy various files from /root/stratux
+cp -f __lib__systemd__system__stratux.service /root/stratux/__lib__systemd__system__stratux.service
+cp -f __root__stratux-pre-start.sh /root/stratux/__root__stratux-pre-start.sh
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image
+cp -f config.txt /boot/config.txt
 cp -f bashrc.txt /root/.bashrc
 cp -f rc.local /etc/rc.local
 cp -f modules.txt /etc/modules
