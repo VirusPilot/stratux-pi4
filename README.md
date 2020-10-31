@@ -38,7 +38,6 @@ After reboot please reconnect LAN and/or WiFi and Stratux should work right away
 - info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
 
 ## Limitations/Modifications/Issues
-- fancontrol modified in branch no_pwm_fancontrol (no PWM, on @ 60ºC, off @ 55ºC)
 - AHRS and BARO won't work with the latest Buster IMG from 2020-08-20
 
 ## Remarks - SDR programming (1)
