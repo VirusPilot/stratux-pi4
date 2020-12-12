@@ -73,9 +73,6 @@ rm -r /root/stratux
 git clone --recursive https://github.com/b3nn0/stratux.git /root/stratux
 cd /root/stratux
 
-# replace Makefile (add "-o fancontrol" for go 1.15 compatibility)
-cp -f /root/stratux-pi4/Makefile /root/stratux/Makefile
-
 # copy various files from /root/stratux/image
 cd /root/stratux/image
 cp -f config.txt /boot/config.txt
