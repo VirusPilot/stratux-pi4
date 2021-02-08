@@ -28,7 +28,7 @@ apt install python-pip -y
 apt install python-dev -y
 apt install python-pil -y
 apt install python-daemon -y
-apt install screen -y
+#apt install screen -y
 
 # install wiringPi 2.52 (required for Pi4B)
 wget https://project-downloads.drogon.net/wiringpi-latest.deb
@@ -101,11 +101,11 @@ cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
 
 # copy various /root/stratux/test/screen files, just in case required later
-cd /root/stratux/test/screen
-cp -f screen.py /usr/bin/stratux-screen.py
-mkdir -p /etc/stratux-screen/
-cp -f stratux-logo-64x64.bmp /etc/stratux-screen/stratux-logo-64x64.bmp
-cp -f CnC_Red_Alert.ttf /etc/stratux-screen/CnC_Red_Alert.ttf
+#cd /root/stratux/test/screen
+#cp -f screen.py /usr/bin/stratux-screen.py
+#mkdir -p /etc/stratux-screen/
+#cp -f stratux-logo-64x64.bmp /etc/stratux-screen/stratux-logo-64x64.bmp
+#cp -f CnC_Red_Alert.ttf /etc/stratux-screen/CnC_Red_Alert.ttf
 
 # prepare services
 systemctl enable isc-dhcp-server
