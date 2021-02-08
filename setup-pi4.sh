@@ -31,9 +31,16 @@ apt install python-daemon -y
 #apt install screen -y
 
 # install wiringPi 2.52 (required for Pi4B)
-wget https://project-downloads.drogon.net/wiringpi-latest.deb
-dpkg -i *.deb
-rm *.deb
+#wget https://project-downloads.drogon.net/wiringpi-latest.deb
+#dpkg -i *.deb
+#rm *.deb
+
+# install wiringPi 2.60 (required for Pi4B)
+cd /root
+rm -rf /root/WiringPi
+git clone https://github.com/WiringPi/WiringPi
+cd WiringPi
+./build
 ldconfig
 
 # install latest golang
@@ -53,9 +60,8 @@ cd rtl-sdr
 mkdir build
 cd build
 cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
-make
-sudo make install
-sudo ldconfig
+make && make install
+ldconfig
 
 # install kalibrate-rtl
 cd /root
@@ -64,8 +70,7 @@ git clone https://github.com/steve-m/kalibrate-rtl
 cd kalibrate-rtl
 ./bootstrap && CXXFLAGS='-W -Wall -O3'
 ./configure
-make
-make install
+make && make install
 
 # clone stratux
 cd /root
