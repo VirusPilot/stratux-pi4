@@ -40,7 +40,7 @@ ldconfig
 cd /root
 rm -rf /root/go
 rm -rf /root/go_path
-wget https://dl.google.com/go/go1.15.2.linux-armv6l.tar.gz
+wget https://dl.google.com/go/go1.15.8.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
 #potentially add to .bashrc.txt: export GO111MODULE=on
@@ -70,7 +70,7 @@ make install
 # clone stratux
 cd /root
 rm -r /root/stratux
-git clone --recursive https://github.com/b3nn0/stratux.git /root/stratux
+git clone --recursive -b dev https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
 
 # copy various files from /root/stratux/image
