@@ -23,11 +23,11 @@ apt install libtool -y
 apt install i2c-tools -y
 apt install libusb-1.0-0-dev -y
 apt install libfftw3-dev -y
-apt install python-smbus -y
-apt install python-pip -y
-apt install python-dev -y
-apt install python-pil -y
-apt install python-daemon -y
+#apt install python-smbus -y
+#apt install python-pip -y
+#apt install python-dev -y
+#apt install python-pil -y
+#apt install python-daemon -y
 #apt install screen -y
 
 # install wiringPi 2.52 (required for Pi4B)
@@ -71,6 +71,13 @@ cd kalibrate-rtl
 ./bootstrap && CXXFLAGS='-W -Wall -O3'
 ./configure
 make && make install
+
+# install stratux-radar-display
+cd /root
+rm -rf /root/stratux-radar-display
+apt install libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 python3-pip python3-pil espeak-ng espeak-ng-data libespeak-ng-dev libbluetooth-dev -y
+pip3 install luma.oled websockets py-espeak-ng pybluez pydbus
+git clone https://github.com/TomBric/stratux-radar-display.git
 
 # clone stratux
 cd /root
