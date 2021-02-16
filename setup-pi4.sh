@@ -7,33 +7,7 @@ ifconfig wlan0 up
 timedatectl set-timezone Europe/Berlin
 
 # prepare libs
-apt install build-essential -y
-apt install automake -y
-apt install autoconf -y
-apt install libncurses-dev -y
-apt install pkg-config -y
-apt install libjpeg8 -y
-apt install libconfig9 -y
-apt install hostapd -y
-apt install isc-dhcp-server -y
-apt install tcpdump -y
-apt install git -y
-apt install cmake -y
-apt install libtool -y
-apt install i2c-tools -y
-apt install libusb-1.0-0-dev -y
-apt install libfftw3-dev -y
-#apt install python-smbus -y
-#apt install python-pip -y
-#apt install python-dev -y
-#apt install python-pil -y
-#apt install python-daemon -y
-#apt install screen -y
-
-# install wiringPi 2.52 (required for Pi4B)
-#wget https://project-downloads.drogon.net/wiringpi-latest.deb
-#dpkg -i *.deb
-#rm *.deb
+apt install build-essential automake autoconf libncurses-dev pkg-config libjpeg8 libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev -y
 
 # install wiringPi 2.60 (required for Pi4B)
 cd /root
@@ -111,13 +85,6 @@ cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
 chmod 755 /usr/sbin/stratux-wifi.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
-
-# copy various /root/stratux/test/screen files, just in case required later
-#cd /root/stratux/test/screen
-#cp -f screen.py /usr/bin/stratux-screen.py
-#mkdir -p /etc/stratux-screen/
-#cp -f stratux-logo-64x64.bmp /etc/stratux-screen/stratux-logo-64x64.bmp
-#cp -f CnC_Red_Alert.ttf /etc/stratux-screen/CnC_Red_Alert.ttf
 
 # prepare services
 systemctl enable isc-dhcp-server
