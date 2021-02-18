@@ -7,12 +7,12 @@ This started as a script just for myself to build a Stratux Europe for a Pi4B, b
 - https://github.com/VirusPilot/stratux (dev branch)
 
 It furthermore now includes:
-- https://github.com/TomBric/stratux-radar-display.git
+- https://github.com/TomBric/stratux-radar-display
 
 A list of differences to the original Stratux Europe Edition
 - based on latest https://github.com/WiringPi/WiringPi
 - based on latest https://github.com/osmocom/rtl-sdr.git
-- based on latest golang version used
+- based on latest golang version
 - slightly midified system files (config.txt, stratux.service)
 - radar display autostart prepared but disabled in rc.local
 - ublox AssistNow Autonomous enabled and configuration saved
