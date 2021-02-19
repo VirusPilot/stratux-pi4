@@ -13,7 +13,7 @@ A list of differences to the original Stratux Europe Edition
 - based on latest https://github.com/WiringPi/WiringPi
 - based on latest https://github.com/osmocom/rtl-sdr.git
 - based on latest golang version
-- slightly midified system files (config.txt, stratux.service)
+- slightly modified system files (config.txt, stratux.service)
 - radar display autostart prepared but disabled in rc.local
 - ublox AssistNow Autonomous enabled and configuration saved
 - SDR startup delay reduced to 30s
@@ -30,7 +30,7 @@ apt update
 If you haven't yet programed your SDRs, please first follow the instructions under "Remarks - SDR programming" below for each SDR individually or otherwise just continue here:
 ```
 apt install git -y
-git clone -b dev https://github.com/VirusPilot/stratux-pi4.git
+git clone https://github.com/VirusPilot/stratux-pi4.git
 ./stratux-pi4/setup-pi4.sh
 source /root/.bashrc
 cd stratux
