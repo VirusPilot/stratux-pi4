@@ -7,40 +7,21 @@ ifconfig wlan0 up
 timedatectl set-timezone Europe/Berlin
 
 # prepare libs
-apt install build-essential -y
-apt install automake -y
-apt install autoconf -y
-apt install libncurses-dev -y
-apt install pkg-config -y
-apt install libjpeg8 -y
-apt install libconfig9 -y
-apt install hostapd -y
-apt install isc-dhcp-server -y
-apt install tcpdump -y
-apt install git -y
-apt install cmake -y
-apt install libtool -y
-apt install i2c-tools -y
-apt install libusb-1.0-0-dev -y
-apt install libfftw3-dev -y
-apt install python-smbus -y
-apt install python-pip -y
-apt install python-dev -y
-apt install python-pil -y
-apt install python-daemon -y
-apt install screen -y
+apt install build-essential automake autoconf libncurses-dev pkg-config libjpeg8 libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev -y
 
-# install wiringPi 2.52 (required for Pi4B)
-wget https://project-downloads.drogon.net/wiringpi-latest.deb
-dpkg -i *.deb
-rm *.deb
+# install wiringPi 2.60 (required for Pi4B)
+cd /root
+rm -rf /root/WiringPi
+git clone https://github.com/WiringPi/WiringPi
+cd WiringPi
+./build
 ldconfig
 
 # install latest golang
 cd /root
 rm -rf /root/go
 rm -rf /root/go_path
-wget https://dl.google.com/go/go1.15.2.linux-armv6l.tar.gz
+wget https://dl.google.com/go/go1.15.8.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
 #potentially add to .bashrc.txt: export GO111MODULE=on
@@ -53,9 +34,8 @@ cd rtl-sdr
 mkdir build
 cd build
 cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
-make
-sudo make install
-sudo ldconfig
+make && make install
+ldconfig
 
 # install kalibrate-rtl
 cd /root
@@ -64,13 +44,19 @@ git clone https://github.com/steve-m/kalibrate-rtl
 cd kalibrate-rtl
 ./bootstrap && CXXFLAGS='-W -Wall -O3'
 ./configure
-make
-make install
+make && make install
+
+# install stratux-radar-display
+cd /root
+rm -rf /root/stratux-radar-display
+apt install libatlas-base-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 python3-pip python3-pil espeak-ng espeak-ng-data libespeak-ng-dev libbluetooth-dev -y
+pip3 install luma.oled websockets py-espeak-ng pybluez pydbus numpy
+git clone https://github.com/TomBric/stratux-radar-display.git
 
 # clone stratux
 cd /root
 rm -r /root/stratux
-git clone --recursive https://github.com/b3nn0/stratux.git /root/stratux
+git clone --recursive -b dev https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
 
 # copy various files from /root/stratux/image
@@ -99,13 +85,6 @@ cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh
 chmod 755 /usr/sbin/stratux-wifi.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
-
-# copy various /root/stratux/test/screen files, just in case required later
-cd /root/stratux/test/screen
-cp -f screen.py /usr/bin/stratux-screen.py
-mkdir -p /etc/stratux-screen/
-cp -f stratux-logo-64x64.bmp /etc/stratux-screen/stratux-logo-64x64.bmp
-cp -f CnC_Red_Alert.ttf /etc/stratux-screen/CnC_Red_Alert.ttf
 
 # prepare services
 systemctl enable isc-dhcp-server

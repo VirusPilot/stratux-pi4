@@ -2,9 +2,21 @@
 Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Raspbian Buster Lite image.
 
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
-- https://github.com/b3nn0/stratux
-- Raspbian Buster Lite
 - Raspberry Pi4B (also tested on Pi3B)
+- Raspbian Buster Lite
+- https://github.com/VirusPilot/stratux (dev branch)
+
+It furthermore now includes:
+- https://github.com/TomBric/stratux-radar-display
+
+A list of differences to the original Stratux Europe Edition
+- based on latest https://github.com/WiringPi/WiringPi
+- based on latest https://github.com/osmocom/rtl-sdr.git
+- based on latest golang version
+- slightly modified system files (config.txt, stratux.service)
+- radar display autostart prepared but disabled in rc.local
+- ublox AssistNow Autonomous enabled and configuration saved
+- SDR startup delay reduced to 30s
 
 ## Steps required:
 - Pi4B connected to LAN via Ethernet cable
