@@ -21,10 +21,9 @@ ldconfig
 cd /root
 rm -rf /root/go
 rm -rf /root/go_path
-wget https://dl.google.com/go/go1.15.8.linux-armv6l.tar.gz
+wget https://dl.google.com/go/go1.16.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
-#potentially add to .bashrc.txt: export GO111MODULE=on
 
 # install librtlsdr
 cd /root
@@ -33,8 +32,8 @@ git clone https://github.com/osmocom/rtl-sdr.git
 cd rtl-sdr
 mkdir build
 cd build
-cmake ../ -DINSTALL_UDEV_RULES=ON -DDETACH_KERNEL_DRIVER=ON
-make && make install
+cmake ../ -DENABLE_ZEROCOPY=0
+make -j8 && make install
 ldconfig
 
 # install kalibrate-rtl
