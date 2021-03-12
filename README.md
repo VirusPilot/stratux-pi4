@@ -1,12 +1,12 @@
 # stratux-pi4 (64bit)
-Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Raspbian Buster Lite image (64bit).
+Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh 64bit Raspbian Buster Lite Image.
 
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - Raspberry Pi4B (also tested on Pi3B)
-- Raspbian Buster Lite (64bit)
+- Raspbian Buster Lite (http://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2020-08-24/2020-08-20-raspios-buster-arm64-lite.zip)
 - https://github.com/VirusPilot/stratux (dev branch)
 
-It furthermore now includes:
+It furthermore now (optionally) includes:
 - https://github.com/TomBric/stratux-radar-display
 
 A list of differences to the original Stratux Europe Edition
