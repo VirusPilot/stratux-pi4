@@ -1,9 +1,9 @@
-# stratux-pi4
-Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Raspbian Buster Lite image.
+# stratux-pi4 (64bit)
+Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Raspbian Buster Lite image (64bit).
 
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - Raspberry Pi4B (also tested on Pi3B)
-- Raspbian Buster Lite
+- Raspbian Buster Lite (64bit)
 - https://github.com/VirusPilot/stratux (dev branch)
 
 It furthermore now includes:
@@ -26,6 +26,7 @@ A list of differences to the original Stratux Europe Edition
 sudo su
 cd ~/
 apt update
+apt full-upgrade
 ```
 If you haven't yet programed your SDRs, please first follow the instructions under "Remarks - SDR programming" below for each SDR individually or otherwise just continue here:
 ```
