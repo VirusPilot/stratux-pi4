@@ -7,7 +7,7 @@ ifconfig wlan0 up
 timedatectl set-timezone Europe/Berlin
 
 # prepare libs
-apt install build-essential automake autoconf libncurses-dev pkg-config libjpeg8 libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev -y
+apt install build-essential automake autoconf libncurses-dev pkg-config libjpeg62-turbo-dev libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev -y
 
 # install wiringPi 2.60 (required for Pi4B)
 cd /root
@@ -21,7 +21,7 @@ ldconfig
 cd /root
 rm -rf /root/go
 rm -rf /root/go_path
-wget https://dl.google.com/go/go1.16.linux-armv6l.tar.gz
+wget https://dl.google.com/go/go1.16.2.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
 
@@ -48,7 +48,7 @@ make && make install
 # install stratux-radar-display
 cd /root
 rm -rf /root/stratux-radar-display
-apt install libatlas-base-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 python3-pip python3-pil espeak-ng espeak-ng-data libespeak-ng-dev libbluetooth-dev -y
+apt install libatlas-base-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 python3-pip python3-pil espeak-ng espeak-ng-data libespeak-ng-dev libbluetooth-dev -y
 pip3 install luma.oled websockets py-espeak-ng pybluez pydbus numpy
 git clone https://github.com/TomBric/stratux-radar-display.git
 
