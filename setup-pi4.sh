@@ -23,7 +23,7 @@ ARCH=$(arch)
 if [ $ARCH == aarch64 ]
     then
         wget https://dl.google.com/go/go1.16.2.linux-arm64.tar.gz
-    else
+    else # [ $ARCH == armv7l ]
         wget https://dl.google.com/go/go1.16.2.linux-armv6l.tar.gz
 fi
 rm -rf /root/go
