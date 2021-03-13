@@ -9,6 +9,8 @@ This started as a script just for myself to build a Stratux Europe for a Pi4B, b
 
 It furthermore now (optionally) includes:
 - https://github.com/TomBric/stratux-radar-display
+- please note that the setup script execution takes significantly longer (only once)
+- in /etc/rc.local you need to enable your particular display type after the setup script has finished
 
 A list of differences to the original Stratux Europe Edition
 - based on latest https://github.com/WiringPi/WiringPi
