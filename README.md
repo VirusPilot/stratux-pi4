@@ -1,9 +1,10 @@
-# stratux-pi4 (64bit)
-Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh 64bit Raspbian Buster Lite Image.
+# stratux-pi4 (32/64bit)
+Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh 32/64bit Raspbian Buster Lite Image.
 
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - Raspberry Pi4B (also tested on Pi3B)
-- Raspbian Buster Lite (http://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2020-08-24/2020-08-20-raspios-buster-arm64-lite.zip)
+- Raspbian Buster Lite 64bit (http://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2020-08-24/2020-08-20-raspios-buster-arm64-lite.zip)
+- Raspbian Buster Lite 32bit (http://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-01-12/2021-01-11-raspios-buster-armhf-lite.zip)
 - https://github.com/VirusPilot/stratux (dev branch)
 
 It furthermore now (optionally) includes:
