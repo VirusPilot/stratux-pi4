@@ -67,7 +67,7 @@ fi
 # clone stratux
 cd /root
 rm -r /root/stratux
-git clone --recursive -b dev https://github.com/VirusPilot/stratux.git /root/stratux
+git clone --recursive https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
 
 # modify config.txt in case of aarch64
