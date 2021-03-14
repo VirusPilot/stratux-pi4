@@ -5,7 +5,7 @@ This started as a script just for myself to build a Stratux Europe for a Pi4B, b
 - Raspberry Pi4B (also tested on Pi3B)
 - Raspbian Buster Lite 64bit (http://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2020-08-24/2020-08-20-raspios-buster-arm64-lite.zip)
 - Raspbian Buster Lite 32bit (http://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-01-12/2021-01-11-raspios-buster-armhf-lite.zip)
-- https://github.com/VirusPilot/stratux (dev branch)
+- https://github.com/VirusPilot/stratux
 
 It furthermore now (optionally) includes:
 - https://github.com/TomBric/stratux-radar-display
