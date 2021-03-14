@@ -9,6 +9,11 @@ timedatectl set-timezone Europe/Berlin
 # prepare libs
 apt install build-essential automake autoconf libncurses-dev pkg-config libjpeg62-turbo-dev libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev -y
 
+# disable swapfile
+systemctl disable dphys-swapfile
+apt purge dphys-swapfile -y
+apt autoremove -y
+
 # install wiringPi 2.60 (required for Pi4B)
 cd /root
 rm -rf /root/WiringPi
