@@ -7,17 +7,13 @@ This started as a script just for myself to build a Stratux Europe for a Pi4B, b
 - Raspbian Buster Lite 32bit (http://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-01-12/2021-01-11-raspios-buster-armhf-lite.zip)
 - https://github.com/VirusPilot/stratux
 
-It furthermore now (optionally) includes:
-- https://github.com/TomBric/stratux-radar-display
+It furthermore now (optionally) includes https://github.com/TomBric/stratux-radar-display
 - please note that the setup script execution takes significantly longer (only once)
 - in /etc/rc.local you need to enable your particular display type after the setup script has finished
 
 A list of differences to the original Stratux Europe Edition
-- based on latest https://github.com/WiringPi/WiringPi
-- based on latest https://github.com/osmocom/rtl-sdr.git
-- based on latest golang version
 - slightly modified system files (config.txt, stratux.service)
-- radar display autostart prepared but disabled in rc.local
+- radar display autostart prepared but disabled in /etc/rc.local
 - ublox AssistNow Autonomous enabled and configuration saved
 - SDR startup delay reduced to 30s
 
