@@ -1,22 +1,26 @@
-# stratux-pi4
-Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh Raspbian Buster Lite image.
+# stratux-pi4 (32/64bit)
+Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh 32/64bit Raspbian Buster Lite Image.
+A Pi4B with at least 2GB RAM is recommended, particularly in light of the disabled swapfile and the use of 230MB tmpfs
 
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - Raspberry Pi4B (also tested on Pi3B)
-- Raspbian Buster Lite
-- https://github.com/VirusPilot/stratux (dev branch)
+- Raspbian Buster Lite 64bit (http://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2020-08-24/2020-08-20-raspios-buster-arm64-lite.zip)
+- Raspbian Buster Lite 32bit (http://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-01-12/2021-01-11-raspios-buster-armhf-lite.zip)
+- https://github.com/VirusPilot/stratux
 
-It furthermore now includes:
-- https://github.com/TomBric/stratux-radar-display
+It furthermore now (optionally) includes https://github.com/TomBric/stratux-radar-display
+- please note that the setup script execution takes significantly longer (only once)
+- in /etc/rc.local you need to enable your particular display type after the setup script has finished
 
 A list of differences to the original Stratux Europe Edition
-- based on latest https://github.com/WiringPi/WiringPi
-- based on latest https://github.com/osmocom/rtl-sdr.git
-- based on latest golang version
 - slightly modified system files (config.txt, stratux.service)
-- radar display autostart prepared but disabled in rc.local
+- radar display autostart prepared but disabled in /etc/rc.local
 - ublox AssistNow Autonomous enabled and configuration saved
 - SDR startup delay reduced to 30s
+
+## Please use this script with caution and only on a fresh Raspbian Buster Image, because:
+- fstab will be changed to use tmpfs for logs, tmp, var/tmp
+- swapfile will be disabled
 
 ## Steps required:
 - Pi4B connected to LAN via Ethernet cable
@@ -26,6 +30,7 @@ A list of differences to the original Stratux Europe Edition
 sudo su
 cd ~/
 apt update
+apt full-upgrade (particularly recommended for the 64bit version)
 ```
 If you haven't yet programed your SDRs, please first follow the instructions under "Remarks - SDR programming" below for each SDR individually or otherwise just continue here:
 ```
@@ -48,7 +53,8 @@ After reboot please reconnect LAN and/or WiFi and Stratux should work right away
 - info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
 
 ## Limitations/Modifications/Issues
-- n/a
+- 64bit version only work on Pi3B or Pi4B
+- this setup is intended to create a Stratux system, don't use the Pi for any other important stuff as all of your data may be lost during Stratux operation
 
 ## Remarks - SDR programming (1)
 During boot, Stratux tries to identify which SDR to use for which traffic type (ADS-B, OGN) - this is done by reading the "Serial number" entry in each SDRs. You can check or modify these entries as described below, it is recommended for programming to only plug in one SDR at a time, connect the appropriate antenna and label this combination accordingly, e.g. "868" for OGN.

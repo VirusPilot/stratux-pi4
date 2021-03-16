@@ -7,7 +7,18 @@ ifconfig wlan0 up
 timedatectl set-timezone Europe/Berlin
 
 # prepare libs
-apt install build-essential automake autoconf libncurses-dev pkg-config libjpeg8 libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev -y
+apt install build-essential automake autoconf libncurses-dev pkg-config libjpeg62-turbo-dev libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev -y
+
+# disable swapfile and use tmpfs for logs, tmp, var/tmp
+if ! grep -q "tmpfs" /etc/fstab; then
+        systemctl disable dphys-swapfile
+        apt purge dphys-swapfile -y
+        apt autoremove -y
+        echo "" >> /etc/fstab # newline
+        echo "tmpfs    /var/log    tmpfs    defaults,noatime,nosuid,mode=0755,size=100m    0 0" >> /etc/fstab
+        echo "tmpfs    /tmp        tmpfs    defaults,noatime,nosuid,size=100m    0 0" >> /etc/fstab
+        echo "tmpfs    /var/tmp    tmpfs    defaults,noatime,nosuid,size=30m    0 0" >> /etc/fstab
+fi
 
 # install wiringPi 2.60 (required for Pi4B)
 cd /root
@@ -19,9 +30,15 @@ ldconfig
 
 # install latest golang
 cd /root
+ARCH=$(arch)
+if [ $ARCH == aarch64 ]
+    then
+        wget https://dl.google.com/go/go1.16.2.linux-arm64.tar.gz
+    else # [ $ARCH == armv7l ]
+        wget https://dl.google.com/go/go1.16.2.linux-armv6l.tar.gz
+fi
 rm -rf /root/go
 rm -rf /root/go_path
-wget https://dl.google.com/go/go1.16.linux-armv6l.tar.gz
 tar xzf *.gz
 rm *.gz
 
@@ -46,17 +63,29 @@ cd kalibrate-rtl
 make && make install
 
 # install stratux-radar-display
-cd /root
-rm -rf /root/stratux-radar-display
-apt install libatlas-base-dev libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 python3-pip python3-pil espeak-ng espeak-ng-data libespeak-ng-dev libbluetooth-dev -y
-pip3 install luma.oled websockets py-espeak-ng pybluez pydbus numpy
-git clone https://github.com/TomBric/stratux-radar-display.git
+echo
+read -t 1 -n 10000 discard
+read -p "Install Radar Display? [y/n]"
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  cd /root
+  rm -rf /root/stratux-radar-display
+  apt install libatlas-base-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 python3-pip python3-pil espeak-ng espeak-ng-data libespeak-ng-dev libbluetooth-dev -y
+  pip3 install luma.oled websockets py-espeak-ng pybluez pydbus numpy
+  git clone https://github.com/TomBric/stratux-radar-display.git
+fi
 
 # clone stratux
 cd /root
 rm -r /root/stratux
-git clone --recursive -b dev https://github.com/VirusPilot/stratux.git /root/stratux
+git clone --recursive https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
+
+# modify config.txt in case of aarch64
+if [ $ARCH == aarch64 ]
+  then
+    echo -e "\narm_64bit=1" >> /root/stratux/image/config.txt
+fi
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image
