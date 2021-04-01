@@ -9,6 +9,19 @@ timedatectl set-timezone Europe/Berlin
 # prepare libs
 apt install build-essential automake autoconf libncurses-dev pkg-config libjpeg62-turbo-dev libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev python-serial -y
 
+# disable swapfile
+systemctl disable dphys-swapfile
+apt purge dphys-swapfile -y
+apt autoremove -y
+
+# disable use tmpfs for logs, tmp, var/tmp as the default setup
+if ! grep -q "tmpfs" /etc/fstab; then
+  echo "" >> /etc/fstab # newline
+  echo "tmpfs    /var/log    tmpfs    defaults,noatime,nosuid,mode=0755,size=100m    0 0" >> /etc/fstab
+  echo "tmpfs    /tmp        tmpfs    defaults,noatime,nosuid,size=100m    0 0" >> /etc/fstab
+  echo "tmpfs    /var/tmp    tmpfs    defaults,noatime,nosuid,size=30m    0 0" >> /etc/fstab
+fi
+
 # install wiringPi 2.60 (required for Pi4B)
 cd /root
 rm -rf /root/WiringPi
