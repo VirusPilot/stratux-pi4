@@ -4,8 +4,8 @@ A Pi4B with at least 2GB RAM is recommended, particularly in light of the disabl
 
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - Raspberry Pi4B (also tested on Pi3B)
-- Raspbian Buster Lite 64bit (http://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2020-08-24/2020-08-20-raspios-buster-arm64-lite.zip)
-- Raspbian Buster Lite 32bit (http://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-01-12/2021-01-11-raspios-buster-armhf-lite.zip)
+- Raspbian Buster Lite 64bit (http://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2021-04-09/2021-03-04-raspios-buster-arm64-lite.zip)
+- Raspbian Buster Lite 32bit (http://downloads.raspberrypi.org/raspios_lite_armhf/images/raspios_lite_armhf-2021-03-25/2021-03-04-raspios-buster-armhf-lite.zip)
 - https://github.com/VirusPilot/stratux
 
 It furthermore now (optionally) includes https://github.com/TomBric/stratux-radar-display
@@ -30,7 +30,7 @@ A list of differences to the original Stratux Europe Edition
 sudo su
 cd ~/
 apt update
-apt full-upgrade (particularly recommended for the 64bit version)
+apt full-upgrade
 ```
 If you haven't yet programed your SDRs, please first follow the instructions under "Remarks - SDR programming" below for each SDR individually or otherwise just continue here:
 ```
