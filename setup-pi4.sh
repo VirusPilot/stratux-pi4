@@ -35,9 +35,9 @@ cd /root
 ARCH=$(arch)
 if [ $ARCH == aarch64 ]
     then
-        wget https://dl.google.com/go/go1.16.2.linux-arm64.tar.gz
+        wget https://golang.org/dl/go1.16.4.linux-arm64.tar.gz
     else # [ $ARCH == armv7l ]
-        wget https://dl.google.com/go/go1.16.2.linux-armv6l.tar.gz
+        wget https://golang.org/dl/go1.16.4.linux-armv6l.tar.gz
 fi
 rm -rf /root/go
 rm -rf /root/go_path
