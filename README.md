@@ -16,7 +16,6 @@ A list of differences to the original Stratux Europe Edition
 - slightly modified system files (config.txt)
 - radar display autostart prepared but disabled in /etc/rc.local
 - ublox AssistNow Autonomous enabled and configuration saved
-- SDR startup delay reduced to 30s
 
 ## Please use this script with caution and only on a fresh Raspbian Buster Image, because:
 - fstab will be changed to use tmpfs for logs, tmp, var/tmp
