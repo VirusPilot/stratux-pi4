@@ -13,7 +13,7 @@ It furthermore now (optionally) includes https://github.com/TomBric/stratux-rada
 - in /etc/rc.local you need to enable your particular display type after the setup script has finished
 
 A list of differences to the original Stratux Europe Edition
-- slightly modified system files (config.txt, stratux.service)
+- slightly modified system files (config.txt)
 - radar display autostart prepared but disabled in /etc/rc.local
 - ublox AssistNow Autonomous enabled and configuration saved
 - SDR startup delay reduced to 30s
