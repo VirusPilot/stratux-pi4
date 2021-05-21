@@ -113,6 +113,8 @@ cp -f interfaces /etc/network/interfaces
 cp -f interfaces.template /etc/network/interfaces.template                            # part of Makefile install
 cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh                                          # part of Makefile install
 chmod 755 /usr/sbin/stratux-wifi.sh
+cp -f sdr-tool.sh /usr/sbin/sdr-tool.sh
+chmod 755 /usr/sbin/sdr-tool.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
 
