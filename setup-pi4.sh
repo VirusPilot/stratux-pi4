@@ -74,7 +74,7 @@ fi
 # clone stratux
 cd /root
 rm -r /root/stratux
-git clone --recursive https://github.com/b3nn0/stratux.git /root/stratux
+git clone --recursive https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
 
 # copy various files from /root/stratux/image
