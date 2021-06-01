@@ -77,12 +77,6 @@ rm -r /root/stratux
 git clone --recursive https://github.com/b3nn0/stratux.git /root/stratux
 cd /root/stratux
 
-# modify config.txt in case of aarch64
-if [ $ARCH == aarch64 ]
-  then
-    echo -e "\narm_64bit=1" >> /root/stratux/image/config.txt
-fi
-
 # copy various files from /root/stratux/image
 cd /root/stratux/image
 cp -f config.txt /boot/config.txt                                                     # modified in https://github.com/VirusPilot/stratux
