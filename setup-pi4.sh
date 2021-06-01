@@ -80,7 +80,7 @@ fi
 # clone stratux
 cd /root
 rm -r /root/stratux
-git clone --recursive https://github.com/VirusPilot/stratux.git /root/stratux
+git clone --recursive https://github.com/b3nn0/stratux.git /root/stratux
 cd /root/stratux
 
 # modify config.txt in case of aarch64
@@ -96,25 +96,25 @@ cp -f bashrc.txt /root/.bashrc
 cp -f rc.local /etc/rc.local                                                          # modified in https://github.com/VirusPilot/stratux
 cp -f modules.txt /etc/modules
 cp -f motd /etc/motd
-cp -f 10-stratux.rules /etc/udev/rules.d                                              # part of Makefile install
-cp -f 99-uavionix.rules /etc/udev/rules.d                                             # part of Makefile install
+#cp -f 10-stratux.rules /etc/udev/rules.d                                              # part of Makefile install
+#cp -f 99-uavionix.rules /etc/udev/rules.d                                             # part of Makefile install
 cp -f logrotate.conf /etc/logrotate.conf
 cp -f rtl-sdr-blacklist.conf /etc/modprobe.d/
 cp -f stxAliases.txt /root/.stxAliases
 cp -f dhcpd.conf /etc/dhcp/dhcpd.conf
-cp -f dhcpd.conf.template /etc/dhcp/dhcpd.conf.template
+#cp -f dhcpd.conf.template /etc/dhcp/dhcpd.conf.template
 cp -f hostapd.conf /etc/hostapd/hostapd.conf
-cp -f hostapd.conf.template /etc/hostapd/hostapd.conf.template                        # part of Makefile install
-cp -f wpa_supplicant.conf.template /etc/wpa_supplicant/wpa_supplicant.conf.template   # part of Makefile install
-cp -f hostapd_manager.sh /usr/sbin/hostapd_manager.sh                                 # part of Makefile install
-chmod 755 /usr/sbin/hostapd_manager.sh
-rm -f /etc/rc*.d/*hostapd /etc/network/if-pre-up.d/hostapd /etc/network/if-post-down.d/hostapd /etc/init.d/hostapd /etc/default/hostapd0
+#cp -f hostapd.conf.template /etc/hostapd/hostapd.conf.template                        # part of Makefile install
+#cp -f wpa_supplicant.conf.template /etc/wpa_supplicant/wpa_supplicant.conf.template   # part of Makefile install
+#cp -f hostapd_manager.sh /usr/sbin/hostapd_manager.sh                                 # part of Makefile install
+#chmod 755 /usr/sbin/hostapd_manager.sh
+#rm -f /etc/rc*.d/*hostapd /etc/network/if-pre-up.d/hostapd /etc/network/if-post-down.d/hostapd /etc/init.d/hostapd /etc/default/hostapd0
 cp -f interfaces /etc/network/interfaces
-cp -f interfaces.template /etc/network/interfaces.template                            # part of Makefile install
-cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh                                          # part of Makefile install
-chmod 755 /usr/sbin/stratux-wifi.sh
-cp -f sdr-tool.sh /usr/sbin/sdr-tool.sh
-chmod 755 /usr/sbin/sdr-tool.sh
+#cp -f interfaces.template /etc/network/interfaces.template                            # part of Makefile install
+#cp stratux-wifi.sh /usr/sbin/stratux-wifi.sh                                          # part of Makefile install
+#chmod 755 /usr/sbin/stratux-wifi.sh
+#cp -f sdr-tool.sh /usr/sbin/sdr-tool.sh
+#chmod 755 /usr/sbin/sdr-tool.sh
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
 
