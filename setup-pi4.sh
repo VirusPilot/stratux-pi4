@@ -101,3 +101,5 @@ systemctl enable ssh
 systemctl disable dhcpcd
 systemctl disable hciuart
 systemctl disable hostapd
+
+sed -i 's/INTERFACESv4=""/INTERFACESv4="wlan0"/g' /etc/default/isc-dhcp-server
