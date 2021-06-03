@@ -49,6 +49,7 @@ mkdir build
 cd build
 cmake ../ -DENABLE_ZEROCOPY=0
 make -j8 && make install
+rm -rf /root/rtl-sdr
 ldconfig
 
 # install kalibrate-rtl
@@ -59,6 +60,7 @@ cd kalibrate-rtl
 ./bootstrap && CXXFLAGS='-W -Wall -O3'
 ./configure
 make && make install
+rm -rf /root/kalibrate-rtl
 
 # install stratux-radar-display
 echo
