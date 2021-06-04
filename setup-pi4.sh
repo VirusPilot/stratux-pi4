@@ -15,6 +15,7 @@ apt purge dphys-swapfile -y
 
 # cleanup
 apt autoremove -y
+apt clean
 
 # disable use tmpfs for logs, tmp, var/tmp as the default setup
 if ! grep -q "tmpfs" /etc/fstab; then
