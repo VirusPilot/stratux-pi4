@@ -31,6 +31,7 @@ rm -rf /root/WiringPi
 git clone https://github.com/WiringPi/WiringPi
 cd WiringPi
 ./build
+rm -rf /root/WiringPi
 ldconfig
 
 # install latest golang
@@ -60,7 +61,7 @@ git clone https://github.com/steve-m/kalibrate-rtl
 cd kalibrate-rtl
 ./bootstrap && CXXFLAGS='-W -Wall -O3'
 ./configure
-make && make install
+make -j8 && make install
 rm -rf /root/kalibrate-rtl
 
 # install stratux-radar-display
