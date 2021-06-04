@@ -99,6 +99,10 @@ cp -f interfaces /etc/network/interfaces
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
 
+#Set the keyboard layout to DE and pc101
+sed -i /etc/default/keyboard -e "/^XKBLAYOUT/s/\".*\"/\"de\"/"
+sed -i /etc/default/keyboard -e "/^XKBMODEL/s/\".*\"/\"pc101\"/"
+
 # prepare services
 systemctl enable isc-dhcp-server
 systemctl enable ssh
