@@ -85,9 +85,9 @@ cd /root/stratux
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image
-cp -f config.txt /boot/config.txt                                                     # modified in https://github.com/VirusPilot/stratux
+cp -f config.txt /boot/config.txt # modified in https://github.com/VirusPilot/stratux
 cp -f bashrc.txt /root/.bashrc
-cp -f rc.local /etc/rc.local                                                          # modified in https://github.com/VirusPilot/stratux
+cp -f rc.local /etc/rc.local # modified in https://github.com/VirusPilot/stratux
 cp -f modules.txt /etc/modules
 cp -f motd /etc/motd
 cp -f logrotate.conf /etc/logrotate.conf
