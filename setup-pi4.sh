@@ -7,7 +7,7 @@ ifconfig wlan0 up
 timedatectl set-timezone Europe/Berlin
 
 # prepare libs
-apt install qemu-utils parted zip unzip zerofree build-essential automake autoconf libncurses-dev pkg-config libjpeg62-turbo-dev libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev python-serial -y
+apt install parted zip unzip zerofree build-essential automake autoconf libncurses-dev pkg-config libjpeg62-turbo-dev libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev python-serial -y
 
 # disable swapfile
 systemctl disable dphys-swapfile
