@@ -36,7 +36,7 @@ ldconfig
 
 # install latest golang
 cd /root
-wget https://golang.org/dl/go1.16.4.linux-arm64.tar.gz
+wget https://golang.org/dl/go1.16.5.linux-arm64.tar.gz
 rm -rf /root/go
 rm -rf /root/go_path
 tar xzf *.gz
