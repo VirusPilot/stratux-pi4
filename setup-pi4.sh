@@ -74,6 +74,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   rm -rf /root/stratux-radar-display
   apt install libatlas-base-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 python3-pip python3-pil espeak-ng espeak-ng-data libespeak-ng-dev libbluetooth-dev -y
   pip3 install luma.oled websockets py-espeak-ng pybluez pydbus numpy
+  pip3 install --upgrade PILLOW
   git clone https://github.com/TomBric/stratux-radar-display.git
 fi
 
