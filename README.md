@@ -30,6 +30,9 @@ cd ~/
 apt update
 apt full-upgrade
 ```
+```
+reboot
+```
 If you haven't yet programed your SDRs, please first follow the instructions under "Remarks - SDR programming" below for each SDR individually or otherwise just continue here:
 ```
 apt install git -y
@@ -38,6 +41,8 @@ git clone https://github.com/VirusPilot/stratux-pi4.git
 source /root/.bashrc
 cd stratux
 make && make install
+```
+```
 reboot
 ```
 
