@@ -1,6 +1,6 @@
 # stratux-pi4 (64bit)
 Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh 64bit Raspbian Buster Lite Image.
-A Pi4B with at least 2GB RAM is recommended, particularly in light of the disabled swapfile and the use of 230MB tmpfs
+A Pi4B with at least 2GB RAM is recommended, particularly in light of the disabled swapfile
 
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - Raspberry Pi4B (also tested on Pi3B)
@@ -17,7 +17,7 @@ A list of differences to the original Stratux Europe Edition
 - ublox AssistNow Autonomous enabled and configuration saved
 
 ## Please use this script with caution and only on a fresh Raspbian Buster Image, because:
-- fstab will be changed to use tmpfs for logs, tmp, var/tmp
+- the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
 - swapfile will be disabled
 
 ## Steps required:
@@ -28,7 +28,7 @@ A list of differences to the original Stratux Europe Edition
 sudo su
 cd ~/
 apt update
-apt full-upgrade
+apt dist-upgrade
 ```
 If you haven't yet programed your SDRs, please first follow the instructions under "Remarks - SDR programming" below for each SDR individually or otherwise just continue here:
 ```
