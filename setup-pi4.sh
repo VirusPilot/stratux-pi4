@@ -7,7 +7,7 @@ ifconfig wlan0 up
 timedatectl set-timezone Europe/Berlin
 
 # prepare libs
-apt install parted zip unzip zerofree build-essential automake autoconf libncurses-dev pkg-config libjpeg62-turbo-dev libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev python-serial -y
+apt install parted zip unzip zerofree build-essential automake autoconf libncurses-dev pkg-config libjpeg62-turbo-dev libconfig9 hostapd isc-dhcp-server tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev python-serial jq -y
 
 # disable swapfile
 systemctl disable dphys-swapfile
@@ -16,14 +16,6 @@ apt purge dphys-swapfile -y
 # cleanup
 apt autoremove -y
 apt clean
-
-# disable use tmpfs for logs, tmp, var/tmp as the default setup
-if ! grep -q "tmpfs" /etc/fstab; then
-  echo "" >> /etc/fstab # newline
-  echo "tmpfs    /var/log    tmpfs    defaults,noatime,nosuid,mode=0755,size=100m    0 0" >> /etc/fstab
-  echo "tmpfs    /tmp        tmpfs    defaults,noatime,nosuid,size=100m    0 0" >> /etc/fstab
-  echo "tmpfs    /var/tmp    tmpfs    defaults,noatime,nosuid,size=30m    0 0" >> /etc/fstab
-fi
 
 # install wiringPi 2.60 (required for Pi4B)
 cd /root
@@ -100,6 +92,16 @@ cp -f interfaces /etc/network/interfaces
 cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
 
+#rootfs overlay stuff
+cp -f overlayctl init-overlay /sbin/
+overlayctl install
+# init-overlay replaces raspis initial partition size growing.. Make sure we call that manually (see init-overlay script)
+touch /var/grow_root_part
+mkdir -p /overlay/robase # prepare so we can bind-mount root even if overlay is disabled
+
+# Optionally mount /dev/sda1 as /var/log - for logging to USB stick
+echo -e "\n/dev/sda1             /var/log        auto    defaults,nofail,noatime,x-systemd.device-timeout=1ms  0       2" >> /etc/fstab
+
 #Set the keyboard layout to DE and pc101
 sed -i /etc/default/keyboard -e "/^XKBLAYOUT/s/\".*\"/\"de\"/"
 sed -i /etc/default/keyboard -e "/^XKBMODEL/s/\".*\"/\"pc101\"/"
@@ -110,5 +112,7 @@ systemctl enable ssh
 systemctl disable dhcpcd
 systemctl disable hciuart
 systemctl disable hostapd
+systemctl disable apt-daily.timer
+systemctl disable apt-daily-upgrade.timer
 
 sed -i 's/INTERFACESv4=""/INTERFACESv4="wlan0"/g' /etc/default/isc-dhcp-server
