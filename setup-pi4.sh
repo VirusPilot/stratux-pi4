@@ -46,7 +46,6 @@ make
 sudo make install
 sudo ldconfig
 rm -rf /root/rtl-sdr
-ldconfig
 
 # install kalibrate-rtl
 cd /root
