@@ -41,7 +41,7 @@ git clone https://github.com/osmocom/rtl-sdr.git
 cd rtl-sdr
 mkdir build
 cd build
-cmake ../ -DENABLE_ZEROCOPY=0
+cmake ../
 make -j8 && make install
 rm -rf /root/rtl-sdr
 ldconfig
