@@ -41,8 +41,10 @@ git clone https://github.com/osmocom/rtl-sdr.git
 cd rtl-sdr
 mkdir build
 cd build
-cmake ../
-make -j8 && make install
+cmake ../ -DDETACH_KERNEL_DRIVER=ON -DINSTALL_UDEV_RULES=ON
+make
+sudo make install
+sudo ldconfig
 rm -rf /root/rtl-sdr
 ldconfig
 
