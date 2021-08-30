@@ -87,11 +87,11 @@ to prepare it e.g. for ADS-B (1090MHz) use. A reboot is necessary to activate th
 
 At this point you can already test your SDR and receive ADS-B traffic with the following command:
 ```
-rtl_adsb -V"
+rtl_adsb -V
 ```
 Or listen to you favorite FM radio station (my station below is at 106.9MHz) by pluging in a headset and run the following command:
 ```
-rtl_fm -M fm -f 106.9M -s 32000 -g 60 -l 10 - | aplay -t raw -r 32000 -c 1 -f S16_LE".
+rtl_fm -M fm -f 106.9M -s 32000 -g 60 -l 10 - | aplay -t raw -r 32000 -c 1 -f S16_LE
 ```
 ## Remarks - SDR programming (2)
 During boot, Stratux furthermore reads the ppm correction from the SDR `Serial number`, e.g. if the `Serial number` is `stx:1090:28` then the ppm used by Stratux is +28. If the appropriate ppm for the SDR is unknown, here are the steps to find out (again it is useful to have only one SDR plugged in to avoid confusion):
