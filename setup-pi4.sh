@@ -90,7 +90,6 @@ cp -f stxAliases.txt /root/.stxAliases
 cp -f dhcpd.conf /etc/dhcp/dhcpd.conf
 cp -f hostapd.conf /etc/hostapd/hostapd.conf
 cp -f interfaces /etc/network/interfaces
-cp -f isc-dhcp-server /etc/default/isc-dhcp-server
 cp -f sshd_config /etc/ssh/sshd_config
 
 #rootfs overlay stuff
@@ -108,12 +107,10 @@ sed -i /etc/default/keyboard -e "/^XKBLAYOUT/s/\".*\"/\"de\"/"
 sed -i /etc/default/keyboard -e "/^XKBMODEL/s/\".*\"/\"pc101\"/"
 
 # prepare services
-systemctl enable isc-dhcp-server
 systemctl enable ssh
+systemctl disable isc-dhcp-server # we start it manually on respective interfaces
 systemctl disable dhcpcd
 systemctl disable hciuart
 systemctl disable hostapd
 systemctl disable apt-daily.timer
 systemctl disable apt-daily-upgrade.timer
-
-sed -i 's/INTERFACESv4=""/INTERFACESv4="wlan0"/g' /etc/default/isc-dhcp-server
