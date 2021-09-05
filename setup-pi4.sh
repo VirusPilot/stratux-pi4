@@ -1,9 +1,6 @@
 #!/bin/bash
 #set -x
 
-rfkill unblock 0
-ifconfig wlan0 up
-
 timedatectl set-timezone Europe/Berlin
 
 # prepare libs
