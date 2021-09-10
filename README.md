@@ -14,7 +14,8 @@ It furthermore now (optionally) includes https://github.com/TomBric/stratux-rada
 A list of differences to the original Stratux Europe Edition
 - slightly modified system files (config.txt)
 - radar display autostart prepared but disabled in /etc/rc.local
-- ublox AssistNow Autonomous enabled and configuration saved
+- ublox AssistNow Online script prepared but disabled in /etc/rc.local
+- ublox AssistNow Autonomous mode enabled and configuration saved
 
 ## Please use this script with caution and only on a fresh Raspbian Buster Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
