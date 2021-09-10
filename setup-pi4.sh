@@ -105,6 +105,9 @@ cp -f hostapd.conf /etc/hostapd/hostapd.conf
 cp -f interfaces /etc/network/interfaces
 cp -f sshd_config /etc/ssh/sshd_config
 
+# fetch latest ogn database
+wget -O /opt/stratux/ogn/ddb.json http://ddb.glidernet.org/download/?j=1
+
 #rootfs overlay stuff
 cp -f overlayctl init-overlay /sbin/
 overlayctl install
