@@ -57,7 +57,7 @@ rm -rf /root/kalibrate-rtl
 # install stratux-radar-display
 echo
 read -t 1 -n 10000 discard
-read -p "Install Radar Display? [y/n]"
+read -p "Install Radar Display? [y/n]" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   cd /root
@@ -66,6 +66,22 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   pip3 install luma.oled websockets py-espeak-ng pybluez pydbus numpy
   pip3 install --upgrade PILLOW
   git clone https://github.com/TomBric/stratux-radar-display.git
+fi
+
+# install ublox ublox AssistNow Online Online script
+echo
+read -t 1 -n 10000 discard
+read -p "Install ublox AssistNow Online Online script? [y/n]" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  cd /root
+  rm -rf /root/ublox-agps
+  apt install python3 python3-pip
+  pip3 uninstall serial
+  pip3 install pyserial
+  pip3 install requests
+  pip3 install argparse
+  git clone https://github.com/VirusPilot/ublox-agps.git
 fi
 
 # clone stratux
