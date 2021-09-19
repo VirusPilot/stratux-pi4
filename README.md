@@ -86,6 +86,10 @@ rtl_eeprom -s stx:1090:0
 ```
 to prepare it e.g. for ADS-B (1090MHz) use. A reboot is necessary to activate the new serial number.
 
+If for some reasons an error occurs while programming, please consider preparing the SDR with the default values:
+```
+rtl_eeprom -g realtek
+```
 At this point you can already test your SDR and receive ADS-B traffic with the following command:
 ```
 rtl_adsb -V
