@@ -14,15 +14,6 @@ apt purge dphys-swapfile -y
 apt autoremove -y
 apt clean
 
-# install wiringPi 2.60 (required for Pi4B)
-cd /root
-rm -rf /root/WiringPi
-git clone https://github.com/WiringPi/WiringPi
-cd WiringPi
-./build
-rm -rf /root/WiringPi
-ldconfig
-
 # install latest golang
 cd /root
 wget https://golang.org/dl/go1.17.1.linux-arm64.tar.gz
