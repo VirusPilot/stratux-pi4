@@ -40,6 +40,10 @@ source /root/.bashrc
 cd stratux
 make && make install
 ```
+fetch latest ogn database
+```
+wget -O /opt/stratux/ogn/ddb.json http://ddb.glidernet.org/download/?j=1
+```
 ```
 reboot
 ```
