@@ -40,10 +40,11 @@ source /root/.bashrc
 cd stratux
 make && make install
 ```
-fetch latest ogn database
+Fetch latest ogn database:
 ```
 wget -O /opt/stratux/ogn/ddb.json http://ddb.glidernet.org/download/?j=1
 ```
+You may now install additional maps according to https://github.com/b3nn0/stratux/wiki/Downloading-better-map-data
 ```
 reboot
 ```
