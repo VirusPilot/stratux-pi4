@@ -59,7 +59,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
   git clone https://github.com/TomBric/stratux-radar-display.git
 fi
 
-# install ublox ublox AssistNow Online Online script
+# install ublox AssistNow Online Online script
 echo
 read -t 1 -n 10000 discard
 read -p "Install ublox AssistNow Online Online script? [y/n]" -n 1 -r
