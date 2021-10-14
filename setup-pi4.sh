@@ -4,7 +4,7 @@
 timedatectl set-timezone Europe/Berlin
 
 # prepare libs
-apt install parted zip unzip zerofree build-essential automake autoconf libncurses-dev pkg-config libjpeg62-turbo-dev libconfig9 hostapd dnsmasq tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev python-serial jq -y
+apt install parted zip unzip zerofree build-essential automake autoconf libncurses-dev pkg-config libjpeg62-turbo-dev libconfig9 dnsmasq tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev python-serial jq -y
 
 # disable swapfile
 systemctl disable dphys-swapfile
@@ -92,7 +92,7 @@ cp -f logrotate.conf /etc/logrotate.conf
 cp -f rtl-sdr-blacklist.conf /etc/modprobe.d/
 cp -f stxAliases.txt /root/.stxAliases
 cp -f stratux-dnsmasq.conf /etc/dnsmasq.d/stratux-dnsmasq.conf
-cp -f hostapd.conf /etc/hostapd/hostapd.conf
+cp -f wpa_supplicant_ap.conf /etc/wpa_supplicant/wpa_supplicant_ap.conf
 cp -f interfaces /etc/network/interfaces
 cp -f sshd_config /etc/ssh/sshd_config
 
@@ -115,6 +115,5 @@ systemctl enable ssh
 systemctl disable dnsmasq # we start it manually on respective interfaces
 systemctl disable dhcpcd
 systemctl disable hciuart
-systemctl disable hostapd
 systemctl disable apt-daily.timer
 systemctl disable apt-daily-upgrade.timer
