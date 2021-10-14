@@ -115,5 +115,13 @@ systemctl enable ssh
 systemctl disable dnsmasq # we start it manually on respective interfaces
 systemctl disable dhcpcd
 systemctl disable hciuart
+systemctl disable triggerhappy
 systemctl disable apt-daily.timer
 systemctl disable apt-daily-upgrade.timer
+systemctl disable man-db.timer
+
+# Generate ssh key for all installs. Otherwise it would have to be done on each boot, which takes a couple of seconds
+ssh-keygen -A -v
+systemctl disable regenerate_ssh_host_keys
+# This is usually done by the console-setup service that takes quite long of first boot..
+/lib/console-setup/console-setup.sh
