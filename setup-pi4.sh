@@ -121,6 +121,9 @@ systemctl disable apt-daily.timer
 systemctl disable apt-daily-upgrade.timer
 systemctl disable man-db.timer
 
+# Run DHCP on eth0 when cable is plugged in
+sed -i -e 's/INTERFACES=""/INTERFACES="eth0"/g' /etc/default/ifplugd
+
 # Generate ssh key for all installs. Otherwise it would have to be done on each boot, which takes a couple of seconds
 ssh-keygen -A -v
 systemctl disable regenerate_ssh_host_keys
