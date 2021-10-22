@@ -4,7 +4,8 @@
 timedatectl set-timezone Europe/Berlin
 
 # prepare libs
-apt install parted zip unzip zerofree build-essential automake autoconf libncurses-dev pkg-config libjpeg62-turbo-dev libconfig9 dnsmasq tcpdump git cmake libtool i2c-tools libusb-1.0-0-dev libfftw3-dev python-serial jq ifplugd -y
+apt install libjpeg62-turbo-dev libconfig9 rpi-update dnsmasq tcpdump git cmake libusb-1.0-0-dev build-essential \
+  autoconf libtool i2c-tools libfftw3-dev libncurses-dev python-serial jq ifplugd -y
 
 # disable swapfile
 systemctl disable dphys-swapfile
@@ -53,7 +54,8 @@ echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
   cd /root
   rm -rf /root/stratux-radar-display
-  apt install libatlas-base-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 python3-pip python3-pil espeak-ng espeak-ng-data libespeak-ng-dev libbluetooth-dev -y
+  apt install libatlas-base-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 python3-pip \
+    python3-pil espeak-ng espeak-ng-data libespeak-ng-dev libbluetooth-dev -y
   pip3 install luma.oled websockets py-espeak-ng pybluez pydbus numpy
   pip3 install --upgrade PILLOW
   git clone https://github.com/TomBric/stratux-radar-display.git
