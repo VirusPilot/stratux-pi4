@@ -4,8 +4,8 @@
 timedatectl set-timezone Europe/Berlin
 
 # prepare libs
-apt install libjpeg62-turbo-dev libconfig9 rpi-update dnsmasq tcpdump git cmake libusb-1.0-0-dev build-essential \
-  autoconf libtool i2c-tools libfftw3-dev libncurses-dev python-serial jq ifplugd -y
+apt install libjpeg62-turbo-dev libconfig9 rpi-update dnsmasq git cmake libusb-1.0-0-dev build-essential \
+  autoconf libtool i2c-tools libfftw3-dev libncurses-dev python3-serial jq ifplugd -y
 
 # disable swapfile
 systemctl disable dphys-swapfile
