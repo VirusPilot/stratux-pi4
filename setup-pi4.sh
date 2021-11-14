@@ -46,6 +46,11 @@ cd kalibrate-rtl
 make -j8 && make install
 rm -rf /root/kalibrate-rtl
 
+# Prepare wiringpi for ogn trx via GPIO
+cd /root && git clone https://github.com/WiringPi/WiringPi.git
+cd WiringPi && ./build
+cd /root && rm -r WiringPi
+
 # install stratux-radar-display
 echo
 read -t 1 -n 10000 discard
