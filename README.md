@@ -7,15 +7,17 @@ This started as a script just for myself to build a Stratux Europe for a Pi4B, b
 - Latest 64bit RasPiOS Lite Image from here: http://downloads.raspberrypi.org/raspios_lite_arm64/images/
 - https://github.com/VirusPilot/stratux
 
-It furthermore now (optionally) includes https://github.com/TomBric/stratux-radar-display
-- please note that the setup script execution takes significantly longer (only once)
+It furthermore now (optionally) includes https://github.com/TomBric/stratux-radar-display:
+- please note that the setup script execution for the radar display takes significantly longer (only once)
 - in /etc/rc.local you need to enable your particular display type after the setup script has finished
+
+It also includes the option to use ublox AssistNow Online if you have an account:
+- in /etc/rc.local you need to enable the respective entry and replace `myToken` with your individual ublox token accordingly
 
 A list of differences to the original Stratux Europe Edition
 - slightly modified system files (config.txt)
-- radar display autostart prepared but disabled in /etc/rc.local
-- ublox AssistNow Online script prepared but disabled in /etc/rc.local
-- ublox AssistNow Autonomous mode enabled and configuration saved
+- gps.go: ublox AssistNow Autonomous mode enabled and configuration saved
+- gps.go: use Beidou instead of Glonass in case of ublox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
 
 ## Please use this script with caution and only on a fresh Raspbian Buster Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
@@ -40,7 +42,7 @@ source /root/.bashrc
 cd stratux
 make && make install
 ```
-Fetch latest ogn database:
+Fetch latest ogn database (optional, this is automatically done during the first compile run):
 ```
 wget -O /opt/stratux/ogn/ddb.json http://ddb.glidernet.org/download/?j=1
 ```
