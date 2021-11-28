@@ -7,10 +7,6 @@ This started as a script just for myself to build a Stratux Europe for a Pi4B, b
 - Latest 64bit RasPiOS Lite Image from here: http://downloads.raspberrypi.org/raspios_lite_arm64/images/
 - https://github.com/VirusPilot/stratux
 
-It furthermore now (optionally) includes https://github.com/TomBric/stratux-radar-display:
-- please note that the setup script execution for the radar display takes significantly longer (only once)
-- in /etc/rc.local you need to enable your particular display type after the setup script has finished
-
 It also includes the option to use ublox AssistNow Online if you have an account:
 - in /etc/rc.local you need to enable the respective entry and replace `myToken` with your individual ublox token accordingly
 
@@ -29,6 +25,8 @@ A list of differences to the original Stratux Europe Edition
 - login as `pi` user
 ```
 sudo su
+```
+```
 cd ~/
 apt update
 apt dist-upgrade
@@ -46,6 +44,9 @@ Fetch latest ogn database (optional, this is automatically done during the first
 ```
 wget -O /opt/stratux/ogn/ddb.json http://ddb.glidernet.org/download/?j=1
 ```
+You may now install https://github.com/TomBric/stratux-radar-display:
+- please follow the steps described here: https://github.com/TomBric/stratux-radar-display#installation-on-a-standard-stratux-device-for-stratux-versions-eu027-or-newer
+
 You may now install additional maps according to https://github.com/b3nn0/stratux/wiki/Downloading-better-map-data
 ```
 reboot
