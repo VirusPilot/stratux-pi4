@@ -51,21 +51,6 @@ cd /root && git clone https://github.com/WiringPi/WiringPi.git
 cd WiringPi && ./build
 cd /root && rm -r WiringPi
 
-# install stratux-radar-display
-echo
-read -t 1 -n 10000 discard
-read -p "Install Radar Display? [y/n]" -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  cd /root
-  rm -rf /root/stratux-radar-display
-  apt install libatlas-base-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5 python3-pip \
-    python3-pil espeak-ng espeak-ng-data libespeak-ng-dev libbluetooth-dev -y
-  pip3 install luma.oled websockets py-espeak-ng pybluez pydbus numpy
-  pip3 install --upgrade PILLOW
-  git clone https://github.com/TomBric/stratux-radar-display.git
-fi
-
 # install ublox AssistNow Online Online script
 echo
 read -t 1 -n 10000 discard
