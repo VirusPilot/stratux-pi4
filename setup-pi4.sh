@@ -18,7 +18,7 @@ apt clean
 # install latest golang
 cd /root
 ARCH=$(arch)
-if [ $ARCH == aarch64 ] then
+if [[ $ARCH == aarch64 ]]; then
     wget https://golang.org/dl/go1.17.3.linux-arm64.tar.gz
   else
     wget https://golang.org/dl/go1.17.3.linux-armv6l.tar.gz
