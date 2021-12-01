@@ -29,10 +29,7 @@ sudo su
 ```
 cd ~/
 apt update
-apt dist-upgrade
-```
-If you haven't yet programed your SDRs, please first follow the instructions under "Remarks - SDR programming" below for each SDR individually or otherwise just continue here:
-```
+apt dist-upgrade -y
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
 ./stratux-pi4/setup-pi4.sh
@@ -40,19 +37,17 @@ source /root/.bashrc
 cd stratux
 make && make install
 ```
-Fetch latest ogn database (optional, this is automatically done during the first compile run):
+- Fetch latest ogn database (optional, this is automatically done during the first compile run):
 ```
 wget -O /opt/stratux/ogn/ddb.json http://ddb.glidernet.org/download/?j=1
 ```
-You may now install https://github.com/TomBric/stratux-radar-display:
-- please follow the steps described here: https://github.com/TomBric/stratux-radar-display#installation-on-a-standard-stratux-device-for-stratux-versions-eu027-or-newer
-
-You may now install additional maps according to https://github.com/b3nn0/stratux/wiki/Downloading-better-map-data
+- You may now install https://github.com/TomBric/stratux-radar-display, please follow the steps described here: https://github.com/TomBric/stratux-radar-display#installation-on-a-standard-stratux-device-for-stratux-versions-eu027-or-newer
+- You may now install additional maps according to https://github.com/b3nn0/stratux/wiki/Downloading-better-map-data
+- If you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot, please  follow the instructions under "Remarks - SDR programming" below for each SDR individually or otherwise reboot:
 ```
 reboot
 ```
-
-After reboot please reconnect LAN and/or WiFi and Stratux should work right away.
+- After reboot please reconnect LAN and/or WiFi and Stratux should work right away.
 
 ## SkyDemon related Remarks
 - WiFi Settings/Stratux IP Address 192.168.10.1 (default): only GDL90 can be selected and used in SkyDemon
