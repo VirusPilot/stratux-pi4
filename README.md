@@ -4,10 +4,10 @@ Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh 64bit Ra
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - Raspberry Pi4B (also tested on Pi3B)
 - Latest 64bit RasPiOS Lite Image from here: http://downloads.raspberrypi.org/raspios_lite_arm64/images/
-- https://github.com/VirusPilot/stratux
+- https://github.com/b3nn0/stratux
 
 # stratux-pi4-viruspilot (64bit)
-Further to the "standard" script the following modifications are done:
+This script is based on my fork https://github.com/VirusPilot/stratux which has the following modifications compared to the "standard" version:
 - an option to use ublox AssistNow Online if you have an account (in /etc/rc.local you need to enable the respective entry and replace `myToken` with your individual ublox token accordingly)
 - slightly modified system files (config.txt)
 - gps.go: ublox AssistNow Autonomous mode enabled and configuration saved
