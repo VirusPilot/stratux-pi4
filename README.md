@@ -20,18 +20,31 @@ This script is based on my fork https://github.com/VirusPilot/stratux which has 
 
 ## Steps required:
 - Pi4B connected to LAN via Ethernet cable
-- boot from a fresh Raspbian Buster Lite Image with ssh enabled
+- boot from a fresh 64bit RasPiOS Lite Image with ssh enabled
 - login as `pi` user
 ```
 sudo su
 ```
+standard version:
 ```
 cd ~/
 apt update
 apt dist-upgrade -y
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
-./stratux-pi4/setup-pi4.sh
+./stratux-pi4/setup-pi4-standard.sh
+source /root/.bashrc
+cd stratux
+make && make install
+```
+viruspilot version:
+```
+cd ~/
+apt update
+apt dist-upgrade -y
+apt install git -y
+git clone https://github.com/VirusPilot/stratux-pi4.git
+./stratux-pi4/setup-pi4-viruspilot.sh
 source /root/.bashrc
 cd stratux
 make && make install
