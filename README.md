@@ -1,21 +1,20 @@
-# stratux-pi4 (64bit)
-Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh 64bit RasPiOS Lite Image.
-A Pi4B with at least 2GB RAM is recommended, particularly in light of the disabled swapfile
+# stratux-pi4-standard (64bit)
+Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh 64bit RasPiOS Lite Image. A Pi4B with at least 2GB RAM is recommended, particularly in light of the disabled swapfile
 
 This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
 - Raspberry Pi4B (also tested on Pi3B)
 - Latest 64bit RasPiOS Lite Image from here: http://downloads.raspberrypi.org/raspios_lite_arm64/images/
 - https://github.com/VirusPilot/stratux
 
-It also includes the option to use ublox AssistNow Online if you have an account:
-- in /etc/rc.local you need to enable the respective entry and replace `myToken` with your individual ublox token accordingly
-
-A list of differences to the original Stratux Europe Edition
+# stratux-pi4-viruspilot (64bit)
+Further to the "standard" script the following modifications are done:
+- an option to use ublox AssistNow Online if you have an account (in /etc/rc.local you need to enable the respective entry and replace `myToken` with your individual ublox token accordingly)
 - slightly modified system files (config.txt)
 - gps.go: ublox AssistNow Autonomous mode enabled and configuration saved
+- gps.go: initial support for u-blox M10S
 - gps.go: use Beidou instead of Glonass in case of ublox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
 
-## Please use this script with caution and only on a fresh Raspbian Buster Image, because:
+## Please use these scripts with caution and only on a fresh Raspbian Buster Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
 - swapfile will be disabled
 
