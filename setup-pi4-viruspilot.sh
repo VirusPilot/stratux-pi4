@@ -23,6 +23,7 @@ if [[ $ARCH == aarch64 ]]; then
   else
     wget https://golang.org/dl/go1.17.5.linux-armv6l.tar.gz
 fi
+fi
 rm -rf /root/go
 rm -rf /root/go_path
 tar xzf *.gz
@@ -112,8 +113,8 @@ sed -i /etc/default/keyboard -e "/^XKBLAYOUT/s/\".*\"/\"de\"/"
 sed -i /etc/default/keyboard -e "/^XKBMODEL/s/\".*\"/\"pc101\"/"
 
 # Set hostname
-#echo "stratux" > /etc/hostname
-#sed -i /etc/hosts -e "s/raspberrypi/stratux/g"
+echo "stratux" > /etc/hostname
+sed -i /etc/hosts -e "s/raspberrypi/stratux/g"
 
 # prepare services
 systemctl enable ssh
