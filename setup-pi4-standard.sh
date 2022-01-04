@@ -23,7 +23,7 @@ if [[ $ARCH == aarch64 ]]; then
   else
     wget https://golang.org/dl/go1.17.5.linux-armv6l.tar.gz
 fi
-fi
+
 rm -rf /root/go
 rm -rf /root/go_path
 tar xzf *.gz
