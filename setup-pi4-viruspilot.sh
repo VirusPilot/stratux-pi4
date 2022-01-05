@@ -57,22 +57,6 @@ cd /root && git clone https://github.com/WiringPi/WiringPi.git
 cd WiringPi && ./build
 cd /root && rm -r WiringPi
 
-# install ublox AssistNow Online Online script
-echo
-read -t 1 -n 10000 discard
-read -p "Install ublox AssistNow Online Online script? [y/n]" -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  cd /root
-  rm -rf /root/ublox-agps
-  apt install python3 python3-pip
-  pip3 uninstall serial
-  pip3 install pyserial
-  pip3 install requests
-  pip3 install argparse
-  git clone https://github.com/VirusPilot/ublox-agps.git
-fi
-
 # clone stratux
 cd /root
 rm -r /root/stratux
