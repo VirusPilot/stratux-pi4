@@ -8,11 +8,11 @@ This started as a script just for myself to build a Stratux Europe for a Pi4B, b
 
 # stratux-pi4-viruspilot (64bit)
 This script is based on my fork https://github.com/VirusPilot/stratux which has the following modifications compared to the "standard" version:
-- an option to use ublox AssistNow Online if you have an account (in /etc/rc.local you need to enable the respective entry and replace `myToken` with your individual ublox token accordingly)
+- an option to use u-blox AssistNow Online if you have an account (in /etc/rc.local you need to enable the respective entry and replace `myToken` with your individual u-blox token accordingly)
 - slightly modified system files (config.txt)
-- gps.go: ublox AssistNow Autonomous mode enabled and configuration saved
+- gps.go: u-blox AssistNow Autonomous mode enabled and configuration saved
 - gps.go: initial support for u-blox M10S
-- gps.go: use Beidou instead of Glonass in case of ublox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
+- gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
 
 ## Please use these scripts with caution and only on a fresh Raspbian Buster Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
