@@ -1,17 +1,18 @@
-# stratux-pi4-standard (64bit)
-Build a Stratux Europe on a Pi4B (Pi3B tested as well) based on a fresh 64bit RasPiOS Lite Image. A Pi4B with at least 2GB RAM is recommended, particularly in light of the disabled swapfile
+# stratux-pi4-standard
+Build a Stratux Europe on a Pi3B or Pi4B based on a fresh 64bit RasPiOS Lite Image. A Pi4B with at least 2GB RAM is recommended, particularly in light of the disabled swapfile
 
-This started as a script just for myself to build a Stratux Europe for a Pi4B, based on:
-- Raspberry Pi4B (also tested on Pi3B)
+This started as a script just for myself to build a Stratux Europe, based on:
+- Raspberry Pi3B or Pi4B, Pi Zero 2 W will soon be supported
 - Latest 64bit RasPiOS Lite Image from here: http://downloads.raspberrypi.org/raspios_lite_arm64/images/
 - https://github.com/b3nn0/stratux
 
-# stratux-pi4-viruspilot (64bit)
+# stratux-pi4-viruspilot
 This script is based on my fork https://github.com/VirusPilot/stratux which has the following modifications compared to the "standard" version:
 - slightly modified system files (config.txt)
 - gps.go: load default configuration for u-blox GPS before sending new configuration
 - gps.go: initial support for u-blox M10S
 - gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
+- gps.go: enable GPS LED to indicate a valid fix
 
 ## Please use these scripts with caution and only on a fresh Raspbian Buster Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
@@ -48,6 +49,18 @@ source /root/.bashrc
 cd stratux
 make && make install
 ```
+viruspilot version (for Garmin Pilot):
+```
+cd ~/
+apt update
+apt dist-upgrade -y
+apt install git -y
+git clone https://github.com/VirusPilot/stratux-pi4.git
+./stratux-pi4/setup-pi4-viruspilot-gp.sh
+source /root/.bashrc
+cd stratux
+make && make install
+```
 - Fetch latest ogn database (optional, this is automatically done during the first compile run):
 ```
 wget -O /opt/stratux/ogn/ddb.json http://ddb.glidernet.org/download/?j=1
@@ -67,8 +80,12 @@ reboot
 - FLARM-NMEA is labeled as "FLARM with Air Connect" under Third-Party Devices, the "Air Connect Key" can be ignored for Stratux Europe
 - info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
 
+## Garmin Pilot related Remarks
+- some preliminary support is implemented, the following Stratux IP is required: 10.29.39.1 (instead of 192.168.10.1)
+
 ## Limitations/Modifications/Issues
-- 64bit version only work on Pi3B or Pi4B
+- Pi Zero 2 W will soon be supported
+- these scripts also work on 32bit RasPiOS Lite Image
 - this setup is intended to create a Stratux system, don't use the Pi for any other important stuff as all of your data may be lost during Stratux operation
 - please note that the keyboard layout is set to DE and pc101 (if necessary please edit the /etc/default/keyboard file accordingly)
 
