@@ -8,18 +8,22 @@ This started as a script just for myself to build a Stratux Europe, based on:
 
 # stratux-pi4-viruspilot
 This script is based on my fork https://github.com/VirusPilot/stratux which has the following modifications compared to the "standard" version:
-- slightly modified system files (config.txt)
-- gps.go: load default configuration for u-blox GPS before sending new configuration
-- gps.go: initial support for u-blox M10S
-- gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
-- gps.go: enable GPS LED to indicate a valid fix
+- image/config.txt: slight modifications for Pi4B
+- main/gps.go: load default configuration for u-blox GPS before sending new configuration
+- main/gps.go: initial support for u-blox M10S
+- main/gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
+- main/gps.go: enable GPS LED to indicate a valid GPS fix
+
+# stratux-pi4-viruspilot-gp (Garmin Pilot version)
+- same as the obove but some preliminary support for Garmin Pilot as of version 10.6 is implemented
+- the following Stratux IP Address is required: 10.29.39.1 (instead of the default address 192.168.10.1)
 
 ## Please use these scripts with caution and only on a fresh Raspbian Buster Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
 - swapfile will be disabled
 
 ## Steps required:
-- Pi4B connected to LAN via Ethernet cable
+- Raspberry Pi connected to LAN via Ethernet cable
 - boot from a fresh 64bit RasPiOS Lite Image with ssh enabled
 - login as `pi` user
 ```
@@ -79,9 +83,6 @@ reboot
 - GDL90 is labeled as "GDL90 Compatible Device" under Third-Party Devices
 - FLARM-NMEA is labeled as "FLARM with Air Connect" under Third-Party Devices, the "Air Connect Key" can be ignored for Stratux Europe
 - info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
-
-## Garmin Pilot related Remarks
-- some preliminary support is implemented, the following Stratux IP is required: 10.29.39.1 (instead of 192.168.10.1)
 
 ## Limitations/Modifications/Issues
 - Pi Zero 2 W will soon be supported
