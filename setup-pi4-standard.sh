@@ -19,9 +19,9 @@ apt clean
 cd /root
 ARCH=$(arch)
 if [[ $ARCH == aarch64 ]]; then
-    wget https://golang.org/dl/go1.17.5.linux-arm64.tar.gz
+    wget https://golang.org/dl/go1.17.6.linux-arm64.tar.gz
   else
-    wget https://golang.org/dl/go1.17.5.linux-armv6l.tar.gz
+    wget https://golang.org/dl/go1.17.6.linux-armv6l.tar.gz
 fi
 
 rm -rf /root/go
