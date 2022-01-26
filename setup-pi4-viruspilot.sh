@@ -65,7 +65,7 @@ cd /root/stratux
 
 # remove "arm_64bit=1" from config.txt in case of armv7l
 ARCH=$(arch)
-if [[ $ARCH == armv7l ]];
+if [[ $ARCH == armv7l ]]; then
   sed -i image/config.txt -e "/arm_64bit=1/d"
 fi
 
