@@ -63,6 +63,12 @@ rm -r /root/stratux
 git clone --branch garmin-pilot --recursive https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
 
+# remove "arm_64bit=1" from config.txt in case of armv7l
+ARCH=$(arch)
+if [[ $ARCH == armv7l ]];
+  sed -i image/config.txt -e "/arm_64bit=1/d"
+fi
+
 # copy various files from /root/stratux/image
 cd /root/stratux/image
 cp -f config.txt /boot/config.txt # modified in https://github.com/VirusPilot/stratux
