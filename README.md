@@ -1,15 +1,14 @@
 # stratux-pi4-standard
-Build a Stratux Europe on a Pi3B or Pi4B based on a fresh 64bit RasPiOS Lite Image. A Pi4B with at least 2GB RAM is recommended, particularly in light of the disabled swapfile
+Build a Stratux Europe on a Pi3B, Pi4B or Pi Zero 2 W based on a fresh 64bit RasPiOS Lite Image
 
 This started as a script just for myself to build a Stratux Europe, based on:
-- Raspberry Pi3B or Pi4B, Pi Zero 2 W will soon be supported
-- Latest 64bit RasPiOS Lite Image from here: http://downloads.raspberrypi.org/raspios_lite_arm64/images/
-- https://github.com/b3nn0/stratux
+- Raspberry Pi3B, Pi4B or Pi Zero 2 W
+- Latest 64bit RasPiOS Lite Image: http://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2022-01-28/2022-01-28-raspios-bullseye-arm64-lite.zip
 
 # stratux-pi4-viruspilot
 This script is based on my fork https://github.com/VirusPilot/stratux which has the following modifications compared to the "standard" version:
-- image/config.txt: slight modifications for Pi4B
-- main/gps.go: load default configuration for u-blox GPS before sending new configuration
+- image/config.txt: slight modifications
+- main/gps.go: load default configuration for u-blox GPS before sending the Stratux related configuration, then save configuration
 - main/gps.go: initial support for u-blox M10S
 - main/gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
@@ -23,8 +22,9 @@ This script is based on my fork https://github.com/VirusPilot/stratux which has 
 - swapfile will be disabled
 
 ## Steps required:
-- Raspberry Pi connected to LAN via Ethernet cable
-- boot from a fresh 64bit RasPiOS Lite Image with ssh enabled
+- Raspberry Pi3B or Pi4B connected to LAN via Ethernet cable or
+- Raspberry Pi Zero 2 W connected to local WiFi (copy respective wpa_supplcant.conf to /boot directory)
+- boot from a fresh 64bit RasPiOS Lite Image with ssh enabled (copy empty ssh file to /boot directory)
 - login as `pi` user
 ```
 sudo su
@@ -85,7 +85,6 @@ reboot
 - info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
 
 ## Limitations/Modifications/Issues
-- Pi Zero 2 W will soon be supported
 - these scripts also work on 32bit RasPiOS Lite Image
 - this setup is intended to create a Stratux system, don't use the Pi for any other important stuff as all of your data may be lost during Stratux operation
 - please note that the keyboard layout is set to DE and pc101 (if necessary please edit the /etc/default/keyboard file accordingly)
