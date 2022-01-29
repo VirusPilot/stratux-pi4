@@ -7,16 +7,6 @@ timedatectl set-timezone Europe/Berlin
 apt install libjpeg62-turbo-dev libconfig9 rpi-update dnsmasq git cmake libusb-1.0-0-dev build-essential \
   autoconf libtool i2c-tools libfftw3-dev libncurses-dev python3-serial jq ifplugd iptables -y
 
-# disable swapfile for Pi3B and Pi4B
-if ! grep -q grep "Pi Zero 2 W" /sys/firmware/devicetree/base/model; then
-  systemctl disable dphys-swapfile
-  apt purge dphys-swapfile -y
-fi
-
-# cleanup
-apt autoremove -y
-apt clean
-
 # install latest golang
 cd /root
 ARCH=$(arch)
@@ -127,3 +117,23 @@ ssh-keygen -A -v
 systemctl disable regenerate_ssh_host_keys
 # This is usually done by the console-setup service that takes quite long of first boot..
 /lib/console-setup/console-setup.sh
+
+# build Stratux Europe
+source /root/.bashrc
+cd /root/stratux
+make
+make install
+
+# disable swapfile 
+systemctl disable dphys-swapfile
+apt purge dphys-swapfile -y
+apt autoremove -y
+apt clean
+
+echo
+read -t 1 -n 10000 discard 
+read -p "Reboot now? [y/n]" -n 1 -r
+echo
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+  reboot
+fi
