@@ -17,26 +17,26 @@ This script is based on my fork https://github.com/VirusPilot/stratux which has 
 - same as the obove but some preliminary support for Garmin Pilot as of version 10.6 is implemented
 - the following Stratux IP Address is required: 10.29.39.1 (instead of the default address 192.168.10.1)
 
-## Please use these scripts with caution and only on a fresh Raspbian Buster Image, because:
+## please use these scripts with caution and only on a fresh Raspbian Buster Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
 - swapfile will be disabled
 
-## Steps required (Pi3B or Pi4B):
+## prepare script for Pi3B or Pi4B:
 - flash latest 64bit RasPiOS Lite Image, using etcher
 - copy empty ssh file to /boot directory
 - connectt Pi to LAN via Ethernet cable
 - boot
-- login as `pi` user
 
-## Steps required (Pi Zero 2 W):
+## prepare script for Pi Zero 2 W:
 - flash latest 64bit RasPiOS Lite Image, using etcher
 - create wpa_supplcant.conf, using e.g. https://www.pistar.uk/wifi_builder.php to enable connecting to your local WiFi
 - copy wpa_supplcant.conf to /boot directory
 - copy empty ssh file to /boot directory
 - boot and wait until your Pi is connected to your WiFi
-- login as `pi` user
-- **please note that because of the Pi Zero 2 W's limited RAM (512MB) the swapfile will remain enabled, this requires you also to enable `Persistent logging` in the Stratux Settings after your first successful boot**
-- **please furthermore note that the brightness values of the Zero LED are reversed so it will turn off as soon as Stratux has successfully booted**
+- please note that the brightness values of the Pi Zero 2 W LED are reversed so it will turn off as soon as Stratux has successfully booted
+
+## start build process
+login as `pi` user
 ```
 sudo su
 ```
@@ -44,49 +44,33 @@ standard version:
 ```
 cd ~/
 apt update
-apt dist-upgrade -y
+apt full-upgrade -y
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
 ./stratux-pi4/setup-pi4-standard.sh
-source /root/.bashrc
-cd stratux
-make && make install
 ```
 viruspilot version:
 ```
 cd ~/
 apt update
-apt dist-upgrade -y
+apt full-upgrade -y
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
 ./stratux-pi4/setup-pi4-viruspilot.sh
-source /root/.bashrc
-cd stratux
-make && make install
 ```
 viruspilot version (for Garmin Pilot):
 ```
 cd ~/
 apt update
-apt dist-upgrade -y
+apt full-upgrade -y
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
 ./stratux-pi4/setup-pi4-viruspilot-gp.sh
-source /root/.bashrc
-cd stratux
-make && make install
 ```
-- Fetch latest ogn database (optional, this is automatically done during the first compile run):
-```
-wget -O /opt/stratux/ogn/ddb.json http://ddb.glidernet.org/download/?j=1
-```
+- if you are all set then let the sript reboot but if you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot, please follow the instructions under "Remarks - SDR programming" below for each SDR individually:
+- after reboot please reconnect LAN and/or WiFi and Stratux should work right away
 - You may now install https://github.com/TomBric/stratux-radar-display, please follow the steps described here: https://github.com/TomBric/stratux-radar-display#installation-on-a-standard-stratux-device-for-stratux-versions-eu027-or-newer
 - You may now install additional maps according to https://github.com/b3nn0/stratux/wiki/Downloading-better-map-data
-- If you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot, please  follow the instructions under "Remarks - SDR programming" below for each SDR individually or otherwise reboot:
-```
-reboot
-```
-- After reboot please reconnect LAN and/or WiFi and Stratux should work right away.
 
 ## SkyDemon related Remarks
 - WiFi Settings/Stratux IP Address 192.168.10.1 (default): only GDL90 can be selected and used in SkyDemon
