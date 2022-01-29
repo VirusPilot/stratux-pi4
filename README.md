@@ -21,11 +21,22 @@ This script is based on my fork https://github.com/VirusPilot/stratux which has 
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
 - swapfile will be disabled
 
-## Steps required:
-- Raspberry Pi3B or Pi4B connected to LAN via Ethernet cable or
-- Raspberry Pi Zero 2 W connected to local WiFi (copy respective wpa_supplcant.conf to /boot directory)
-- boot from a fresh 64bit RasPiOS Lite Image with ssh enabled (copy empty ssh file to /boot directory)
+## Steps required (Pi3B or Pi4B):
+- flash latest 64bit RasPiOS Lite Image, using etcher
+- copy empty ssh file to /boot directory
+- connectt Pi to LAN via Ethernet cable
+- boot
 - login as `pi` user
+
+## Steps required (Pi Zero 2 W):
+- flash latest 64bit RasPiOS Lite Image, using etcher
+- create wpa_supplcant.conf, using e.g. https://www.pistar.uk/wifi_builder.php to enable connecting to your local WiFi
+- copy wpa_supplcant.conf to /boot directory
+- copy empty ssh file to /boot directory
+- boot and wait until your Pi is connected to your WiFi
+- login as `pi` user
+- **please note that because of the Pi Zero 2 W's limited RAM (512MB) the swapfile will remain enabled, this requires you also to enable `Persistent logging` in the Stratux Settings after your first successful boot**
+- **please furthermore note that the brightness values of the Zero LED are reversed so it will turn off as soon as Stratux has successfully booted**
 ```
 sudo su
 ```
