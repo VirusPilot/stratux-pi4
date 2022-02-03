@@ -83,10 +83,16 @@ git clone https://github.com/VirusPilot/stratux-pi4.git
 - this setup is intended to create a Stratux system, don't use the Pi for any other important stuff as all of your data may be lost during Stratux operation
 - please note that the keyboard layout is set to DE and pc101 (if necessary please edit the /etc/default/keyboard file accordingly)
 
-## Remarks - SDR programming (1)
+## Remarks - SDR programming simple mode
+- only plug in one SDR and then execute
+```
+sdr-tool.sh
+```
+
+## Remarks - SDR programming expert mode (1)
 During boot, Stratux tries to identify which SDR to use for which traffic type (ADS-B, OGN) - this is done by reading the "Serial number" entry in each SDRs. You can check or modify these entries as described below, it is recommended for programming to only plug in one SDR at a time, connect the appropriate antenna and label this combination accordingly, e.g. "868" for OGN.
 ```
-apt install rtl-sdr -y
+stxstop (stop Stratux from claiming the SDRs)
 rtl_eeprom
 ```
 will report something like the following:
@@ -123,7 +129,7 @@ Or listen to you favorite FM radio station (my station below is at 106.9MHz) by 
 ```
 rtl_fm -M fm -f 106.9M -s 32000 -g 60 -l 10 - | aplay -t raw -r 32000 -c 1 -f S16_LE
 ```
-## Remarks - SDR programming (2)
+## Remarks - SDR programming expert mode (2)
 During boot, Stratux furthermore reads the ppm correction from the SDR `Serial number`, e.g. if the `Serial number` is `stx:1090:28` then the ppm used by Stratux is +28. If the appropriate ppm for the SDR is unknown, here are the steps to find out (again it is useful to have only one SDR plugged in to avoid confusion):
 
 `stxstop` (in case Stratux is already running)
