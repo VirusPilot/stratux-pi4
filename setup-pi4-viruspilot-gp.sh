@@ -108,6 +108,7 @@ systemctl disable wpa_supplicant
 systemctl disable apt-daily.timer
 systemctl disable apt-daily-upgrade.timer
 systemctl disable man-db.timer
+systemctl disable systemd-timesyncd
 
 # Run DHCP on eth0 when cable is plugged in
 sed -i -e 's/INTERFACES=""/INTERFACES="eth0"/g' /etc/default/ifplugd
