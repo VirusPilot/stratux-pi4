@@ -28,8 +28,8 @@
 
 ## prepare script for Pi Zero 2 W:
 - flash latest 64bit RasPiOS Lite Image, using etcher
-- create wpa_supplcant.conf, using e.g. https://www.pistar.uk/wifi_builder.php to enable connecting to your local WiFi
-- copy wpa_supplcant.conf to /boot directory
+- create wpa_supplicant.conf, using e.g. https://www.pistar.uk/wifi_builder.php to enable connecting to your local WiFi
+- copy wpa_supplicant.conf to /boot directory
 - copy empty ssh file to /boot directory
 - boot and wait until your Pi is connected to your WiFi
 - please note that the brightness values of the Pi Zero 2 W LED are reversed so it will turn off as soon as Stratux has successfully booted
