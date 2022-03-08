@@ -23,7 +23,7 @@
 ## prepare script for Pi3B or Pi4B:
 - flash latest 64bit RasPiOS Lite Image, using etcher
 - copy empty ssh file to /boot directory
-- connectt Pi to LAN via Ethernet cable
+- connect Pi to LAN via Ethernet cable
 - boot
 
 ## prepare script for Pi Zero 2 W:
