@@ -7,14 +7,10 @@
 # stratux-pi4-viruspilot
 - based on my fork https://github.com/VirusPilot/stratux which has the following modifications compared to the "standard" version:
 - image/config.txt: slight modifications
-- main/gps.go: load default configuration for u-blox GPS before sending the Stratux related configuration, then save configuration
+- main/gps.go: load default configuration for u-blox GPS before sending the Stratux related configuration
 - main/gps.go: initial support for u-blox M10S
 - main/gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
-
-# stratux-pi4-viruspilot-gp (Garmin Pilot version)
-- same as the obove but some preliminary support for Garmin Pilot as of version 10.6 is implemented
-- the following Stratux IP Address is required: 10.29.39.1 (instead of the default address 192.168.10.1)
 
 ## please use these scripts with caution and only on a fresh Raspbian Buster Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
@@ -56,15 +52,6 @@ apt full-upgrade -y
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
 ./stratux-pi4/setup-pi4-viruspilot.sh
-```
-viruspilot version (for Garmin Pilot):
-```
-cd ~/
-apt update
-apt full-upgrade -y
-apt install git -y
-git clone https://github.com/VirusPilot/stratux-pi4.git
-./stratux-pi4/setup-pi4-viruspilot-gp.sh
 ```
 - if you are all set then let the sript reboot but if you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot; please follow the instructions under "Remarks - SDR programming" below for each SDR individually
 - after reboot please reconnect LAN and/or WiFi and Stratux should work right away
