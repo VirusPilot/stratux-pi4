@@ -95,8 +95,8 @@ sed -i /etc/default/keyboard -e "/^XKBLAYOUT/s/\".*\"/\"de\"/"
 sed -i /etc/default/keyboard -e "/^XKBMODEL/s/\".*\"/\"pc101\"/"
 
 # Set hostname
-echo "stratux" > /etc/hostname
-sed -i /etc/hosts -e "s/raspberrypi/stratux/g"
+#echo "stratux" > /etc/hostname
+#sed -i /etc/hosts -e "s/raspberrypi/stratux/g"
 
 # prepare services
 systemctl enable ssh
