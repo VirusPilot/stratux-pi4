@@ -2,7 +2,7 @@
 
 # stratux-pi4-standard
 - based on https://github.com/b3nn0/stratux
-- latest 64bit RasPiOS Lite Image: http://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2022-01-28/2022-01-28-raspios-bullseye-arm64-lite.zip
+- latest 64bit RasPiOS Lite Image, using latest Raspberry Pi Imager from here: https://www.raspberrypi.com/software/
 
 # stratux-pi4-viruspilot
 - based on my fork https://github.com/VirusPilot/stratux which has the following modifications compared to the "standard" version:
@@ -16,22 +16,17 @@
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
 - swapfile will be disabled
 
-## prepare script for Pi3B or Pi4B:
-- flash latest 64bit RasPiOS Lite Image, using etcher
-- copy empty ssh file to /boot directory
-- connect Pi to LAN via Ethernet cable
-- boot
-
-## prepare script for Pi Zero 2 W:
-- flash latest 64bit RasPiOS Lite Image, using etcher
-- create wpa_supplicant.conf, using e.g. https://www.pistar.uk/wifi_builder.php to enable connecting to your local WiFi
-- copy wpa_supplicant.conf to /boot directory
-- copy empty ssh file to /boot directory
-- boot and wait until your Pi is connected to your WiFi
+## prepare script for Pi3B, Pi4B or Pi Zero 2W:
+- flash latest 64bit RasPiOS Lite Image, using latest Raspberry Pi Imager with the following settings:
+  - select appropriate hostname
+  - enable ssh
+  - enable user pi with password
+  - configure WiFi (particularly important for Pi Zero 2 W)
+- boot and wait until your Pi is connected to your LAN or WiFi
 - please note that the brightness values of the Pi Zero 2 W LED are reversed so it will turn off as soon as Stratux has successfully booted
 
 ## start build process
-login as `pi` user
+login as `pi` user with the above set password
 ```
 sudo su
 ```
