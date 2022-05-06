@@ -1,4 +1,4 @@
-# Build a Stratux Europe on a Pi3B, Pi4B or Pi Zero 2 W based on a fresh 64bit RasPiOS Lite Image
+# Build a Stratux Europe on a Pi3B, Pi4B or Pi Zero 2W based on a fresh 64bit RasPiOS Lite Image
 
 # stratux-pi4-standard
 - based on https://github.com/b3nn0/stratux
@@ -21,9 +21,9 @@
   - select appropriate hostname
   - enable ssh
   - enable user pi with password
-  - configure WiFi (particularly important for Pi Zero 2 W)
+  - configure WiFi (particularly important for Pi Zero 2W)
 - boot and wait until your Pi is connected to your LAN or WiFi
-- please note that the brightness values of the Pi Zero 2 W LED are reversed so it will turn off as soon as Stratux has successfully booted
+- please note that the brightness values of the Pi Zero 2W LED are reversed so it will turn off as soon as Stratux has successfully booted
 
 ## start build process
 login as `pi` user with the above set password
