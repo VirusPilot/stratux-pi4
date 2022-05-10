@@ -1,8 +1,6 @@
 #!/bin/bash
 #set -x
 
-timedatectl set-timezone Europe/Berlin
-
 # prepare libs
 apt install libjpeg62-turbo-dev libconfig9 rpi-update dnsmasq git cmake libusb-1.0-0-dev build-essential \
   autoconf libtool i2c-tools libfftw3-dev libncurses-dev python3-serial jq ifplugd iptables -y
@@ -89,14 +87,6 @@ echo -e "\n/dev/sda1             /var/log        auto    defaults,nofail,noatime
 
 #disable serial console, disable rfkill state restore, enable wifi on boot
 sed -i /boot/cmdline.txt -e "s/console=serial0,[0-9]\+ /systemd.restore_state=0 rfkill.default_state=1 /"
-
-#Set the keyboard layout to DE and pc101
-sed -i /etc/default/keyboard -e "/^XKBLAYOUT/s/\".*\"/\"de\"/"
-sed -i /etc/default/keyboard -e "/^XKBMODEL/s/\".*\"/\"pc101\"/"
-
-# Set hostname
-#echo "stratux" > /etc/hostname
-#sed -i /etc/hosts -e "s/raspberrypi/stratux/g"
 
 # prepare services
 systemctl enable ssh
