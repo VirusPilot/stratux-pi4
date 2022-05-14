@@ -51,6 +51,7 @@ git clone https://github.com/VirusPilot/stratux-pi4.git
 - if you are all set then let the sript reboot but if you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot; please follow the instructions under "Remarks - SDR programming" below for each SDR individually
 - after reboot please reconnect LAN and/or WiFi and Stratux should work right away
 - You may now install https://github.com/VirusPilot/stratux-radar-display:
+  - enable Persistent logging on Stratux settings page
   - `cd && git clone https://github.com/VirusPilot/stratux-radar-display.git`
   - `/bin/bash /root/stratux-radar-display/image/configure_radar_on_stratux.sh`
   - add e.g. the following line to /etc/rc.local if you have a 3.7 inch E-Paper installed: `(sleep 30; python3 /root/stratux-radar-display/main/radar.py -z -d Epaper_3in7 -c 192.168.10.1) &`
