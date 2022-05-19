@@ -67,7 +67,6 @@ git clone https://github.com/VirusPilot/stratux-pi4.git
 ## Limitations/Modifications/Issues
 - these scripts also work on 32bit RasPiOS Lite Image
 - this setup is intended to create a Stratux system, don't use the Pi for any other important stuff as all of your data may be lost during Stratux operation
-- please note that the keyboard layout is set to DE and pc101 (if necessary please edit the /etc/default/keyboard file accordingly)
 
 ## Remarks - SDR programming simple mode
 - only plug in one SDR and then execute
