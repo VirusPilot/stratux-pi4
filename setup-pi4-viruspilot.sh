@@ -121,6 +121,10 @@ apt purge dphys-swapfile -y
 apt autoremove -y
 apt clean
 
+# disable autologin
+rm -f rm /etc/systemd/system/getty@tty1.service.d/autologin.conf
+
+# ask for reboot
 echo
 read -t 1 -n 10000 discard 
 read -p "Reboot now? [y/n]" -n 1 -r
