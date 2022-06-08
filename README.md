@@ -1,5 +1,7 @@
 # Build a Stratux Europe on a Pi3B, Pi4B or Pi Zero 2W based on a fresh 64bit RasPiOS Lite Image
 
+shopping list: https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List
+
 # stratux-pi4-standard
 - based on https://github.com/b3nn0/stratux
 - latest 64bit RasPiOS Lite Image, using latest Raspberry Pi Imager from here: https://www.raspberrypi.com/software/
