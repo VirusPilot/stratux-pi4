@@ -14,12 +14,12 @@ shopping list: https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List
 - main/gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
 
-## please use these scripts with caution and only on a fresh Raspbian Buster Image, because:
+## please use these scripts with caution and only on a fresh 64bit RasPiOS Lite Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
 - swapfile will be disabled
 
 ## prepare script for Pi3B, Pi4B or Pi Zero 2W:
-- flash latest 64bit RasPiOS Lite Image, using latest Raspberry Pi Imager with the following settings:
+- flash latest 64bit RasPiOS Lite Image, using latest **Raspberry Pi Imager** with the following settings:
   - select appropriate hostname
   - enable ssh
   - enable user pi with password
