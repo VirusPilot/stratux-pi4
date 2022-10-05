@@ -9,9 +9,9 @@ apt install libjpeg62-turbo-dev libconfig9 rpi-update dnsmasq git cmake libusb-1
 cd /root
 ARCH=$(arch)
 if [[ $ARCH == aarch64 ]]; then
-    wget https://go.dev/dl/go1.19.1.linux-arm64.tar.gz
+    wget https://go.dev/dl/go1.19.2.linux-arm64.tar.gz
   else
-    wget https://go.dev/dl/go1.19.1.linux-armv6l.tar.gz
+    wget https://go.dev/dl/go1.19.2.linux-armv6l.tar.gz
 fi
 
 rm -rf /root/go
