@@ -10,7 +10,7 @@ shopping list: https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List
 - based on my fork https://github.com/VirusPilot/stratux which has the following modifications compared to the "standard" version:
 - image/config.txt: slight modifications
 - main/gps.go: load default configuration for u-blox GPS before sending the Stratux related configuration
-- main/gps.go: initial support for u-blox M10S
+- main/gps.go: initial support for u-blox M10S (connected via UART)
 - main/gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
 
@@ -59,12 +59,13 @@ git clone https://github.com/VirusPilot/stratux-pi4.git
   - add e.g. the following line to /etc/rc.local if you have a 3.7 inch E-Paper installed: `(sleep 30; python3 /root/stratux-radar-display/main/radar.py -z -d Epaper_3in7 -c 192.168.10.1) &`
 - You may now install additional maps according to https://github.com/b3nn0/stratux/wiki/Downloading-better-map-data
 
-## SkyDemon related Remarks
-- WiFi Settings/Stratux IP Address 192.168.10.1 (default): only GDL90 can be selected and used in SkyDemon
-- WiFi Settings/Stratux IP Address 192.168.1.1: both GDL90 and FLARM-NMEA can be selected and used in SkyDemon
-- GDL90 is labeled as "GDL90 Compatible Device" under Third-Party Devices
-- FLARM-NMEA is labeled as "FLARM with Air Connect" under Third-Party Devices, the "Air Connect Key" can be ignored for Stratux Europe
+## SkyDemon related Remark
+- WiFi Settings/Stratux IP Address 192.168.10.1 (default): only **GDL90** can be selected and used in SkyDemon
+- WiFi Settings/Stratux IP Address 192.168.1.1: both **GDL90** and **FLARM-NMEA** can be selected and used in SkyDemon
+- **GDL90** is labeled as "**GDL90 Compatible Device**" under "**Third-Party Devices**"
+- **FLARM-NMEA** is labeled as "**Air Avionics AT-1**" or "**FLARM with Air Connect**" under "**Third-Party Devices**", the "**Air Connect Key**" can be ignored for Stratux Europe
 - info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
+- more info here: https://github.com/b3nn0/stratux/wiki/EFB-Configuration#skydemon-using-flarm-nmea-protocol-recommended
 
 ## Limitations/Modifications/Issues
 - these scripts also work on 32bit RasPiOS Lite Image
