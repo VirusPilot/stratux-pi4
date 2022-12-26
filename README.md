@@ -28,7 +28,7 @@ shopping list: https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List
 - please note that the brightness values of the Pi Zero 2W LED are reversed so it will turn off as soon as Stratux has successfully booted
 
 ## start build process
-login as `pi` user with the above set password
+login as `pi` user with the above set password, then:
 ```
 sudo su
 ```
