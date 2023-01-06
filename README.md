@@ -8,6 +8,7 @@ shopping list: https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List
 
 # stratux-pi4-viruspilot
 - based on my fork https://github.com/VirusPilot/stratux which has the following modifications compared to the "standard" version:
+- dump1090 submodule: use latest release (currently v8.2)
 - image/config.txt: slight modifications
 - main/gps.go: load default configuration for u-blox GPS before sending the Stratux related configuration
 - main/gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
