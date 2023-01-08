@@ -1,13 +1,13 @@
 # Build a Stratux Europe on a Pi3B, Pi4B or Pi Zero 2W based on a fresh 64bit RasPiOS Lite Image
 
-shopping list: https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List
+- shopping list: https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List
+- both scripts are based on the latest 64bit RasPiOS Lite Image, using latest **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
 
 # stratux-pi4-standard
-- based on https://github.com/b3nn0/stratux
-- latest 64bit RasPiOS Lite Image, using latest Raspberry Pi Imager from here: https://www.raspberrypi.com/software/
+based on https://github.com/b3nn0/stratux
 
 # stratux-pi4-viruspilot
-- based on my fork https://github.com/VirusPilot/stratux which has the following modifications compared to the "standard" version:
+based on my fork https://github.com/VirusPilot/stratux with the following modifications compared to the "standard" version:
 - dump1090 submodule: use latest release (currently v8.2)
 - image/config.txt: slight modifications
 - main/gps.go: load default configuration for u-blox GPS before sending the Stratux related configuration
@@ -52,14 +52,18 @@ git clone https://github.com/VirusPilot/stratux-pi4.git
 ```
 - if you are all set then let the sript reboot but if you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot; please follow the instructions under "Remarks - SDR programming" below for each SDR individually
 - after reboot please reconnect LAN and/or WiFi and Stratux should work right away
-- You may now install https://github.com/VirusPilot/stratux-radar-display:
-  - enable Persistent logging on Stratux settings page
+
+## optinal components:
+enabling **Persistent logging** on Stratux settings page is required!
+
+- you may now install https://github.com/VirusPilot/stratux-radar-display:
   - `cd && git clone https://github.com/VirusPilot/stratux-radar-display.git`
   - `/bin/bash /root/stratux-radar-display/image/configure_radar_on_stratux.sh`
   - add e.g. the following line to /etc/rc.local if you have a 3.7 inch E-Paper installed: `(sleep 30; python3 /root/stratux-radar-display/main/radar.py -z -d Epaper_3in7 -c 192.168.10.1) &`
-- You may now install additional maps according to https://github.com/b3nn0/stratux/wiki/Downloading-better-map-data
+- you may now install additional maps according to https://github.com/b3nn0/stratux/wiki/Downloading-better-map-data
+- if you want to upgrade gloang to the latest version from time to time, you may consider installing https://github.com/stefanmaric/g with the following command: `curl -sSL https://git.io/g-install | sh -s -- -y`
 
-## SkyDemon related Remark
+## SkyDemon related Remarks
 - WiFi Settings/Stratux IP Address 192.168.10.1 (default): only **GDL90** can be selected and used in SkyDemon
 - WiFi Settings/Stratux IP Address 192.168.1.1: both **GDL90** and **FLARM-NMEA** can be selected and used in SkyDemon
 - **GDL90** is labeled as "**GDL90 Compatible Device**" under "**Third-Party Devices**"
