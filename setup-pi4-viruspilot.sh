@@ -53,10 +53,10 @@ rm -r /root/stratux
 git clone --recursive https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
 
-# remove "arm_64bit=1" from config.txt in case of armv7l
+# set "arm_64bit=0" in case of armv7l
 ARCH=$(arch)
 if [[ $ARCH != aarch64 ]]; then
-  sed -i image/config.txt -e "/arm_64bit=1/d"
+  sed -i image/config.txt -e "s/arm_64bit=1/arm_64bit=0/g"
 fi
 
 # copy various files from /root/stratux/image
