@@ -1,6 +1,8 @@
 # Build a Stratux Europe on a Pi3B, Pi4B or Pi Zero 2W based on a fresh 64bit RasPiOS Lite Image
 
-- shopping list: https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List
+- shopping lists:
+  - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-(active-cooling-with-fan)
+  - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-(passive-cooling)
 - both scripts are based on the latest 64bit RasPiOS Lite Image, using latest **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
 
 # stratux-pi4-standard
