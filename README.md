@@ -39,6 +39,7 @@ standard version:
 ```
 cd ~/
 apt update
+apt full-upgrade -y
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
 ./stratux-pi4/setup-pi4-standard.sh
@@ -47,6 +48,7 @@ viruspilot version:
 ```
 cd ~/
 apt update
+apt full-upgrade -y
 apt install git -y
 git clone https://github.com/VirusPilot/stratux-pi4.git
 ./stratux-pi4/setup-pi4-viruspilot.sh
