@@ -41,21 +41,20 @@ standard version:
 ```
 cd ~/
 apt update
-apt full-upgrade -y
-apt install git -y
-git clone https://github.com/VirusPilot/stratux-pi4.git
-./stratux-pi4/setup-pi4-standard.sh
+wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-standard.sh
+chmod +x setup-pi4-standard.sh
+./setup-pi4-standard.sh
 ```
 viruspilot version:
 ```
 cd ~/
 apt update
 apt full-upgrade -y
-apt install git -y
-git clone https://github.com/VirusPilot/stratux-pi4.git
-./stratux-pi4/setup-pi4-viruspilot.sh
+wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-viruspilot.sh
+chmod +x setup-pi4-viruspilot.sh
+./setup-pi4-viruspilot.sh
 ```
-- if you are all set then let the sript reboot but if you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot; please follow the instructions under "Remarks - SDR programming" below for each SDR individually
+- if you are all set then let the sript **reboot** but if you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot; please follow the instructions under "Remarks - SDR programming" below for each SDR individually
 - after reboot please reconnect LAN and/or WiFi and Stratux should work right away
 
 ## optinal components:
