@@ -82,6 +82,9 @@ overlayctl install
 touch /var/grow_root_part
 mkdir -p /overlay/robase # prepare so we can bind-mount root even if overlay is disabled
 
+# So we can import network settings if needed
+touch /boot/.stratux-first-boot
+
 # Optionally mount /dev/sda1 as /var/log - for logging to USB stick
 echo -e "\n/dev/sda1             /var/log        auto    defaults,nofail,noatime,x-systemd.device-timeout=1ms  0       2" >> /etc/fstab
 
