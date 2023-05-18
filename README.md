@@ -13,7 +13,7 @@ based on https://github.com/b3nn0/stratux
 # stratux-pi4-viruspilot
 based on my fork https://github.com/VirusPilot/stratux with the following modifications compared to the "standard" version:
 - dump1090 submodule: use latest release (currently v8.2)
-- ogn-rx-eu_aarch64 beta version which includes operates also as an APRS OGN feeder if Stratux is connected to the internet
+- ogn-rx-eu_aarch64 beta version which operates also as an APRS OGN feeder if Stratux is connected to the internet
 - image/config.txt: slight modifications
 - main/gps.go: load default configuration for u-blox GPS before sending the Stratux related configuration
 - main/gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
