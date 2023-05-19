@@ -18,7 +18,6 @@ based on my fork https://github.com/VirusPilot/stratux with the following modifi
 - main/gps.go: load default configuration for u-blox GPS before sending the Stratux related configuration
 - main/gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
-- green Pi LED usage fixed so that it works with latest RasPiOS kernel
 
 ## please use these scripts with caution and only on a fresh 64bit RasPiOS Lite Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
@@ -30,7 +29,7 @@ based on my fork https://github.com/VirusPilot/stratux with the following modifi
   - enable ssh
   - enable user pi with password
   - configure WiFi (particularly important for Pi Zero 2W)
-- boot and wait until your Pi is connected to your LAN or WiFi
+- boot with this image and wait until your Pi is connected to your LAN or WiFi
 - please note that the brightness values of the Pi Zero 2W LED are reversed so it will turn off as soon as Stratux has successfully booted
 
 ## start build process
