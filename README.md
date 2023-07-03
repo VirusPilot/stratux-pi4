@@ -12,12 +12,11 @@ based on https://github.com/b3nn0/stratux
 
 # stratux-pi4-viruspilot
 based on my fork https://github.com/VirusPilot/stratux with the following modifications compared to the "standard" version:
-- dump1090 submodule: use latest release (currently v8.2)
-- ogn-rx-eu beta version (0.1.5/May 17 2023) which operates also as an APRS OGN feeder if Stratux has an internet connection
 - image/config.txt: slight modifications
 - main/gps.go: load default configuration for u-blox GPS before sending the Stratux related configuration
 - main/gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
+- main/gps.go: handle a conneted T-Beam-S3Core as GPS_TYPE_SERIAL so that HDOP is properly calculated
 
 ## please use these scripts with caution and only on a fresh 64bit RasPiOS Lite Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
