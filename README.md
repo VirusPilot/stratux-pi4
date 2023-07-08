@@ -18,6 +18,7 @@ based on my fork https://github.com/VirusPilot/stratux with the following modifi
 - main/gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
 - main/gps.go: handle a conneted T-Beam-S3Core as GPS_TYPE_SERIAL so that HDOP is properly calculated
+- main/gen_gdl90.go: increase GDL90 ownship report from 1Hz to 5Hz
 
 ## please use these scripts with caution and only on a fresh 64bit RasPiOS Lite Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
