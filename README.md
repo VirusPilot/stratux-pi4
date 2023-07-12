@@ -15,7 +15,6 @@ based on https://github.com/b3nn0/stratux
 based on my fork https://github.com/VirusPilot/stratux with the following modifications compared to the "standard" version:
 - image/config.txt: slight modifications
 - main/gps.go: load default configuration for u-blox GPS before sending the Stratux related configuration
-- main/gps.go: use Beidou instead of Glonass in case of u-blox 8 so that the three following GNSS are used: GPS, Galileio, Beidou
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
 - main/gps.go: handle a conneted T-Beam-S3Core as GPS_TYPE_SERIAL so that HDOP is properly calculated
 - main/gen_gdl90.go: increase GDL90 ownship report from 1Hz to 5Hz
