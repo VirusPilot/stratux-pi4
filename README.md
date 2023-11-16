@@ -28,12 +28,12 @@ based on my fork https://github.com/VirusPilot/stratux with the following modifi
   - select appropriate hostname
   - enable ssh
   - enable user pi with password
-  - configure WiFi (particularly important for Pi Zero 2W)
-- boot with this image and wait until your Pi is connected to your LAN or WiFi
+  - Pi Zero 2W: enable and configure WiFi so that the Pi connects to your local network
+- boot your Pi with this image and wait until it is connected to your LAN or WiFi (this may take a few minutes after the first boot)
 - please note that the brightness values of the Pi Zero 2W LED are reversed so it will turn off as soon as Stratux has successfully booted
 
 ## start build process
-login as `pi` user with the above set password, then:
+login with ssh as `pi` user with the above set password, then:
 ```
 sudo su
 ```
