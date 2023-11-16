@@ -55,7 +55,9 @@ chmod +x setup-pi4-viruspilot.sh
 ./setup-pi4-viruspilot.sh
 ```
 - if you are all set then let the sript **reboot** but if you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot; please follow the instructions under "Remarks - SDR programming" below for each SDR individually
-- after reboot please reconnect LAN and/or WiFi and Stratux should work right away
+- after reboot Stratux is providing an unprotected WiFi access point with the SSID "stratux"
+- after you have connected with this access point, you can open the Stratux web interface: http://192.168.10.1 and modify the settings according to your needs
+- Pi Zero 2W users: Stratux will now no longer connect to your local network unless you change this by switching the Stratux WiFi settings to "AP+Client"
 
 ## optinal components:
 enabling **Persistent logging** on Stratux settings page is required!
