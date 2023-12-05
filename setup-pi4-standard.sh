@@ -22,7 +22,7 @@ rm *.gz
 # install librtlsdr
 cd /root
 rm -rf /root/rtl-sdr
-git clone https://github.com/osmocom/rtl-sdr.git
+git clone https://github.com/VirusPilot/rtl-sdr.git
 cd rtl-sdr
 mkdir build
 cd build
