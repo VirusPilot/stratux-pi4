@@ -1,4 +1,4 @@
-# Build a Stratux Europe on a Pi3B, Pi4B or Pi Zero 2W based on a fresh 64bit RasPiOS Lite Image
+# Build a Stratux Europe on a Pi3B, Pi4B or Pi Zero 2W based on a fresh 64bit RasPiOS Lite Image, currently up to Debian version 11 (bullseye)
 
 - shopping lists:
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v3-TX (active cooling with fan, copper heatsink, TX module)
@@ -6,7 +6,7 @@
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v2 (active cooling with fan)
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v1 (passive cooling with custum aluminium block)
   
-- both scripts are based on the latest 64bit RasPiOS Lite Image, using latest **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
+- both scripts are based on the latest **64bit RasPiOS Lite Bullseye Image**, using **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
 
 # stratux-pi4-standard
 based on https://github.com/b3nn0/stratux
