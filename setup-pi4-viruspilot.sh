@@ -7,8 +7,8 @@ apt install libjpeg62-turbo-dev libconfig9 rpi-update dnsmasq git cmake libusb-1
 
 # install latest golang
 cd /root
-ARCH=$(arch)
-if [[ $ARCH == aarch64 ]]; then
+ARCH=$(getconf LONG_BIT)
+if [[ $ARCH -eq 64 ]]; then
     wget https://go.dev/dl/go1.21.5.linux-arm64.tar.gz
   else
     wget https://go.dev/dl/go1.21.5.linux-armv6l.tar.gz
@@ -61,9 +61,9 @@ rm -r /root/stratux
 git clone --recursive https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
 
-# set "arm_64bit=0" in case of armv7l
-ARCH=$(arch)
-if [[ $ARCH != aarch64 ]]; then
+# set "arm_64bit=0" in case of 32bit
+ARCH=$(getconf LONG_BIT)
+if [[ $ARCH -eq 32 ]]; then
   sed -i image/config.txt -e "s/arm_64bit=1/arm_64bit=0/g"
 fi
 
