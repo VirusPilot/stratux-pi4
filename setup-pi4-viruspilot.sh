@@ -2,12 +2,13 @@
 #set -x
 
 # prepare libs
-apt install libjpeg62-turbo-dev libconfig9 rpi-update dnsmasq git cmake libusb-1.0-0-dev build-essential \
-  autoconf libtool i2c-tools libfftw3-dev libncurses-dev python3-serial jq ifplugd iptables git -y
+apt install libjpeg62-turbo-dev libconfig9 rpi-update dnsmasq git libusb-1.0-0-dev build-essential \
+  autoconf libtool i2c-tools libfftw3-dev libncurses-dev python3-serial jq ifplugd iptables -y
+
+ARCH=$(getconf LONG_BIT)
 
 # install latest golang
 cd /root
-ARCH=$(getconf LONG_BIT)
 if [[ $ARCH -eq 64 ]]; then
     wget https://go.dev/dl/go1.21.5.linux-arm64.tar.gz
   else
@@ -19,26 +20,18 @@ rm -rf /root/go_path
 tar xzf *.gz
 rm *.gz
 
-# compile and install librtlsdr from https://github.com/osmocom/rtl-sdr fork
-cd /root
-apt purge ^librtlsdr
-rm -rf /root/rtl-sdr
-rm -rf /usr/lib/librtlsdr*
-rm -rf /usr/include/rtl-sdr*
-rm -rf /usr/local/lib/librtlsdr*
-rm -rf /usr/local/lib/aarch64-linux-gnu/librtlsdr*
-rm -rf /usr/local/include/rtl-sdr*
-rm -rf /usr/local/include/rtl_*
-rm -rf /usr/local/bin/rtl_*
-git clone https://github.com/VirusPilot/rtl-sdr.git
-cd rtl-sdr
-mkdir build
-cd build
-cmake ../ -DDETACH_KERNEL_DRIVER=ON -DINSTALL_UDEV_RULES=ON
-make
-sudo make install
-sudo ldconfig
-rm -rf /root/rtl-sdr
+# install librtlsdr
+if [ $ARCH -eq 64 ]; then
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr0_0.6.0-4_arm64.deb
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr-dev_0.6.0-4_arm64.deb
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/rtl-sdr_0.6.0-4_arm64.deb
+else
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr0_0.6.0-4_armhf.deb
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr-dev_0.6.0-4_armhf.deb
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/rtl-sdr_0.6.0-4_armhf.deb
+fi
+sudo dpkg -i *.deb
+rm -f *.deb
 
 # install kalibrate-rtl
 cd /root
@@ -62,7 +55,6 @@ git clone --recursive https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
 
 # set "arm_64bit=0" in case of 32bit
-ARCH=$(getconf LONG_BIT)
 if [[ $ARCH -eq 32 ]]; then
   sed -i image/config.txt -e "s/arm_64bit=1/arm_64bit=0/g"
 fi
