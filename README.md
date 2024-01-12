@@ -57,7 +57,7 @@ chmod +x setup-pi4-viruspilot.sh
 - after you have connected with this access point, you can open the Stratux web interface: http://192.168.10.1 and modify the settings according to your needs
 - Pi Zero 2W users: Stratux will now no longer connect to your local network unless you change this by switching the Stratux WiFi settings to "AP+Client"
 
-## optinal components:
+## optional components:
 enabling **Persistent logging** on Stratux settings page is required!
 
 - you may now install https://github.com/VirusPilot/stratux-radar-display:
