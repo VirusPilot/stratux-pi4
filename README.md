@@ -1,4 +1,4 @@
-# Build a Stratux Europe on a Pi3B, Pi4B or Pi Zero 2W based on a fresh 64bit RasPiOS Lite Image, currently up to Debian version 11 (bullseye)
+# Build a Stratux Europe on a Pi3B, Pi4B or Pi Zero 2W based on a fresh 64bit RasPiOS Lite Image
 
 - shopping lists:
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v3-TX (active cooling with fan, copper heatsink, TX module)
@@ -22,7 +22,7 @@ based on my fork https://github.com/VirusPilot/stratux with the following modifi
 - swapfile will be disabled
 
 ## prepare script for Pi3B, Pi4B or Pi Zero 2W:
-- flash latest 64bit RasPiOS Lite Image, using latest **Raspberry Pi Imager** with the following settings:
+- flash latest 64bit RasPiOS Lite Image (Debian 11 or 12, see below), using latest **Raspberry Pi Imager** with the following settings:
   - select appropriate hostname
   - enable ssh
   - enable user pi with password
@@ -35,15 +35,22 @@ login with ssh as `pi` user with the above set password, then:
 ```
 sudo su
 ```
-standard version:
+standard version (up to Debian 11 Bullseye):
 ```
 cd ~/
 apt update
 wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-standard.sh
 chmod +x setup-pi4-standard.sh
-./setup-pi4-standard.sh
 ```
-viruspilot version:
+standard version (Debian 12 Bookworm, WIP):
+```
+cd ~/
+apt update
+wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-bookworm.sh
+chmod +x setup-pi4-bookworm.sh
+./setup-pi4-bookworm.sh
+```
+viruspilot version (up to Debian 11 Bullseye):
 ```
 cd ~/
 apt update
