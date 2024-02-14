@@ -39,6 +39,7 @@ standard version (up to Debian 11 Bullseye):
 ```
 cd ~/
 apt update
+apt full-upgrade -y
 wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-standard.sh
 chmod +x setup-pi4-standard.sh
 ```
@@ -46,6 +47,7 @@ standard version (Debian 12 Bookworm, WIP):
 ```
 cd ~/
 apt update
+apt full-upgrade -y
 wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-bookworm.sh
 chmod +x setup-pi4-bookworm.sh
 ./setup-pi4-bookworm.sh
