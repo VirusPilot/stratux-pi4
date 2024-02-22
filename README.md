@@ -43,7 +43,7 @@ apt full-upgrade -y
 wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-standard.sh
 chmod +x setup-pi4-standard.sh
 ```
-standard version (Debian 12 Bookworm, WIP):
+standard version (Debian 12 Bookworm, WIP: **WiFi Client Mode not working!!**):
 ```
 cd ~/
 apt update
