@@ -84,7 +84,7 @@ mkdir -p /overlay/robase # prepare so we can bind-mount root even if overlay is 
 touch /boot/firmware/.stratux-first-boot
 
 # Optionally mount /dev/sda1 as /var/log - for logging to USB stick
-echo -e "\n/dev/sda1             /var/log        auto    defaults,nofail,noatime,x-systemd.device-timeout=1ms  0       2" >> /etc/fstab
+#echo -e "\n/dev/sda1             /var/log        auto    defaults,nofail,noatime,x-systemd.device-timeout=1ms  0       2" >> /etc/fstab
 
 #disable serial console, disable rfkill state restore, enable wifi on boot
 sed -i /boot/firmware/cmdline.txt -e "s/console=serial0,[0-9]\+ /systemd.restore_state=0 rfkill.default_state=1 /"
