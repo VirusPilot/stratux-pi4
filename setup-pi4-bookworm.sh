@@ -51,7 +51,7 @@ cd /root && rm -r WiringPi
 # clone stratux
 cd /root
 rm -r /root/stratux
-git clone --recursive --branch bookworm https://github.com/b3nn0/stratux.git /root/stratux
+git clone --recursive --branch bookworm https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
 
 # set "arm_64bit=0" in case of 32bit
