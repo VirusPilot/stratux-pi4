@@ -44,7 +44,7 @@ make -j8 && make install
 rm -rf /root/kalibrate-rtl
 
 # Prepare wiringpi for ogn trx via GPIO
-cd /root && git clone https://github.com/WiringPi/WiringPi.git
+cd /root && git clone --branch isr https://github.com/WiringPi/WiringPi.git
 cd WiringPi && ./build
 cd /root && rm -r WiringPi
 
@@ -61,7 +61,7 @@ fi
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image
-cp -f config.txt /boot/firmware/config.txt
+cp -f config.txt /boot/firmware/config.txt # modified in https://github.com/VirusPilot/stratux
 cp -f bashrc.txt /root/.bashrc
 cp -f rc.local /etc/rc.local
 cp -f modules.txt /etc/modules
@@ -77,7 +77,7 @@ cp -f sshd_config /etc/ssh/sshd_config
 cp -f overlayctl init-overlay /sbin/
 overlayctl install
 # init-overlay replaces raspis initial partition size growing.. Make sure we call that manually (see init-overlay script)
-touch /var/grow_root_part
+#touch /var/grow_root_part
 mkdir -p /overlay/robase # prepare so we can bind-mount root even if overlay is disabled
 
 # So we can import network settings if needed
