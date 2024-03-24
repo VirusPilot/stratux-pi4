@@ -1,4 +1,4 @@
-# Build a Stratux Europe on a Pi3B, Pi4B or Pi Zero 2W based on a fresh 64bit RasPiOS Lite Image
+# Build a Stratux Europe on a Pi3, Pi4, Pi5 or Pi Zero 2W based on a fresh 64bit RasPiOS Lite Image
 
 - shopping lists:
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v3-TX (active cooling with fan, copper heatsink, TX module)
@@ -21,7 +21,7 @@ based on my fork https://github.com/VirusPilot/stratux with the following modifi
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
 - swapfile will be disabled
 
-## prepare script for Pi3B, Pi4B or Pi Zero 2W:
+## prepare script for Pi3, Pi4, Pi5 or Pi Zero 2W:
 - flash latest 64bit RasPiOS Lite Image (Debian 11 or 12, see below), using latest **Raspberry Pi Imager** with the following settings:
   - select appropriate hostname
   - enable ssh
@@ -43,15 +43,6 @@ apt full-upgrade -y
 wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-standard.sh
 chmod +x setup-pi4-standard.sh
 ```
-standard version (Debian 12 Bookworm, WIP: **WiFi Client Mode not working!!**):
-```
-cd ~/
-apt update
-apt full-upgrade -y
-wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-bookworm.sh
-chmod +x setup-pi4-bookworm.sh
-./setup-pi4-bookworm.sh
-```
 viruspilot version (up to Debian 11 Bullseye):
 ```
 cd ~/
@@ -60,6 +51,15 @@ apt full-upgrade -y
 wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-viruspilot.sh
 chmod +x setup-pi4-viruspilot.sh
 ./setup-pi4-viruspilot.sh
+```
+viruspilot version (Debian 12 Bookworm, **WIP**):
+```
+cd ~/
+apt update
+apt full-upgrade -y
+wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-bookworm.sh
+chmod +x setup-pi4-bookworm.sh
+./setup-pi4-bookworm.sh
 ```
 - if you are all set then let the sript **reboot** but if you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot; please follow the instructions under "Remarks - SDR programming" below for each SDR individually
 - after reboot Stratux is providing an unprotected WiFi access point with the SSID "stratux"
