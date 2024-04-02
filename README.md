@@ -42,6 +42,7 @@ apt update
 apt full-upgrade -y
 wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-standard.sh
 chmod +x setup-pi4-standard.sh
+./setup-pi4-standard.sh
 ```
 viruspilot version (up to Debian 11 Bullseye):
 ```
