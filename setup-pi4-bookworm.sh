@@ -44,7 +44,7 @@ make -j8 && make install
 rm -rf /root/kalibrate-rtl
 
 # Prepare wiringpi for ogn trx via GPIO
-cd /root && git clone --branch isr https://github.com/WiringPi/WiringPi.git
+cd /root && git clone https://github.com/WiringPi/WiringPi.git
 cd WiringPi && ./build
 cd /root && rm -r WiringPi
 
