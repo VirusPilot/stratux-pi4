@@ -92,7 +92,6 @@ sed -i /boot/firmware/cmdline.txt -e "s/console=serial0,[0-9]\+ /systemd.restore
 # prepare services
 systemctl enable ssh
 systemctl disable dnsmasq # we start it manually on respective interfaces
-#systemctl disable dhcpcd
 systemctl disable hciuart
 systemctl disable triggerhappy
 systemctl disable wpa_supplicant
