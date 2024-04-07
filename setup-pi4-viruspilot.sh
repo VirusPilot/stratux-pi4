@@ -10,9 +10,9 @@ ARCH=$(getconf LONG_BIT)
 # install latest golang
 cd /root
 if [[ $ARCH -eq 64 ]]; then
-    wget https://go.dev/dl/go1.22.1.linux-arm64.tar.gz
+    wget https://go.dev/dl/go1.22.2.linux-arm64.tar.gz
   else
-    wget https://go.dev/dl/go1.22.1.linux-armv6l.tar.gz
+    wget https://go.dev/dl/go1.22.2.linux-armv6l.tar.gz
 fi
 
 rm -rf /root/go
