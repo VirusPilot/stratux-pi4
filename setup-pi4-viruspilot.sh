@@ -61,7 +61,7 @@ fi
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image
-cp -f config.txt /boot/config.txt # modified in https://github.com/VirusPilot/stratux
+cp -f config.txt /boot/firmware/config.txt # modified in https://github.com/VirusPilot/stratux
 cp -f bashrc.txt /root/.bashrc
 cp -f rc.local /etc/rc.local
 cp -f modules.txt /etc/modules
@@ -77,22 +77,22 @@ cp -f sshd_config /etc/ssh/sshd_config
 cp -f overlayctl init-overlay /sbin/
 overlayctl install
 # init-overlay replaces raspis initial partition size growing.. Make sure we call that manually (see init-overlay script)
-touch /var/grow_root_part
+#touch /var/grow_root_part
 mkdir -p /overlay/robase # prepare so we can bind-mount root even if overlay is disabled
 
 # So we can import network settings if needed
-touch /boot/.stratux-first-boot
+touch /boot/firmware/.stratux-first-boot
 
 # Optionally mount /dev/sda1 as /var/log - for logging to USB stick
-echo -e "\n/dev/sda1             /var/log        auto    defaults,nofail,noatime,x-systemd.device-timeout=1ms  0       2" >> /etc/fstab
+#echo -e "\n/dev/sda1             /var/log        auto    defaults,nofail,noatime,x-systemd.device-timeout=1ms  0       2" >> /etc/fstab
 
 #disable serial console, disable rfkill state restore, enable wifi on boot
-sed -i /boot/cmdline.txt -e "s/console=serial0,[0-9]\+ /systemd.restore_state=0 rfkill.default_state=1 /"
+sed -i /boot/firmware/cmdline.txt -e "s/console=serial0,[0-9]\+ /systemd.restore_state=0 rfkill.default_state=1 /"
 
 # prepare services
 systemctl enable ssh
 systemctl disable dnsmasq # we start it manually on respective interfaces
-systemctl disable dhcpcd
+#systemctl disable dhcpcd
 systemctl disable hciuart
 systemctl disable triggerhappy
 systemctl disable wpa_supplicant
