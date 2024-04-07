@@ -3,7 +3,7 @@
 
 # prepare libs
 apt install libjpeg62-turbo-dev libconfig9 rpi-update dnsmasq git libusb-1.0-0-dev build-essential \
-  autoconf libtool i2c-tools libfftw3-dev libncurses-dev python3-serial jq ifplugd iptables -y
+  autoconf libtool i2c-tools libfftw3-dev libncurses-dev python3-serial jq ifplugd iptables libttspico-utils -y
 
 ARCH=$(getconf LONG_BIT)
 
