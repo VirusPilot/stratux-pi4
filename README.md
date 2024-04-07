@@ -14,6 +14,7 @@ based on https://github.com/b3nn0/stratux
 # stratux-pi4-viruspilot
 based on my fork https://github.com/VirusPilot/stratux with the following modifications compared to the "standard" version:
 - fancontrol disabled
+- logging to external USB disabled
 - image/config.txt: slight modifications
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
 - main/gen_gdl90.go: increase GDL90 ownship report from 1Hz to 5Hz
