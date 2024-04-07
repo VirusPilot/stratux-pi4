@@ -6,7 +6,7 @@
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v2 (active cooling with fan)
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v1 (passive cooling with custum aluminium block)
   
-- both scripts are based on the latest **64bit RasPiOS Lite Bullseye Image**, using **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
+- both scripts are based on the latest **64bit RasPiOS Lite Bookworm Image**, using **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
 
 # stratux-pi4-standard
 based on https://github.com/b3nn0/stratux
@@ -35,7 +35,7 @@ login with ssh as `pi` user with the above set password, then:
 ```
 sudo su
 ```
-standard version (up to Debian 11 Bullseye):
+standard version:
 ```
 cd ~/
 apt update
@@ -44,7 +44,7 @@ wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-s
 chmod +x setup-pi4-standard.sh
 ./setup-pi4-standard.sh
 ```
-viruspilot version (up to Debian 11 Bullseye):
+viruspilot version:
 ```
 cd ~/
 apt update
@@ -52,15 +52,6 @@ apt full-upgrade -y
 wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-viruspilot.sh
 chmod +x setup-pi4-viruspilot.sh
 ./setup-pi4-viruspilot.sh
-```
-viruspilot version (Debian 12 Bookworm, **WIP**):
-```
-cd ~/
-apt update
-apt full-upgrade -y
-wget https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-bookworm.sh
-chmod +x setup-pi4-bookworm.sh
-./setup-pi4-bookworm.sh
 ```
 - if you are all set then let the sript **reboot** but if you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot; please follow the instructions under "Remarks - SDR programming" below for each SDR individually
 - after reboot Stratux is providing an unprotected WiFi access point with the SSID "stratux"
