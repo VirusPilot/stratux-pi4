@@ -30,6 +30,9 @@ cd ..
 sudo dpkg -i librtlsdr0_*.deb
 sudo dpkg -i librtlsdr-dev_*.deb
 sudo dpkg -i rtl-sdr_*.deb
+rm -f *.deb
+rm -f *.buildinfo
+rm -f *.changes
 
 # install kalibrate-rtl
 cd /root
