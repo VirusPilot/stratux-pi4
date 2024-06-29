@@ -15,7 +15,7 @@ based on https://github.com/b3nn0/stratux
 based on my fork https://github.com/VirusPilot/stratux with the following modifications compared to the "standard" version:
 - fancontrol disabled
 - logging to external USB disabled
-- image/config.txt: slight modifications
+- image/config.txt: slight modifications (e.g. init_uart_baud=115200 for connected tracker devices)
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
 - main/gen_gdl90.go: increase GDL90 ownship report from 1Hz to 5Hz
 
