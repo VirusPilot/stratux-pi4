@@ -59,7 +59,7 @@ rm -rf rtl-sdr-blog
 
 # install bluez from source
 cd /root
-wget https://github.com/bluez/bluez/archive/refs/tags/5.76.tar.gz | tar xz
+wget -O- https://github.com/bluez/bluez/archive/refs/tags/5.76.tar.gz | tar xz
 cd bluez-5.76
 ./bootstrap && ./configure --disable-manpages && make -j4 && make install
 cd ..
