@@ -2,8 +2,32 @@
 #set -x
 
 # prepare libs
-apt install libjpeg62-turbo-dev libconfig9 rpi-update dnsmasq git libusb-1.0-0-dev build-essential \
-  autoconf libtool i2c-tools libfftw3-dev libncurses-dev python3-serial jq ifplugd iptables libttspico-utils -y
+apt install \
+  libjpeg62-turbo-dev \
+  libconfig9 \
+  rpi-update \
+  dnsmasq \
+  git \
+  libusb-1.0-0-dev \
+  build-essential \
+  autoconf \
+  libtool \
+  i2c-tools \
+  libfftw3-dev \
+  libncurses-dev \
+  python3-serial \
+  jq \
+  ifplugd \
+  iptables \
+  libttspico-utils \
+  bluez \
+  bluez-firmware \
+  libdbus-1-dev \
+  libglib2.0-dev \
+  libudev-dev \
+  libical-dev \
+  libreadline-dev \
+  python3-pygments -y
 apt install cmake debhelper -y
 
 ARCH=$(getconf LONG_BIT)
@@ -15,7 +39,6 @@ if [[ $ARCH -eq 64 ]]; then
   else
     wget https://go.dev/dl/go1.22.5.linux-armv6l.tar.gz
 fi
-
 rm -rf /root/go
 rm -rf /root/go_path
 tar xzf *.gz
@@ -26,13 +49,23 @@ git clone https://github.com/rtlsdrblog/rtl-sdr-blog
 cd rtl-sdr-blog
 sudo dpkg-buildpackage -b --no-sign
 cd ..
-
 sudo dpkg -i librtlsdr0_*.deb
 sudo dpkg -i librtlsdr-dev_*.deb
 sudo dpkg -i rtl-sdr_*.deb
 rm -f *.deb
 rm -f *.buildinfo
 rm -f *.changes
+rm -rf rtl-sdr-blog
+
+# install bluez from source
+cd /root
+wget https://github.com/bluez/bluez/archive/refs/tags/5.76.tar.gz | tar xz
+cd bluez-5.76
+./bootstrap && ./configure --disable-manpages && make -j4 && make install
+cd ..
+rm -rf bluez-5.76
+systemctl daemon-reload
+systemctl enable bluetooth
 
 # install kalibrate-rtl
 cd /root
@@ -93,7 +126,7 @@ sed -i /boot/firmware/cmdline.txt -e "s/console=serial0,[0-9]\+ /systemd.restore
 # prepare services
 systemctl enable ssh
 systemctl disable dnsmasq # we start it manually on respective interfaces
-systemctl disable hciuart
+#systemctl disable hciuart
 systemctl disable triggerhappy
 systemctl disable wpa_supplicant
 systemctl disable apt-daily.timer
