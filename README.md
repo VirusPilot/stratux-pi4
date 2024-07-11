@@ -75,7 +75,6 @@ enabling **Persistent logging** on Stratux settings page is required!
 - more info here: https://github.com/b3nn0/stratux/wiki/EFB-Configuration#skydemon-using-flarm-nmea-protocol-recommended
 
 ## Limitations/Modifications/Issues
-- these scripts also work on 32bit RasPiOS Lite Image
 - this setup is intended to create a Stratux system, don't use the Pi for any other important stuff as all of your data may be lost during Stratux operation
 
 ## Remarks - SDR programming simple mode

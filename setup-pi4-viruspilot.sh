@@ -30,30 +30,18 @@ apt install \
   python3-pygments -y
 apt install cmake debhelper -y
 
-ARCH=$(getconf LONG_BIT)
-
 # install latest golang
 cd /root
-if [[ $ARCH -eq 64 ]]; then
-    wget https://go.dev/dl/go1.22.5.linux-arm64.tar.gz
-  else
-    wget https://go.dev/dl/go1.22.5.linux-armv6l.tar.gz
-fi
+wget https://go.dev/dl/go1.22.5.linux-arm64.tar.gz
 rm -rf /root/go
 rm -rf /root/go_path
 tar xzf *.gz
 rm *.gz
 
 # install librtlsdr from http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr
-if [ $ARCH -eq 64 ]; then
-    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr0_2.0.2-2_arm64.deb
-    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr-dev_2.0.2-2_arm64.deb
-    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/rtl-sdr_2.0.2-2_arm64.deb
-else
-    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr0_2.0.2-2_armhf.deb
-    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr-dev_2.0.2-2_armhf.deb
-    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/rtl-sdr_2.0.2-2_armhf.deb
-fi
+wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr0_2.0.2-2_arm64.deb
+wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr-dev_2.0.2-2_arm64.deb
+wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/rtl-sdr_2.0.2-2_arm64.deb
 dpkg -i *.deb
 rm -f *.deb
 ldconfig
@@ -88,11 +76,6 @@ cd /root
 rm -r /root/stratux
 git clone --recursive https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
-
-# set "arm_64bit=0" in case of 32bit
-if [[ $ARCH -eq 32 ]]; then
-  sed -i image/config.txt -e "s/arm_64bit=1/arm_64bit=0/g"
-fi
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image
