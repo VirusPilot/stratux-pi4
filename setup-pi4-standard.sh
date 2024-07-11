@@ -44,17 +44,19 @@ rm -rf /root/go_path
 tar xzf *.gz
 rm *.gz
 
-# compile and install librtlsdr from https://github.com/osmocom/rtl-sdr
-cd /root
-git clone https://github.com/osmocom/rtl-sdr
-cd rtl-sdr
-mkdir build
-cd build
-cmake ../ -DDETACH_KERNEL_DRIVER=ON -DINSTALL_UDEV_RULES=ON
-make
-sudo make install
-sudo ldconfig
-rm -rf /root/rtl-sdr
+# install librtlsdr from http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr
+if [ $ARCH -eq 64 ]; then
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr0_2.0.2-2_arm64.deb
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr-dev_2.0.2-2_arm64.deb
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/rtl-sdr_2.0.2-2_arm64.deb
+else
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr0_2.0.2-2_armhf.deb
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr-dev_2.0.2-2_armhf.deb
+    wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/rtl-sdr_2.0.2-2_armhf.deb
+fi
+dpkg -i *.deb
+rm -f *.deb
+ldconfig
 
 # install bluez from source
 cd /root
