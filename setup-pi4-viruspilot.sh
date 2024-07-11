@@ -44,18 +44,17 @@ rm -rf /root/go_path
 tar xzf *.gz
 rm *.gz
 
-# install rtl-sdr-blog driver
-git clone https://github.com/rtlsdrblog/rtl-sdr-blog
-cd rtl-sdr-blog
-sudo dpkg-buildpackage -b --no-sign
-cd ..
-sudo dpkg -i librtlsdr0_*.deb
-sudo dpkg -i librtlsdr-dev_*.deb
-sudo dpkg -i rtl-sdr_*.deb
-rm -f *.deb
-rm -f *.buildinfo
-rm -f *.changes
-rm -rf rtl-sdr-blog
+# compile and install librtlsdr from https://github.com/osmocom/rtl-sdr
+cd /root
+git clone https://github.com/osmocom/rtl-sdr
+cd rtl-sdr
+mkdir build
+cd build
+cmake ../ -DDETACH_KERNEL_DRIVER=ON -DINSTALL_UDEV_RULES=ON
+make
+sudo make install
+sudo ldconfig
+rm -rf /root/rtl-sdr
 
 # install bluez from source
 cd /root
