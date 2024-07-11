@@ -24,7 +24,7 @@ based on my fork https://github.com/VirusPilot/stratux with the following modifi
 - swapfile will be disabled
 
 ## prepare script for Pi3, Pi4, Pi5 or Pi Zero 2W:
-- flash latest 64bit RasPiOS Lite Image (Debian 11 or 12, see below), using latest **Raspberry Pi Imager** with the following settings:
+- flash latest **64bit RasPiOS Lite Bookworm Image**, using latest **Raspberry Pi Imager** with the following settings:
   - select appropriate hostname
   - enable ssh
   - enable user pi with password
