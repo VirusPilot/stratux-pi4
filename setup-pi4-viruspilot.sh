@@ -48,11 +48,11 @@ ldconfig
 
 # install bluez from source
 cd /root
-wget -O- https://github.com/bluez/bluez/archive/refs/tags/5.76.tar.gz | tar xz
-cd bluez-5.76
+wget -O- https://github.com/bluez/bluez/archive/refs/tags/5.78.tar.gz | tar xz
+cd bluez-5.78
 ./bootstrap && ./configure --disable-manpages && make -j4 && make install
 cd ..
-rm -rf bluez-5.76
+rm -rf bluez-5.78
 systemctl daemon-reload
 systemctl enable bluetooth
 
