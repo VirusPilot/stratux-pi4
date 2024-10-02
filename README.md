@@ -59,14 +59,13 @@ sudo bash -c "$(wget -nv -O - https://raw.githubusercontent.com/VirusPilot/strat
 ## optional components:
 enabling **Persistent logging** on Stratux settings page is required!
 
-- you may now install https://github.com/VirusPilot/stratux-radar-display:
-  - `cd && git clone https://github.com/VirusPilot/stratux-radar-display.git`
-  - `/bin/bash /root/stratux-radar-display/image/configure_radar_on_stratux.sh`
-  - add e.g. the following line to /etc/rc.local if you have a 3.7 inch E-Paper installed: `(sleep 30; python3 /root/stratux-radar-display/main/radar.py -z -d Epaper_3in7 -c 192.168.10.1) &`
-- you may now install additional maps according to https://github.com/b3nn0/stratux/wiki/Downloading-better-map-data
+- you may now install
+  - stratux radar display: https://github.com/TomBric/stratux-radar-display
+  - additional maps: https://github.com/b3nn0/stratux/wiki/Downloading-better-map-data
 - if you want to upgrade gloang to the latest version from time to time, you may consider installing https://github.com/stefanmaric/g with the following command: `curl -sSL https://git.io/g-install | sh -s -- -y`
 
 ## SkyDemon related Remarks
+- **experimental support for NMEA output via BLE**, this allows connecting SkyDemon via BLE instead of WiFi: when in range of your Bluetooth device, and with the device powered on, open the Setup menu in SkyDemon and select Connectivity. Then under the Bluetooth heading, choose Add Bluetooth Device. SkyDemon will scan for devices and your device should appear within a second or two. If it does not, check that it is powered on, and that it is a Bluetooth LE device (Bluetooth 4 onwards). You don’t need to pair it with your tablet or phone first. When the Bluetooth device has appeared, select it. You then need to tell SkyDemon what sort of avionics are connected to your device, in case of Stratux choose `NMEA (FLARM or GPS)`.
 - WiFi Settings/Stratux IP Address 192.168.10.1 (default): only **GDL90** can be selected and used in SkyDemon
 - WiFi Settings/Stratux IP Address 192.168.1.1: both **GDL90** and **FLARM-NMEA** can be selected and used in SkyDemon
 - **GDL90** is labeled as "**GDL90 Compatible Device**" under "**Third-Party Devices**"
