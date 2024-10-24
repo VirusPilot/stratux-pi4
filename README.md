@@ -65,11 +65,13 @@ enabling **Persistent logging** on Stratux settings page is required!
 - if you want to upgrade gloang to the latest version from time to time, you may consider installing https://github.com/stefanmaric/g with the following command: `curl -sSL https://git.io/g-install | sh -s -- -y`
 
 ## SkyDemon related Remarks
-- **experimental support for NMEA output via BLE**, this allows connecting SkyDemon via BLE instead of WiFi: when in range of your Bluetooth device, and with the device powered on, open the Setup menu in SkyDemon and select Connectivity. Then under the Bluetooth heading, choose Add Bluetooth Device. SkyDemon will scan for devices and your device should appear within a second or two. If it does not, check that it is powered on, and that it is a Bluetooth LE device (Bluetooth 4 onwards). You don’t need to pair it with your tablet or phone first. When the Bluetooth device has appeared, select it. You then need to tell SkyDemon what sort of avionics are connected to your device, in case of Stratux choose `NMEA (FLARM or GPS)`.
+### connection via Bluetooth LE (experimental support)
+- this allows connecting SkyDemon via BLE instead of WiFi: when in range of your Bluetooth device, and with the device powered on, open the Setup menu in SkyDemon and select Connectivity. Then under the Bluetooth heading, choose Add Bluetooth Device. SkyDemon will scan for devices and your device should appear within a second or two. If it does not, check that it is powered on, and that it is a Bluetooth LE device (Bluetooth 4 onwards). You don’t need to pair it with your tablet or phone first. When the Bluetooth device has appeared, select it. You then need to tell SkyDemon what sort of avionics are connected to your device, in case of Stratux choose `NMEA (FLARM or GPS)`.
+### connection via WiFi
 - WiFi Settings/Stratux IP Address 192.168.10.1 (default): only **GDL90** can be selected and used in SkyDemon
 - WiFi Settings/Stratux IP Address 192.168.1.1: both **GDL90** and **FLARM-NMEA** can be selected and used in SkyDemon
-- **GDL90** is labeled as "**GDL90 Compatible Device**" under "**Third-Party Devices**"
-- **FLARM-NMEA** is labeled as "**Air Avionics AT-1**" or "**FLARM with Air Connect**" under "**Third-Party Devices**", the "**Air Connect Key**" can be ignored for Stratux Europe
+- **GDL90** is labeled as "**GDL90 Compatible Device**" under "**Connectivity/All Devices**"
+- **FLARM-NMEA** is labeled as "**Air Avionics AT-1**" or "**FLARM with Air Connect**" under "**Connectivity/All Devices**", the "**Air Connect Key**" can be ignored for Stratux Europe
 - info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
 - more info here: https://github.com/b3nn0/stratux/wiki/EFB-Configuration#skydemon-using-flarm-nmea-protocol-recommended
 
