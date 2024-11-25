@@ -32,7 +32,7 @@ apt install cmake debhelper -y
 
 # install latest golang
 cd /root
-wget https://go.dev/dl/go1.23.2.linux-arm64.tar.gz
+wget https://go.dev/dl/go1.23.3.linux-arm64.tar.gz
 rm -rf /root/go
 rm -rf /root/go_path
 tar xzf *.gz
