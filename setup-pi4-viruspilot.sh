@@ -39,9 +39,9 @@ tar xzf *.gz
 rm *.gz
 
 # install librtlsdr from http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr
-wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr0_2.0.2-2_arm64.deb
-wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr-dev_2.0.2-2_arm64.deb
-wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/rtl-sdr_2.0.2-2_arm64.deb
+wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr0_2.0.2-2+b1_arm64.deb
+wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/librtlsdr-dev_2.0.2-2+b1_arm64.deb
+wget http://ftp.de.debian.org/debian/pool/main/r/rtl-sdr/rtl-sdr_2.0.2-2+b1_arm64.deb
 dpkg -i *.deb
 rm -f *.deb
 ldconfig
