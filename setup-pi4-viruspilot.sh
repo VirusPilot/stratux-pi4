@@ -30,6 +30,10 @@ apt install \
   python3-pygments -y
 apt install cmake debhelper -y
 
+# install esptool for tracker flashing
+apt install python3-pip -y
+pip install --break-system-packages esptool
+
 # install latest golang
 cd /root
 wget https://go.dev/dl/go1.23.3.linux-arm64.tar.gz
