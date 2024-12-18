@@ -5,9 +5,8 @@
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v3 (passive cooling with large copper heatsink)
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v2 (active cooling with fan)
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v1 (passive cooling with custum aluminium block)
-  
+
 - both scripts are based on the latest **64bit RasPiOS Lite Bookworm Image**, using **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
-- although Stratux is setting up its own WiFi access point, it is recommended to also set up and enable WiFi and in particular `WiFi Country` during the RasPiOS image setup because otherwise WiFi might not work
 
 # stratux-pi4-standard
 based on https://github.com/b3nn0/stratux
@@ -29,7 +28,7 @@ based on my fork https://github.com/VirusPilot/stratux with the following modifi
   - select appropriate hostname
   - enable ssh
   - enable user pi with password
-  - Pi Zero 2W: enable and configure WiFi so that the Pi connects to your local network
+  - **IMPORTANT**: although Stratux is setting up its own WiFi credentials, it is mandatory to `enable and set up WiFi` and in particular `WiFi Country` in the **Raspberry Pi Imager configuration** because otherwise WiFi might not work at all (even more important for Pi Zero 2W so that the Pi connects to your local WiFi network)
 - boot your Pi with this image and wait until it is connected to your LAN or WiFi (this may take a few minutes after the first boot)
 - please note that the brightness values of the Pi Zero 2W LED are reversed so it will turn off as soon as Stratux has successfully booted
 
