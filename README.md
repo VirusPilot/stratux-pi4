@@ -7,7 +7,7 @@
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v1 (passive cooling with custum aluminium block)
   
 - both scripts are based on the latest **64bit RasPiOS Lite Bookworm Image**, using **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
-- although Stratux is setting up its own WiFi access point, it is recommended to also set up WiFi and in particular `WiFi Country` during the RasPiOS setup because otherwise WiFi might not work
+- although Stratux is setting up its own WiFi access point, it is recommended to also set up and enable WiFi and in particular `WiFi Country` during the RasPiOS image setup because otherwise WiFi might not work
 
 # stratux-pi4-standard
 based on https://github.com/b3nn0/stratux
