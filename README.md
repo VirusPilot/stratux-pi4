@@ -9,7 +9,7 @@
 - both scripts are based on the latest **64bit RasPiOS Lite Bookworm Image**, using **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
 
 # stratux-pi4-standard
-based on https://github.com/b3nn0/stratux
+based on https://github.com/stratux/stratux
 
 # stratux-pi4-viruspilot
 based on my fork https://github.com/VirusPilot/stratux with the following modifications compared to the "standard" version:
@@ -61,7 +61,7 @@ enabling **Persistent logging** on Stratux settings page is required!
 
 - you may now install
   - stratux radar display: https://github.com/TomBric/stratux-radar-display
-  - additional maps: https://github.com/b3nn0/stratux/wiki/Downloading-better-map-data
+  - additional maps: https://github.com/stratux/stratux/wiki/Downloading-better-map-data
 - if you want to upgrade gloang to the latest version from time to time, you may consider installing https://github.com/stefanmaric/g with the following command: `curl -sSL https://git.io/g-install | sh -s -- -y`
 
 ## SkyDemon related Remarks
@@ -73,7 +73,7 @@ enabling **Persistent logging** on Stratux settings page is required!
 - **GDL90** is labeled as "**GDL90 Compatible Device**" under "**Connectivity/All Devices**"
 - **FLARM-NMEA** is labeled as "**Air Avionics AT-1**" or "**FLARM with Air Connect**" under "**Connectivity/All Devices**", the "**Air Connect Key**" can be ignored for Stratux Europe
 - info for experts: FLARM-NMEA = TCP:2000, GDL90 = UDP:4000 (for FLARM-NMEA, the EFB initiates the connection, for UDP, Stratux will send unicast to all connected DHCP clients)
-- more info here: https://github.com/b3nn0/stratux/wiki/EFB-Configuration#skydemon-using-flarm-nmea-protocol-recommended
+- more info here: https://github.com/stratux/stratux/wiki/EFB-Configuration#skydemon-using-flarm-nmea-protocol-recommended
 
 ## Limitations/Modifications/Issues
 - this setup is intended to create a Stratux system, don't use the Pi for any other important stuff as all of your data may be lost during Stratux operation
