@@ -9,13 +9,10 @@
 - both scripts are based on the latest **64bit RasPiOS Lite Bookworm Image**, using **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
 
 # stratux-pi4-standard
-based on https://github.com/stratux/stratux (as of February 4, 2025)
+based on https://github.com/stratux/stratux (**as of February 4, 2025**)
 
 # stratux-pi4-viruspilot
-based on my fork https://github.com/VirusPilot/stratux (as of February 4, 2025) with the following modifications compared to the "standard" version:
-- fancontrol disabled
-- logging to external USB disabled
-- image/config.txt: slight modifications (e.g. init_uart_baud=38400 for connected tracker devices)
+based on my fork https://github.com/VirusPilot/stratux (**as of February 4, 2025**) with the following modifications compared to the "standard" version:
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
 - main/gen_gdl90.go: increase GDL90 ownship report from 1Hz to 5Hz
 
