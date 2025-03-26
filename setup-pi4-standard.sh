@@ -44,6 +44,7 @@ rm *.gz
 
 # compile and install librtlsdr from https://github.com/osmocom/rtl-sdr
 cd /root
+rm -rf /root/rtl-sdr
 git clone https://github.com/osmocom/rtl-sdr
 cd rtl-sdr
 sudo dpkg-buildpackage -b --no-sign
@@ -55,11 +56,11 @@ rm -f *.changes
 
 # install bluez from source
 cd /root
-wget -O- https://github.com/bluez/bluez/archive/refs/tags/5.78.tar.gz | tar xz
-cd bluez-5.78
+rm -rf /root/bluez
+git clone https://github.com/bluez/bluez
+cd bluez
 ./bootstrap && ./configure --disable-manpages && make -j4 && make install
 cd ..
-rm -rf bluez-5.78
 systemctl daemon-reload
 systemctl enable bluetooth
 
@@ -74,13 +75,15 @@ make -j8 && make install
 rm -rf /root/kalibrate-rtl
 
 # Prepare wiringpi for ogn trx via GPIO
-cd /root && git clone https://github.com/WiringPi/WiringPi.git
-cd WiringPi && ./build
-cd /root && rm -r WiringPi
+cd /root
+rm -rf /root/WiringPi
+git clone https://github.com/WiringPi/WiringPi.git
+cd WiringPi
+./build
 
 # clone stratux
 cd /root
-rm -r /root/stratux
+rm -rf /root/stratux
 git clone --recursive https://github.com/stratux/stratux.git /root/stratux
 cd /root/stratux
 git checkout 5283a06 # last verified version
