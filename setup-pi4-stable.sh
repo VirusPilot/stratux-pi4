@@ -84,8 +84,9 @@ cd WiringPi
 # clone stratux
 cd /root
 rm -rf /root/stratux
-git clone --recursive https://github.com/VirusPilot/stratux.git /root/stratux
+git clone --recursive https://github.com/stratux/stratux.git /root/stratux
 cd /root/stratux
+git checkout 5283a06 # last verified version as of February 4, 2025
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image

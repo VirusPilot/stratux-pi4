@@ -8,11 +8,14 @@
 
 - both scripts are based on the latest **64bit RasPiOS Lite Bookworm Image**, using **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
 
-# stratux-pi4-standard
+# stratux-pi4-stable
 based on https://github.com/stratux/stratux (**as of February 4, 2025**)
 
+# stratux-pi4-latest
+based on https://github.com/stratux/stratux
+
 # stratux-pi4-viruspilot
-based on my fork https://github.com/VirusPilot/stratux (**as of February 4, 2025**) with the following modifications compared to the "standard" version:
+based on my fork https://github.com/VirusPilot/stratux with the following modifications compared to the "latest" version:
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
 - main/gen_gdl90.go: increase GDL90 ownship report from 1Hz to 5Hz
 
@@ -34,14 +37,21 @@ login with ssh as `pi` user with the above set password, then:
 ```
 sudo su
 ```
-standard version:
+**stable** version:
 ```
 cd ~/
 apt update
 apt full-upgrade -y
-sudo bash -c "$(wget -nv -O - https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-standard.sh)"
+sudo bash -c "$(wget -nv -O - https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-stable.sh)"
 ```
-viruspilot version:
+**latest** version:
+```
+cd ~/
+apt update
+apt full-upgrade -y
+sudo bash -c "$(wget -nv -O - https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-latest.sh)"
+```
+**viruspilot** version:
 ```
 cd ~/
 apt update
