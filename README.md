@@ -14,8 +14,8 @@ based on https://github.com/stratux/stratux (**as of February 4, 2025**)
 # stratux-pi4-latest (**does not work for the time being**)
 based on https://github.com/stratux/stratux
 
-# stratux-pi4-viruspilot
-based on my fork https://github.com/VirusPilot/stratux with the following modifications compared to the "latest" version:
+# stratux-pi4-stable-viruspilot
+based on https://github.com/VirusPilot/stratux (**as of February 4, 2025**):
 - main/gps.go: enable GPS LED to indicate a valid GPS fix
 - main/gen_gdl90.go: increase GDL90 ownship report from 1Hz to 5Hz
 
