@@ -11,7 +11,7 @@
 # stratux-pi4-stable
 based on https://github.com/stratux/stratux (**as of February 4, 2025**)
 
-# stratux-pi4-latest (**does not work for the time being**)
+# stratux-pi4-latest
 based on https://github.com/stratux/stratux
 
 # stratux-pi4-stable-viruspilot
@@ -44,7 +44,7 @@ apt update
 apt full-upgrade -y
 sudo bash -c "$(wget -nv -O - https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-stable.sh)"
 ```
-**latest** version: (**does not work for the time being**)
+**latest** version:
 ```
 cd ~/
 apt update
