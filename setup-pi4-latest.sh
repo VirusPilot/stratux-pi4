@@ -88,7 +88,7 @@ git clone --recursive https://github.com/stratux/stratux.git /root/stratux
 cd /root/stratux
 
 # copy various files from /root/stratux/image
-cd /root/stratux/image
+cd /root/stratux/image_build/stage2/10-stratux/files
 cp -f config.txt /boot/firmware/config.txt # modified in https://github.com/VirusPilot/stratux
 cp -f bashrc.txt /root/.bashrc
 cp -f rc.local /etc/rc.local
