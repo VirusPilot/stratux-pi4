@@ -56,7 +56,7 @@ sudo bash -c "$(wget -nv -O - https://raw.githubusercontent.com/VirusPilot/strat
 cd ~/
 apt update
 apt full-upgrade -y
-sudo bash -c "$(wget -nv -O - https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-viruspilot.sh)"
+sudo bash -c "$(wget -nv -O - https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-stable-viruspilot.sh)"
 ```
 - if you are all set then let the sript **reboot** but if you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot; please follow the instructions under "Remarks - SDR programming" below for each SDR individually
 - after reboot Stratux is providing an unprotected WiFi access point with the SSID "stratux"
