@@ -54,16 +54,6 @@ rm -f *.deb
 rm -f *.buildinfo
 rm -f *.changes
 
-# install bluez from source
-cd /root
-rm -rf /root/bluez
-git clone https://github.com/bluez/bluez
-cd bluez
-./bootstrap && ./configure --disable-manpages && make -j4 && make install
-cd ..
-systemctl daemon-reload
-systemctl enable bluetooth
-
 # install kalibrate-rtl
 cd /root
 rm -rf /root/kalibrate-rtl
