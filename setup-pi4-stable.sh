@@ -36,7 +36,7 @@ pip install --break-system-packages esptool
 
 # install latest golang
 cd /root
-wget https://go.dev/dl/go1.25.0.linux-arm64.tar.gz
+wget https://go.dev/dl/go1.25.6.linux-arm64.tar.gz
 rm -rf /root/go
 rm -rf /root/go_path
 tar xzf *.gz
@@ -79,7 +79,8 @@ cd /root
 rm -rf /root/stratux
 git clone --recursive https://github.com/stratux/stratux.git /root/stratux
 cd /root/stratux
-git checkout 5283a06 # last verified version as of February 4, 2025
+//git checkout 5283a06 # last verified version as of February 4, 2025
+git checkout 0daeaa3 # last verified version as of February 4, 2025, without pong updates
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image
