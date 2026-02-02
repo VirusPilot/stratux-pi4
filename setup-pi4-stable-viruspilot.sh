@@ -81,6 +81,7 @@ git clone --recursive https://github.com/VirusPilot/stratux.git /root/stratux
 cd /root/stratux
 //git checkout 5283a06 # last verified version as of February 4, 2025
 git checkout 0daeaa3 # last verified version as of February 4, 2025, without pong updates
+cd /root/stratux/dump1090 && git pull origin master # checkout latest dump1090
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image

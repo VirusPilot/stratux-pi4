@@ -78,7 +78,7 @@ cd WiringPi
 cd /root
 rm -rf /root/stratux
 git clone --recursive https://github.com/stratux/stratux.git /root/stratux
-cd /root/stratux
+cd /root/stratux/dump1090 && git pull origin master # checkout latest dump1090
 
 # copy various files from /root/stratux/image
 cd /root/stratux/image_build/stage2/10-stratux/files
