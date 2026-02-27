@@ -6,20 +6,9 @@
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v2 (active cooling with fan)
   - https://github.com/VirusPilot/stratux-pi4/wiki/Shopping-List-v1 (passive cooling with custom aluminium block)
 
-- both scripts are based on the latest **64bit RasPiOS Lite Bookworm Image**, using **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
+- the script is based on the latest **64bit RasPiOS Lite Bookworm Image**, using **Raspberry Pi Imager** from here: https://www.raspberrypi.com/software/
 
-# stratux-pi4-stable
-based on https://github.com/stratux/stratux (**as of February 4, 2025**)
-
-# stratux-pi4-latest
-based on https://github.com/stratux/stratux
-
-# stratux-pi4-stable-viruspilot
-based on https://github.com/VirusPilot/stratux (**as of February 4, 2025**):
-- main/gps.go: enable GPS LED to indicate a valid GPS fix
-- main/gen_gdl90.go: increase GDL90 ownship report from 1Hz to 5Hz
-
-## please use these scripts with caution and only on a fresh 64bit RasPiOS Lite Image, because:
+## please use the script with caution and only on a fresh 64bit RasPiOS Lite Image, because:
 - the entire filesystem (except /boot) will be changed to read-only to prevent microSD card corruption
 - swapfile will be disabled
 
@@ -36,27 +25,10 @@ based on https://github.com/VirusPilot/stratux (**as of February 4, 2025**):
 login with ssh as `pi` user with the above set password, then:
 ```
 sudo su
-```
-**stable** version:
-```
-cd ~/
-apt update
-apt full-upgrade -y
-sudo bash -c "$(wget -nv -O - https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-stable.sh)"
-```
-**latest** version:
-```
 cd ~/
 apt update
 apt full-upgrade -y
 sudo bash -c "$(wget -nv -O - https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-latest.sh)"
-```
-**viruspilot** version:
-```
-cd ~/
-apt update
-apt full-upgrade -y
-sudo bash -c "$(wget -nv -O - https://raw.githubusercontent.com/VirusPilot/stratux-pi4/master/setup-pi4-stable-viruspilot.sh)"
 ```
 - if you are all set then let the sript **reboot** but if you haven't yet programed your SDRs, now would be a good time before Stratux will be claiming the SDRs after a reboot; please follow the instructions under "Remarks - SDR programming" below for each SDR individually
 - after reboot Stratux is providing an unprotected WiFi access point with the SSID "stratux"
