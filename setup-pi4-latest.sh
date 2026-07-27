@@ -36,7 +36,7 @@ pip install --break-system-packages esptool
 
 # install latest golang
 cd /root
-wget https://go.dev/dl/go1.26.0.linux-arm64.tar.gz
+wget https://go.dev/dl/go1.26.5.linux-arm64.tar.gz
 rm -rf /root/go
 rm -rf /root/go_path
 tar xzf *.gz
@@ -143,7 +143,7 @@ apt autoremove -y
 apt clean
 
 # disable autologin
-rm -f rm /etc/systemd/system/getty@tty1.service.d/autologin.conf
+rm -f /etc/systemd/system/getty@tty1.service.d/autologin.conf
 
 # ask for reboot
 echo
