@@ -1,3 +1,10 @@
+## Attention: this script is using
+- stratux source v1.6.r1-eu032 (last verified Stratux Europe Edition version)
+- latest dump1090 (v11.0, May 14, 2026)
+- latest ogn binaries (v0.3.0, Feb 26, 2026)
+
+It is tested particularly for use in Europe with **BLE and SkyDemon** (see below).
+
 # Build a Stratux Europe on a Pi3, Pi4, Pi5 or Pi Zero 2W based on a fresh 64bit RasPiOS Lite Image
 
 - shopping lists:
