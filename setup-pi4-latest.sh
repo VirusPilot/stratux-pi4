@@ -25,17 +25,14 @@ apt install \
   libudev-dev \
   libical-dev \
   libreadline-dev \
-  librtlsdr-dev \
-  librtlsdr0 \
-  rtl-sdr \
   automake \
   pkg-config \
   python3-pygments \
   cmake \
+  python3-pip \
   debhelper -y
 
 # install esptool for tracker flashing
-apt install python3-pip -y
 pip install --break-system-packages esptool
 
 # install latest golang
@@ -44,14 +41,28 @@ wget https://go.dev/dl/go1.26.5.linux-arm64.tar.gz
 tar xzf *.gz
 rm *.gz
 
-# install bluez from stratux releases (5.79)
+# compile and install librtlsdr from source (latest)
 cd /root
-wget https://github.com/stratux/bluez/releases/download/v1.0/bluez_5.79-1_arm64.deb
-dpkg -i bluez_5.79-1_arm64.deb
-rm -f bluez_5.79-1_arm64.deb
+git clone https://github.com/osmocom/rtl-sdr
+cd rtl-sdr
+sed -i '$a\\noverride_dh_autoreconf:\n\t:' debian/rules # prevent autoreconf from running
+dpkg-buildpackage -b --no-sign
+cd ..
+dpkg -i librtlsdr0_*.deb
+dpkg -i librtlsdr-dev_*.deb
+dpkg -i rtl-sdr_*.deb
+rm -f *.deb
+rm -f *.buildinfo
+rm -f *.changes
 
 # legacy DVB-T TV drivers need to be properly blacklisted (e.g. they will activate the bias tee by default)
 echo 'blacklist dvb_usb_rtl28xxu' | sudo tee --append /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
+
+# install latest bluez from debian (5.87)
+cd /root
+wget http://ftp.de.debian.org/debian/pool/main/b/bluez/bluetooth_5.87-1_all.deb
+dpkg -i *.deb
+rm -f *.deb
 
 # install kalibrate-rtl
 cd /root
@@ -68,17 +79,18 @@ cd WiringPi
 # clone stratux
 cd /root && git clone --recursive https://github.com/stratux/stratux.git /root/stratux
 
-# checkout latest stable stratux
-cd /root/stratux && git checkout 5283a06
+# checkout v1.6 (5283a06)
+# cd /root/stratux && git checkout 5283a06
 
 # checkout latest dump1090
 cd /root/stratux/dump1090 && git pull origin master
 
 # checkout latest ogn
-cd /root/stratux && git fetch origin && git restore --source=origin/master -- ogn/
+# cd /root/stratux && git fetch origin && git restore --source=origin/master -- ogn/
 
-# copy various files from /root/stratux/image
-cd /root/stratux/image
+# copy various files
+# cd /root/stratux/image (for v1.6)
+cd /root/stratux/image_build/stage2/10-stratux/files
 cp -f config.txt /boot/firmware/config.txt
 cp -f bashrc.txt /root/.bashrc
 cp -f rc.local /etc/rc.local
