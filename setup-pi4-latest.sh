@@ -58,9 +58,9 @@ rm -f *.changes
 # legacy DVB-T TV drivers need to be properly blacklisted (e.g. they will activate the bias tee by default)
 echo 'blacklist dvb_usb_rtl28xxu' | sudo tee --append /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
 
-# install latest bluez from debian (5.87)
+# install bluez
 cd /root
-wget http://ftp.de.debian.org/debian/pool/main/b/bluez/bluetooth_5.87-1_all.deb
+wget https://github.com/stratux/bluez/releases/download/v1.0/bluez_5.79-1_arm64.deb
 dpkg -i *.deb
 rm -f *.deb
 
