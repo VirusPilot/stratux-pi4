@@ -20,36 +20,37 @@ apt install \
   ifplugd \
   iptables \
   libttspico-utils \
-  bluez \
-  bluez-firmware \
   libdbus-1-dev \
   libglib2.0-dev \
   libudev-dev \
   libical-dev \
   libreadline-dev \
-  python3-pygments -y
-apt install cmake debhelper -y
+  automake \
+  pkg-config \
+  python3-pygments \
+  cmake \
+  python3-pip \
+  debhelper -y
 
 # install esptool for tracker flashing
-apt install python3-pip -y
 pip install --break-system-packages esptool
 
 # install latest golang
 cd /root
-wget https://go.dev/dl/go1.25.0.linux-arm64.tar.gz
-rm -rf /root/go
-rm -rf /root/go_path
+wget https://go.dev/dl/go1.27.0.linux-arm64.tar.gz
 tar xzf *.gz
 rm *.gz
 
-# compile and install librtlsdr from https://github.com/osmocom/rtl-sdr
+# compile and install librtlsdr from source (latest)
 cd /root
-rm -rf /root/rtl-sdr
 git clone https://github.com/osmocom/rtl-sdr
 cd rtl-sdr
-sudo dpkg-buildpackage -b --no-sign
-cd /root
-sudo dpkg -i *.deb
+sed -i '$a\\noverride_dh_autoreconf:\n\t:' debian/rules # prevent autoreconf from running
+dpkg-buildpackage -b --no-sign
+cd ..
+dpkg -i librtlsdr0_*.deb
+dpkg -i librtlsdr-dev_*.deb
+dpkg -i rtl-sdr_*.deb
 rm -f *.deb
 rm -f *.buildinfo
 rm -f *.changes
@@ -57,32 +58,40 @@ rm -f *.changes
 # legacy DVB-T TV drivers need to be properly blacklisted (e.g. they will activate the bias tee by default)
 echo 'blacklist dvb_usb_rtl28xxu' | sudo tee --append /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
 
+# install bluez
+cd /root
+wget https://github.com/stratux/bluez/releases/download/v1.0/bluez_5.79-1_arm64.deb
+dpkg -i *.deb
+rm -f *.deb
+
 # install kalibrate-rtl
 cd /root
-rm -rf /root/kalibrate-rtl
 git clone https://github.com/steve-m/kalibrate-rtl
 cd kalibrate-rtl
-./bootstrap && CXXFLAGS='-W -Wall -O3'
-./configure
-make -j8 && make install
-rm -rf /root/kalibrate-rtl
+./bootstrap && ./configure && make && sudo make install
 
 # Prepare wiringpi for ogn trx via GPIO
 cd /root
-rm -rf /root/WiringPi
 git clone https://github.com/WiringPi/WiringPi.git
 cd WiringPi
 ./build
 
 # clone stratux
-cd /root
-rm -rf /root/stratux
-git clone --recursive https://github.com/stratux/stratux.git /root/stratux
-cd /root/stratux
+cd /root && git clone --recursive https://github.com/stratux/stratux.git /root/stratux
 
-# copy various files from /root/stratux/image
+# checkout v1.6 (5283a06)
+# cd /root/stratux && git checkout 5283a06
+
+# checkout latest dump1090
+cd /root/stratux/dump1090 && git pull origin master
+
+# checkout latest ogn
+# cd /root/stratux && git fetch origin && git restore --source=origin/master -- ogn/
+
+# copy various files
+# cd /root/stratux/image (for v1.6)
 cd /root/stratux/image_build/stage2/10-stratux/files
-cp -f config.txt /boot/firmware/config.txt # modified in https://github.com/VirusPilot/stratux
+cp -f config.txt /boot/firmware/config.txt
 cp -f bashrc.txt /root/.bashrc
 cp -f rc.local /etc/rc.local
 cp -f modules.txt /etc/modules
@@ -136,18 +145,18 @@ cd /root/stratux
 make
 make install
 
-# disable swapfile 
+# disable swapfile
 systemctl disable dphys-swapfile
 apt purge dphys-swapfile -y
 apt autoremove -y
 apt clean
 
 # disable autologin
-rm -f rm /etc/systemd/system/getty@tty1.service.d/autologin.conf
+rm -f /etc/systemd/system/getty@tty1.service.d/autologin.conf
 
 # ask for reboot
 echo
-read -t 1 -n 10000 discard 
+read -t 1 -n 10000 discard
 read -p "Reboot now? [y/n]" -n 1 -r
 echo
 if [[ $REPLY =~ ^[Yy]$ ]]; then
