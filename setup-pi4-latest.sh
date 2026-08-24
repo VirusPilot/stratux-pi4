@@ -37,7 +37,7 @@ pip install --break-system-packages esptool
 
 # install latest golang
 cd /root
-wget https://go.dev/dl/go1.26.5.linux-arm64.tar.gz
+wget https://go.dev/dl/go1.27.0.linux-arm64.tar.gz
 tar xzf *.gz
 rm *.gz
 
