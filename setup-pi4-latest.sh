@@ -64,10 +64,9 @@ cd /root
 #dpkg -i *.deb
 #rm -f *.deb
 
-# Clone, build, and install BlueZ 5.87
-# BlueZ 5.79 had limitations, 5.87 provides better BLE support
+# Clone, build, and install BlueZ 5.79
 apt install -y python3-docutils libsystemd-dev
-git clone --depth 1 --branch 5.87 https://github.com/bluez/bluez.git bluez-src
+git clone --depth 1 --branch 5.79 https://github.com/bluez/bluez.git bluez-src
 cd bluez-src && ./bootstrap && ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-library
 make -j$(nproc) && make install
 
@@ -83,17 +82,8 @@ git clone https://github.com/WiringPi/WiringPi.git
 cd WiringPi
 ./build
 
-# clone stratux
-cd /root && git clone --recursive https://github.com/stratux/stratux.git /root/stratux
-
-# checkout v1.6 (5283a06)
-# cd /root/stratux && git checkout 5283a06
-
-# checkout latest dump1090
-cd /root/stratux/dump1090 && git pull origin master
-
-# checkout latest ogn
-# cd /root/stratux && git fetch origin && git restore --source=origin/master -- ogn/
+# clone VirusPilot/stratux
+cd /root && git clone --recursive https://github.com/VirusPilot/stratux.git /root/stratux
 
 # copy various files
 # cd /root/stratux/image (for v1.6)
