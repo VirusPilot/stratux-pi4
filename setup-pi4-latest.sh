@@ -37,9 +37,21 @@ pip install --break-system-packages esptool
 
 # install latest golang
 cd /root
-wget https://go.dev/dl/go1.27.2.linux-arm64.tar.gz
-tar xzf *.gz
-rm *.gz
+GO_VERSION=$(wget -qO- https://go.dev/dl/?mode=json | jq -er 'first(.[] | select(.stable == true) | .version)') || {
+  echo "Failed to determine the latest stable Go version from go.dev" >&2
+  exit 1
+}
+GO_ARCHIVE="${GO_VERSION}.linux-arm64.tar.gz"
+wget "https://go.dev/dl/${GO_ARCHIVE}" || {
+  echo "Failed to download ${GO_ARCHIVE} from go.dev" >&2
+  exit 1
+}
+rm -rf /root/go
+tar -C /root -xzf "$GO_ARCHIVE" || {
+  echo "Failed to extract ${GO_ARCHIVE}" >&2
+  exit 1
+}
+rm "$GO_ARCHIVE"
 
 # compile and install librtlsdr from source (latest)
 cd /root
