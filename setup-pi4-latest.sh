@@ -70,15 +70,9 @@ rm -f *.changes
 # legacy DVB-T TV drivers need to be properly blacklisted (e.g. they will activate the bias tee by default)
 echo 'blacklist dvb_usb_rtl28xxu' | sudo tee --append /etc/modprobe.d/blacklist-dvb_usb_rtl28xxu.conf
 
-# install bluez
-cd /root
-#wget https://github.com/stratux/bluez/releases/download/v1.0/bluez_5.79-1_arm64.deb
-#dpkg -i *.deb
-#rm -f *.deb
-
-# Clone, build, and install BlueZ 5.79
+# Clone, build, and install BlueZ 5.82
 apt install -y python3-docutils libsystemd-dev
-git clone --depth 1 --branch 5.79 https://github.com/bluez/bluez.git bluez-src
+git clone --depth 1 --branch 5.82 https://github.com/bluez/bluez.git bluez-src
 cd bluez-src && ./bootstrap && ./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var --enable-library
 make -j$(nproc) && make install
 
